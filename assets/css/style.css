@@ -1,0 +1,99 @@
+:root {
+    /* Colors */
+
+    /* Main */
+    --background-color: #fff;
+    --main-color: #fff;
+    --accent-color: #5200FF;
+
+    /* Text */
+    --text-color: #282828;
+    --text-color-opposite: #fff;
+}
+
+html {
+    /* https://rsms.me/inter/ */
+    font-family: 'Inter UI', sans-serif;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+header {
+    height: 3rem;
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.25);
+}
+
+#logo {
+    height: 2rem;
+}
+
+main {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+main .task-list {
+    background-color: var(--background-color);
+    flex-grow: 2;
+    width: 80%;
+    height: 100vh;
+    text-align: left;
+    overflow: auto;
+    display: flex;
+}
+
+ul {
+    margin: 0;
+}
+
+#root-ul {
+    width: 100%;
+    padding: 0;
+    margin: 0 10px;
+    align-items: flex-start;
+}
+
+li {
+    list-style: none;
+    padding: 10px;
+    list-style-position: inside;
+    background: var(--main-color);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    display: flex;
+    margin-bottom: 1rem;
+    transition: background-color .25s;
+}
+
+li:hover {
+    background: var(--accent-color);
+    color: var(--text-color-opposite);
+}
+
+li .task-time {
+    margin-left: auto;
+}
+
+main #calendar {
+    min-width: 33%;
+    background-color: var(--main-color);
+    height: 90vh;
+    overflow: auto;
+    border-radius: 5px;
+    margin-right: 10px;
+    padding: 10px;
+    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.25);
+}
