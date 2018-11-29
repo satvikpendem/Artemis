@@ -13,13 +13,27 @@
 
 html {
     /* https://rsms.me/inter/ */
-    font-family: 'Inter UI', sans-serif;
+    font-family: 'Overpass', sans-serif;
     color: var(--text-color);
+    width: 100%;
 }
 
 body {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
+    max-width: 60%;
+}
+
+header {
+    height: 3rem;
+    padding-top: 10px;
+    background-color: var(--background-color);
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 #logo-icon {
@@ -28,9 +42,33 @@ body {
 
 #logo-wordmark {
     text-transform: uppercase;
+    padding-left: 10px;
 }
 
-header {
+main {
+    text-align: center;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    padding-top: 100px;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+h2, h3 {
+    font-weight: 400;
+}
+
+strong {
+    font-weight: 700;
+}
+
+ul {
+    padding: 1.5rem 0;
+    text-align: left;
+}
+
+li {
+    list-style: none;
 }
