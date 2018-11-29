@@ -1,0 +1,36 @@
+:root {
+    /* Colors */
+
+    /* Main */
+    --background-color: #fff;
+    --main-color: #fff;
+    --accent-color: #5200FF;
+
+    /* Text */
+    --text-color: #282828;
+    --text-color-opposite: #fff;
+}
+
+html {
+    /* https://rsms.me/inter/ */
+    font-family: 'Inter UI', sans-serif;
+    color: var(--text-color);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#logo-icon {
+    height: 2rem;
+}
+
+#logo-wordmark {
+    text-transform: uppercase;
+}
+
+header {
+    display: flex;
+    align-items: center;
+}
