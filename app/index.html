@@ -1,85 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- Font -->
-    <link rel="stylesheet" href="https://rsms.me/inter/inter-ui.css">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- Font -->
+  <link rel="stylesheet" href="https://rsms.me/inter/inter-ui.css">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
 
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="./assets/img/favicon/site.webmanifest">
-    <link rel="mask-icon" href="./assets/img/favicon/safari-pinned-tab.svg" color="#000000">
-    <link rel="shortcut icon" href="./assets/img/favicon/favicon.ico">
-    <meta name="msapplication-TileColor" content="#000000">
-    <meta name="msapplication-config" content="./assets/img/favicon/browserconfig.xml">
-    <meta name="theme-color" content="#000000">
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="./assets/img/favicon/site.webmanifest">
+  <link rel="mask-icon" href="./assets/img/favicon/safari-pinned-tab.svg" color="#000000">
+  <link rel="shortcut icon" href="./assets/img/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-config" content="./assets/img/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <!-- Title -->
+  <title>Artemis</title>
+</head>
 
-    <!-- Title -->
-    <title>Artemis</title>
-  </head>
-
-  <body>
-    <header>
-      <nav>
-        <a href="/"><img id="logo" src="./assets/img/logo_outline.svg" alt="logo_outline" /></a>
-      </nav>
-    </header>
-    <main>
-      <div class="task-list">
-        <ul id="root-ul">
-          <li>
-            <!-- Task title -->
-            <span class="task-desc">Chemistry class</span>
-            <!-- Task time estimate to complete in minutes -->
-            <span class="task-time">2:30</span>
+<body>
+  <header>
+    <nav>
+      <a href="/"><img id="logo" src="./assets/img/logo_outline.svg" alt="logo_outline" /></a>
+    </nav>
+  </header>
+  <main>
+    <div class="task-list">
+      <ul id="root-ul">
+        <li>
+          <!-- Task title -->
+          <span class="task-desc">Chemistry class</span>
+          <!-- Task time estimate to complete in minutes -->
+          <span class="task-time">2:30</span>
+        </li>
+        <ul>
+          <li><span class="task-desc">Take pre-test</span>
+            <span class="task-time">30</span>
           </li>
           <ul>
-            <li><span class="task-desc">Take pre-test</span>
-              <span class="task-time">30</span>
+            <li><span class="task-desc">Read Chapter 10</span>
+              <span class="task-time">20</span>
+            </li>
+          </ul>
+        </ul>
+        <ul>
+          <li><span class="task-desc">Essay</span>
+            <span class="task-time">1:40</span>
+          </li>
+          <ul>
+            <li><span class="task-desc">Part I</span>
+              <span class="task-time">50</span>
             </li>
             <ul>
-              <li><span class="task-desc">Read Chapter 10</span>
-                <span class="task-time">20</span>
+              <li><span class="task-desc">On the forms of chemical bonds</span>
+                <span class="task-time">50</span>
               </li>
             </ul>
-          </ul>
-          <ul>
-            <li><span class="task-desc">Essay</span>
-              <span class="task-time">1:40</span>
+            <li><span class="task-desc">Part II</span>
+              <span class="task-time">50</span>
             </li>
             <ul>
-              <li><span class="task-desc">Part I</span>
+              <li><span class="task-desc">Quantum interactions between molecules</span>
                 <span class="task-time">50</span>
               </li>
-              <ul>
-                <li><span class="task-desc">On the forms of chemical bonds</span>
-                  <span class="task-time">50</span>
-                </li>
-              </ul>
-              <li><span class="task-desc">Part II</span>
-                <span class="task-time">50</span>
-              </li>
-              <ul>
-                <li><span class="task-desc">Quantum interactions between molecules</span>
-                  <span class="task-time">50</span>
-                </li>
-              </ul>
             </ul>
           </ul>
         </ul>
-      </div>
-      <aside id="calendar">
-        <div>Here goes the unfinished calendar</div>
-      </aside>
-    </main>
-  </body>
+      </ul>
+    </div>
+    <aside id="calendar">
+      <div>Here goes the unfinished calendar</div>
+    </aside>
+  </main>
+</body>
 
 </html>

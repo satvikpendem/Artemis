@@ -2,6 +2,28 @@
 <html lang="en">
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123068293-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-123068293-1');
+    </script>
+
+    <!-- Hotjar Tracking Code for getartemis.app -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:1106337,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -12,9 +34,9 @@
     <link rel="manifest" href="./assets/img/favicon/site.webmanifest">
     <link rel="mask-icon" href="./assets/img/favicon/safari-pinned-tab.svg" color="#000000">
     <link rel="shortcut icon" href="./assets/img/favicon/favicon.ico">
-    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-config" content="./assets/img/favicon/browserconfig.xml">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#ffffff">
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Overpass" rel="stylesheet">
@@ -33,34 +55,30 @@
     </header>
     <main>
         <div class="container">
-            <h1>Supercharge your day</h1>
-            <h2>Time block and schedule your day with flexible task and calendar management.</h2>
+            <h1>Schedule your day and stay organized</h1>
+            <h2>With Artemis, you can time block and schedule your day <br>with flexible task and calendar management.</h2>
             <ul>
                 <li>
-                    <h3><strong>No more</strong> rearranging tasks in Google Calendar when life changes.</h3>
+                    <h3>No more <strong>rearranging tasks</strong> in Google Calendar when life changes.</h3>
                 </li>
                 <li>
-                    <h3><strong>No more</strong> manually adding recurring events.</h3>
+                    <h3>No more <strong>manually adding</strong> recurring events.</h3>
                 </li>
                 <li>
-                    <h3><strong>No more</strong> forgetting to add breaks.</h3>
+                    <h3>No more <strong>forgetting</strong> to add breaks.</h3>
                 </li>
             </ul>
             <h2>Take control of your day with Artemis.</h2>
 
             <form action="https://app.us19.list-manage.com/subscribe/post?u=4d1c7f31e5be33197309e6d00&amp;id=913960c091"
-                method="post" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                <div id="mc_embed_signup_scroll">
-
-                    <input type="email" name="EMAIL" class="email" id="email-form" placeholder="hello@there.com"
-                        required>
-
-                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_4d1c7f31e5be33197309e6d00_913960c091"
-                            tabindex="-1" value=""></div>
-
-                    <input type="submit" value="Join Waitlist" name="subscribe" id="submit-button">
+                method="post" name="mc-embedded-subscribe-form" target="_blank">
+                <input type="email" name="EMAIL" class="email" id="email-input" placeholder="hello@there.com" pattern=".+\.[a-zA-Z]{2,63}"
+                    required>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_4d1c7f31e5be33197309e6d00_913960c091" tabindex="-1" value="">
                 </div>
+                <input type="submit" value="Join Waitlist" name="subscribe" id="submit-button">
             </form>
         </div>
     </main>
@@ -70,6 +88,43 @@
 
         </div>
     </footer>
+
+    <!-- Solution to bug in Chrome causing CSS transitions to fire on page load -->
+    <script> </script>
+    <!-- Start of Async Drift Code -->
+    <script>
+        "use strict";
+
+        ! function () {
+            var t = window.driftt = window.drift = window.driftt || [];
+            if (!t.init) {
+                if (t.invoked) return void(window.console && console.error && console.error(
+                    "Drift snippet included twice."));
+                t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page",
+                        "hide", "off", "on"
+                    ],
+                    t.factory = function (e) {
+                        return function () {
+                            var n = Array.prototype.slice.call(arguments);
+                            return n.unshift(e), t.push(n), t;
+                        };
+                    }, t.methods.forEach(function (e) {
+                        t[e] = t.factory(e);
+                    }), t.load = function (t) {
+                        var e = 3e5,
+                            n = Math.ceil(new Date() / e) * e,
+                            o = document.createElement("script");
+                        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src =
+                            "https://js.driftt.com/include/" + n + "/" + t + ".js";
+                        var i = document.getElementsByTagName("script")[0];
+                        i.parentNode.insertBefore(o, i);
+                    };
+            }
+        }();
+        drift.SNIPPET_VERSION = '0.3.1';
+        drift.load('hnpnvvnygdac');
+    </script>
+    <!-- End of Async Drift Code -->
 </body>
 
 </html>
