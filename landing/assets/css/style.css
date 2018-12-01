@@ -170,14 +170,8 @@ input {
 
 footer {
     color: var(--text-color-light);
-    position: fixed;
-    left: 1rem;
     bottom: 1rem;
-    width: 100%;
+    left: 1rem;
+    position: absolute;
     text-align: left;
-}
-
-/* Drift Chat */
-.CHAT {
-    padding-bottom: 100px;
 }
