@@ -110,8 +110,8 @@ form {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    width: 700px;
-    height: 100px;
+    width: 100%;
+    margin: 2rem 0;
 }
 
 input {
@@ -129,8 +129,9 @@ input {
     position: relative;
     transition: 0.5s;
 
-    width: 400px;
-    height: 75px;
+    max-width: 400px;
+    height: 100px;
+    width: 100%;
 
     font-size: 1.25em;
 }
@@ -156,8 +157,9 @@ input {
     margin: 1rem;
     transition: 0.5s;
 
-    width: 200px;
-    height: 75px;
+    max-width: 200px;
+    height: 100px;
+    width: 100%;
 
     text-align: center;
     font-size: 1.25em;
