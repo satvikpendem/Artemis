@@ -106,7 +106,11 @@ li {
 }
 
 form {
-    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 700px;
     height: 100px;
 }
 
@@ -120,12 +124,15 @@ input {
     border-style: none;
     box-shadow: 0 6px 25px -6px var(--text-color);
     font-size: 1rem;
-    height: 50px;
     overflow: visible;
-    padding: 0 12px;
+    padding: 0 24px;
     position: relative;
-    width: 220px;
     transition: 0.5s;
+
+    width: 400px;
+    height: 75px;
+
+    font-size: 1.25em;
 }
 
 #email-input:focus {
@@ -133,7 +140,7 @@ input {
 }
 
 #email-input:valid {
-    box-shadow: 0 6px 25px -6px var(--accent-color);
+    box-shadow: 0 12px 50px -6px var(--accent-color);
 }
 
 #submit-button {
@@ -144,23 +151,21 @@ input {
     font-size: 1.4em;
     cursor: pointer;
     color: #FFFFFF;
-    font-size: 1em;
     outline: none;
     border: none;
-    height: 50px;
-    margin-left: 1rem;
+    margin: 1rem;
     transition: 0.5s;
+
+    width: 200px;
+    height: 75px;
+
+    text-align: center;
+    font-size: 1.25em;
 }
 
 #submit-button:hover {
     transform: translateY(2px);
-}
-
-@media only screen and (max-width: 470px) {
-    #submit-button {
-        margin-left: 0;
-        margin-top: 1rem;
-    }
+    box-shadow: 0 12px 50px -6px var(--accent-color);
 }
 
 footer {
