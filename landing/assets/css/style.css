@@ -170,16 +170,46 @@ input {
     box-shadow: 0 12px 50px -6px var(--accent-color);
 }
 
-footer {
+/* footer {
     color: var(--text-color-light);
     position: fixed;
     left: 1rem;
     bottom: 1rem;
     width: 100%;
     text-align: left;
+} */
+
+footer {
+    color: var(--text-color-light);
+    bottom: 1rem;
+    left: 1rem;
+    margin: 1rem;
 }
 
-/* Drift Chat */
-.CHAT {
-    padding-bottom: 100px;
+#footer-container {
+    display: flex;
+    align-items: center;
+}
+
+#copyright {
+    margin-right: auto;
+}
+
+#social {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 150px;
+    margin-right: 100px;
+    margin-bottom: 25px;
+}
+
+#social a,
+img {
+    margin: 0;
+    padding: 0;
+}
+
+#social img {
+    height: 30px;
 }
