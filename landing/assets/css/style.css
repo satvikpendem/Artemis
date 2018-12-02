@@ -2,7 +2,7 @@
     /* Colors */
 
     /* Main */
-    --background-color: #fff;
+    --background-color: #fafafa;
     --main-color: #fff;
     --accent-color: #5200FF;
 
@@ -147,9 +147,7 @@ input {
 #submit-button {
     background-color: var(--accent-color);
     box-shadow: 0 6px 25px -6px var(--text-color);
-    padding: 0.5em 1.9em;
     border-radius: 3px;
-    font-size: 1.4em;
     cursor: pointer;
     color: #FFFFFF;
     outline: none;
@@ -162,22 +160,13 @@ input {
     width: 100%;
 
     text-align: center;
-    font-size: 1.25em;
+    font-size: 1.5em;
 }
 
 #submit-button:hover {
     transform: translateY(2px);
     box-shadow: 0 12px 50px -6px var(--accent-color);
 }
-
-/* footer {
-    color: var(--text-color-light);
-    position: fixed;
-    left: 1rem;
-    bottom: 1rem;
-    width: 100%;
-    text-align: left;
-} */
 
 footer {
     color: var(--text-color-light);
