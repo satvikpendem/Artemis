@@ -6,7 +6,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123068293-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'UA-123068293-1');
@@ -14,14 +14,14 @@
 
     <!-- Hotjar Tracking Code for getartemis.app -->
     <script>
-        (function(h,o,t,j,a,r){
-            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-            h._hjSettings={hjid:1106337,hjsv:6};
-            a=o.getElementsByTagName('head')[0];
-            r=o.createElement('script');r.async=1;
-            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        (function (h, o, t, j, a, r) {
+            h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+            h._hjSettings = { hjid: 1106337, hjsv: 6 };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script'); r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
             a.appendChild(r);
-        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
     </script>
 
     <meta charset="UTF-8">
@@ -54,9 +54,28 @@
         </div>
     </header>
     <main>
+        <div id="flex-container">
+
+            <div class="container">
+                <h1>Simple, effective time management.</h1>
+                <h2>Artemis is a smart to do list integrated with your favorite calendar.<br>Start time blocking your
+                    day so you don't miss a single minute.</h2>
+                <form class="desktop" id="top-form" action="https://app.us19.list-manage.com/subscribe/post?u=4d1c7f31e5be33197309e6d00&amp;id=913960c091"
+                    method="post" name="mc-embedded-subscribe-form" target="_blank">
+                    <input type="email" name="EMAIL" class="email" id="email-input" placeholder="hello@there.com"
+                        pattern=".+\.[a-zA-Z]{2,63}" required>
+                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                        <input type="text" name="b_4d1c7f31e5be33197309e6d00_913960c091" tabindex="-1" value="">
+                    </div>
+                    <input type="submit" value="Join Waitlist" name="subscribe" id="submit-button">
+                </form>
+            </div>
+
+            <video id="promo-video" autoplay loop muted src="./assets/vid/promo.mp4"></video>
+
+        </div>
         <div class="container">
-            <h1>Schedule your day and stay organized</h1>
-            <h2>With Artemis, you can time block and schedule your day <br>with flexible task and calendar management.</h2>
             <ul>
                 <li>
                     <h3>No more <strong>rearranging tasks</strong> in Google Calendar when life changes.</h3>
@@ -69,8 +88,7 @@
                 </li>
             </ul>
             <h2>Take control of your day with Artemis.</h2>
-
-            <form action="https://app.us19.list-manage.com/subscribe/post?u=4d1c7f31e5be33197309e6d00&amp;id=913960c091"
+            <form id="bottom-form" action="https://app.us19.list-manage.com/subscribe/post?u=4d1c7f31e5be33197309e6d00&amp;id=913960c091"
                 method="post" name="mc-embedded-subscribe-form" target="_blank">
                 <input type="email" name="EMAIL" class="email" id="email-input" placeholder="hello@there.com" pattern=".+\.[a-zA-Z]{2,63}"
                     required>
@@ -86,9 +104,12 @@
         <div id="footer-container">
             <span id="copyright">&copy; 2018 Aria Labs</span>
             <div id="social">
-                <a href="https://twitter.com/satvikpendem" target="_blank" rel="noopener noreferrer"><img src="./assets/img/social/twitter.svg" alt="Twitter link"></a>
-                <a href="https://github.com/satvikpendem/Artemis" target="_blank" rel="noopener noreferrer"><img src="./assets/img/social/github.svg" alt="Github link"></a>
-                <a href="mailto:satvik.pendem@gmail.com" target="_blank" rel="noopener noreferrer"><img src="./assets/img/social/email.svg" alt="Email link"></a>
+                <a href="https://twitter.com/satvikpendem" target="_blank" rel="noopener noreferrer"><img src="./assets/img/social/twitter.svg"
+                        alt="Twitter link"></a>
+                <a href="https://github.com/satvikpendem/Artemis" target="_blank" rel="noopener noreferrer"><img src="./assets/img/social/github.svg"
+                        alt="Github link"></a>
+                <a href="mailto:satvik.pendem@gmail.com" target="_blank" rel="noopener noreferrer"><img src="./assets/img/social/email.svg"
+                        alt="Email link"></a>
             </div>
         </div>
     </footer>
@@ -99,11 +120,11 @@
         ! function () {
             var t = window.driftt = window.drift = window.driftt || [];
             if (!t.init) {
-                if (t.invoked) return void(window.console && console.error && console.error(
+                if (t.invoked) return void (window.console && console.error && console.error(
                     "Drift snippet included twice."));
                 t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page",
-                        "hide", "off", "on"
-                    ],
+                    "hide", "off", "on"
+                ],
                     t.factory = function (e) {
                         return function () {
                             var n = Array.prototype.slice.call(arguments);
@@ -126,6 +147,9 @@
         drift.load('hnpnvvnygdac');
     </script>
     <!-- End of Async Drift Code -->
+    <script>
+        document.getElementById("promo-video").playbackRate = 2.0;
+    </script>
 </body>
 
 </html>
