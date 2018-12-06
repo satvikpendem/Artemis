@@ -10,6 +10,11 @@
     --text-color: #282828;
     --text-color-opposite: #fff;
     --text-color-light: #cfd7df;
+
+    /* Box Shadow */
+    --box-shadow: 0 3px 25px -6px var(--text-color);
+    --box-shadow-glow: 0 12px 50px -6px var(--accent-color);
+
 }
 
 html {
@@ -126,6 +131,7 @@ li {
 #promo-video {
     width: 80%;
     height: auto;
+    box-shadow: var(--box-shadow);
 }
 
 form {
@@ -145,7 +151,7 @@ input {
     background: var(--main-color);
     border-radius: 5px;
     border-style: none;
-    box-shadow: 0 6px 25px -6px var(--text-color);
+    box-shadow: var(--box-shadow);
     font-size: 1rem;
     overflow: visible;
     padding: 0 24px;
@@ -164,13 +170,13 @@ input {
 }
 
 #email-input:valid {
-    box-shadow: 0 12px 50px -6px var(--accent-color);
+    box-shadow: var(--box-shadow-glow);
 }
 
 #submit-button {
     background-color: var(--accent-color);
     border-radius: 3px;
-    box-shadow: 0 6px 25px -6px var(--text-color);
+    box-shadow: var(--box-shadow);
     outline: none;
     border: none;
     
@@ -190,7 +196,7 @@ input {
 
 #submit-button:hover {
     transform: translateY(2px);
-    box-shadow: 0 12px 50px -6px var(--accent-color);
+    box-shadow: var(--box-shadow-glow);
 }
 
 footer {
