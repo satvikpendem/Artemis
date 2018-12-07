@@ -150,16 +150,12 @@
     <!-- End of Async Drift Code -->
 
     <script>
-        document.getElementById("promo-video").playbackRate = 2.0;
-
         // To allow the promo video to play if not autoplaying
         let playPromise = document.querySelector('video').play();
         // In browsers that don’t yet support this functionality,
         // playPromise won’t be defined.
         if (playPromise !== undefined) {
-            playPromise.then(function () {
-                // Automatic playback started!
-            }).catch(function (error) {
+            playPromise.then(function () {}).catch(function (error) {
                 // Automatic playback failed.
                 document.querySelector('video').play();
             });
