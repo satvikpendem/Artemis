@@ -11,6 +11,10 @@
     --text-color-opposite: #fff;
     --text-color-light: #cfd7df;
 
+    /* Positive and negative colors for errors and submissions */
+    --text-color-negative: #f44336;
+    --text-color-positive: var(--accent-color);
+
     /* Box Shadow */
     --box-shadow: 0 3px 25px -6px var(--text-color);
     --box-shadow-glow: 0 12px 50px -6px var(--accent-color);
@@ -45,7 +49,6 @@ body {
         display: none;
     }
 }
-
 
 header {
     display: flex;
@@ -114,9 +117,20 @@ h3 {
     font-size: 1.5rem;
 }
 
-strong {
+.negative {
     font-weight: 700;
-    color: #F44336;
+    color: var(--text-color-negative);
+}
+
+.positive {
+    font-weight: 700;
+    color: var(--text-color-positive);
+}
+
+.explanation {
+    display: block;
+    margin-left: 1rem;
+    font-size: 1.25rem;
 }
 
 ul {

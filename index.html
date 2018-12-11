@@ -12,6 +12,17 @@
         gtag('config', 'UA-123068293-1');
     </script>
 
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-P8BV677');</script>
+    <!-- End Google Tag Manager -->
+
     <!-- Hotjar Tracking Code for getartemis.app -->
     <script>
         (function (h, o, t, j, a, r) {
@@ -47,6 +58,10 @@
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P8BV677" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <header>
         <div id="logo">
             <img id="logo-icon" src="./assets/img/logo_outline.svg" alt="logo">
@@ -78,13 +93,28 @@
         <div class="container">
             <ul>
                 <li>
-                    <h3>No more <strong>rearranging tasks</strong> in Google Calendar when life changes.</h3>
+                    <h3>No more <strong class="negative">rearranging tasks</strong> in Google Calendar when life
+                        changes.</h3>
+                    <!-- <span class="explanation">
+                        Artemis will
+                        <strong class="positive">automatically reflow and reschedule</strong>
+                        events based on your preferences of when you want your tasks to be done.
+                        For example, if you go to the gym in the mornings, Artemis will learn this preference over
+                        time.
+                        If you need to change this for a day, you can always manually override it.
+                    </span> -->
                 </li>
                 <li>
-                    <h3>No more <strong>manually adding</strong> recurring events.</h3>
+                    <h3>No more <strong class="negative">manually adding</strong> recurring events.</h3>
+                    <span class="explanation">
+
+                    </span>
                 </li>
                 <li>
-                    <h3>No more <strong>forgetting</strong> to add breaks.</h3>
+                    <h3>No more <strong class="negative">forgetting</strong> to add breaks.</h3>
+                    <span class="explanation">
+
+                    </span>
                 </li>
             </ul>
             <h2>Take control of your day with Artemis.</h2>
@@ -155,7 +185,7 @@
         // In browsers that don’t yet support this functionality,
         // playPromise won’t be defined.
         if (playPromise !== undefined) {
-            playPromise.then(function () {}).catch(function (error) {
+            playPromise.then(function () { }).catch(function (error) {
                 // Automatic playback failed.
                 document.querySelector('video').play();
             });
