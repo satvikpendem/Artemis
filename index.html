@@ -14,12 +14,12 @@
 
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
-        w[l] = w[l] || []; w[l].push({
-            'gtm.start':
-                new Date().getTime(), event: 'gtm.js'
-        }); var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-P8BV677');</script>
     <!-- End Google Tag Manager -->
 
@@ -87,7 +87,12 @@
                 </form>
             </div>
 
-            <video id="promo-video" autoplay loop muted src="./assets/vid/promo.mp4"></video>
+            <video id="promo-video" autoplay loop muted preload>
+                <source src="./assets/vid/promo-1080.mp4" type="video/mp4">
+                <source src="./assets/vid/promo-1080.webm" type="video/webm">
+                <source src="./assets/vid/promo-540.mp4" type="video/mp4" media="all and (max-width: 740px)">
+                <source src="./assets/vid/promo-540.webm" type="video/webm" media="all and (max-width: 740px)">
+            </video>
 
         </div>
         <div class="container">

@@ -254,8 +254,7 @@ img {
         flex-direction: column-reverse;
     }
     #social {
-        /* margin-right: 50px; */
-        margin: 0;
+        margin: 4px 0;
     }
     #copyright {
         margin: 0;
