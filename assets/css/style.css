@@ -143,7 +143,7 @@ li {
 }
 
 #promo-video {
-    width: 80%;
+    width: 80vw;
     height: auto;
     box-shadow: var(--box-shadow);
 }
