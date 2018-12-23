@@ -1,6 +1,6 @@
 <template>
   <div id="task-list">
-    <task-item :label="tree.label" :nodes="tree.nodes"/>
+    <task-item :title="tree.title" :duration="tree.duration" :nodes="tree.nodes"/>
   </div>
 </template>
 
@@ -13,26 +13,32 @@ export default {
   data() {
     return {
       tree: {
-        label: "root",
+        title: "root",
+        duration: "1:00",
         nodes: [
           {
-            label: "item1",
+            title: "item1",
+            duration: "1:00",
             nodes: [
               {
-                label: "item1.1"
+                title: "item1.1",
+                duration: "1:00"
               },
               {
-                label: "item1.2",
+                title: "item1.2",
+                duration: "1:00",
                 nodes: [
                   {
-                    label: "item1.2.1"
+                    title: "item1.2.1",
+                    duration: "1:00"
                   }
                 ]
               }
             ]
           },
           {
-            label: "item2"
+            title: "item2",
+            duration: "1:00"
           }
         ]
       }

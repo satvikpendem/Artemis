@@ -1,16 +1,30 @@
 <template>
   <div id="task-item">
-    <ul>
-      <li>{{ label }}</li>
-      <task-item v-for="node in nodes" :nodes="node.nodes" :label="node.label" :key="node.id"/>
-    </ul>
+    <draggable :element="'ul'" class="dragArea" :options="{group:{ name:'task-group'}}">
+      <li>
+        <span>{{ duration }}:</span>
+        {{ title }}
+      </li>
+      <task-item
+        v-for="node in nodes"
+        :title="node.title"
+        :duration="node.duration"
+        :nodes="node.nodes"
+        :key="node.id"
+      />
+    </draggable>
   </div>
 </template>
 
 <script>
+import draggable from "vuedraggable";
+
 export default {
   name: "task-item",
-  props: ["nodes", "label"]
+  props: ["title", "duration", "nodes"],
+  components: {
+    draggable
+  }
 };
 </script>
 
@@ -22,6 +36,11 @@ export default {
   transition: background-color 0.25s;
 }
 
+.dragArea {
+  min-height: 10px;
+}
+
+draggable,
 ul {
   width: 100%;
 }
