@@ -8,7 +8,7 @@
     >
       <div v-for="node in nodes" :key="node.id">
         <ul v-if="node.nodes">
-          <p>{{ node.title }}</p>
+          <p>{{ node.duration }}: {{ node.title }}</p>
           <task-item :nodes="node.nodes"></task-item>
         </ul>
         <li v-else>
