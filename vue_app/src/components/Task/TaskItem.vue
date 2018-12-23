@@ -4,11 +4,11 @@
       :list="nodes"
       :element="'ul'"
       class="dragArea"
-      :options="{group:{ name:'task-group'}}"
+      :options="{ group: { name:'task-group'}, animation: 500, direction: 'vertical'}"
     >
       <div v-for="node in nodes" :key="node.id">
         <ul v-if="node.nodes">
-          <p>{{ node.duration }}: {{ node.title }}</p>
+          <p>{{ node.duration + ": " + node.title }}</p>
           <task-item :nodes="node.nodes"></task-item>
         </ul>
         <li v-else>
@@ -40,7 +40,7 @@ export default {
 }
 
 .dragArea {
-  min-height: 50px;
+  min-height: 20px;
   display: block;
 }
 
