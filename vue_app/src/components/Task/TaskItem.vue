@@ -1,17 +1,20 @@
 <template>
   <div id="task-item">
-    <draggable :element="'ul'" class="dragArea" :options="{group:{ name:'task-group'}}">
-      <li>
-        <span>{{ duration }}:</span>
-        {{ title }}
-      </li>
-      <task-item
-        v-for="node in nodes"
-        :title="node.title"
-        :duration="node.duration"
-        :nodes="node.nodes"
-        :key="node.id"
-      />
+    <draggable
+      :list="nodes"
+      :element="'ul'"
+      class="dragArea"
+      :options="{group:{ name:'task-group'}}"
+    >
+      <div v-for="node in nodes" :key="node.id">
+        <ul v-if="node.nodes">
+          <p>{{ node.title }}</p>
+          <task-item :nodes="node.nodes"></task-item>
+        </ul>
+        <li v-else>
+          <p>{{ node.title }}</p>
+        </li>
+      </div>
     </draggable>
   </div>
 </template>
@@ -37,7 +40,8 @@ export default {
 }
 
 .dragArea {
-  min-height: 10px;
+  min-height: 50px;
+  display: block;
 }
 
 draggable,
