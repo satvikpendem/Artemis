@@ -56,7 +56,7 @@ export default {
 #task-list {
   background-color: var(--background-color);
   flex-grow: 2;
-  width: 50%;
+  /* width: 50%; */
   height: 100vh;
   text-align: left;
   overflow: auto;
