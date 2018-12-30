@@ -1,27 +1,24 @@
 <template>
   <div id="task-item">
-    <draggable
-      :list="nodes"
-      :element="'ul'"
-      class="dragArea"
-      :options="{ group: { name:'task-group'}, animation: 250, direction: 'vertical', ghostClass:'ghost', chosenClass: 'chosen'}"
-    >
-      <li v-for="node in nodes" :key="node.id">
-        <p>{{ node.duration + ": " + node.title }}</p>
-        <task-item :nodes="node.nodes"></task-item>
-      </li>
-    </draggable>
+    <DraggableTree :data="nodes" draggable cross-tree>
+      <ul v-for="node in nodes" :key="node.id">
+        <li>
+          <p class="drag">{{ node.duration + ": " + node.title }}</p>
+          <task-item :nodes="node.nodes"></task-item>
+        </li>
+      </ul>
+    </DraggableTree>
   </div>
 </template>
 
 <script>
-import draggable from "vuedraggable";
+import DraggableTree from "vue-draggable-nested-tree";
 
 export default {
   name: "task-item",
   props: ["nodes"],
   components: {
-    draggable
+    DraggableTree
   }
 };
 </script>
@@ -33,7 +30,8 @@ export default {
 }
 
 .dragArea {
-  min-height: 10px;
+  min-height: 50px;
+  margin-left: 50px;
 }
 
 li {
