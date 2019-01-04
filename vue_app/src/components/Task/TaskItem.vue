@@ -1,42 +1,63 @@
 <template>
   <div id="task-item">
-    <DraggableTree :data="nodes" draggable cross-tree>
-      <ul v-for="node in nodes" :key="node.id">
-        <li>
-          <p class="drag">{{ node.duration + ": " + node.title }}</p>
-          <task-item :nodes="node.nodes"></task-item>
-        </li>
-      </ul>
-    </DraggableTree>
+    <ul v-for="item in items" :key="item.id">
+      <li>
+        <p v-if="item[durationField]">{{ item[durationField] + ": " + item[titleField] }}</p>
+        <p v-else>{{ item[titleField] }}</p>
+        <task-item :items="item[childrenField]"></task-item>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-import DraggableTree from "vue-draggable-nested-tree";
-
 export default {
   name: "task-item",
-  props: ["nodes"],
-  components: {
-    DraggableTree
-  }
+  props: {
+    titleField: {
+      type: String,
+      required: false,
+      default: "title"
+    },
+    durationField: {
+      type: String,
+      required: false,
+      default: "duration"
+    },
+    descriptionField: {
+      type: String,
+      required: false,
+      default: "description"
+    },
+    childrenField: {
+      type: String,
+      required: false,
+      default: "children"
+    },
+    items: {
+      type: [Object, Array],
+      required: true,
+      default: () => []
+    },
+    value: {
+      type: Array,
+      required: false,
+      default: null
+    }
+  },
+  computed: {}
 };
 </script>
 
 <style scoped>
-#task-item {
+/* #task-item {
   padding-right: 5px;
   width: 100%;
-}
-
-.dragArea {
-  min-height: 50px;
-  margin-left: 50px;
 }
 
 li {
   width: 100%;
   list-style: none;
   list-style-position: inside;
-}
+} */
 </style>

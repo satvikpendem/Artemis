@@ -1,6 +1,11 @@
 <template>
   <div id="task-list">
-    <task-item :nodes="nodes"/>
+    <task-item
+      :items="nodes"
+      :children-field="'children'"
+      :title-field="'title'"
+      :duration-field="'duration'"
+    />
   </div>
 </template>
 
@@ -15,25 +20,23 @@ export default {
       nodes: [
         {
           title: "root",
-          duration: "1:00",
-          nodes: [
+          // duration: "1:00",
+          children: [
             {
               title: "item1",
               duration: "1:00",
-              nodes: [
+              children: [
                 {
                   title: "item1.1",
-                  duration: "1:00",
-                  nodes: []
+                  duration: "1:00"
                 },
                 {
                   title: "item1.2",
                   duration: "1:00",
-                  nodes: [
+                  children: [
                     {
                       title: "item1.2.1",
-                      duration: "1:00",
-                      nodes: []
+                      duration: "1:00"
                     }
                   ]
                 }
@@ -41,8 +44,7 @@ export default {
             },
             {
               title: "item2",
-              duration: "1:00",
-              nodes: []
+              duration: "1:00"
             }
           ]
         }
@@ -53,13 +55,13 @@ export default {
 </script>
 
 <style scoped>
-#task-list {
+/* #task-list {
   background-color: var(--background-color);
   flex-grow: 2;
-  /* width: 50%; */
+  width: 50%;
   height: 100vh;
   text-align: left;
   overflow: auto;
   display: flex;
-}
+} */
 </style>

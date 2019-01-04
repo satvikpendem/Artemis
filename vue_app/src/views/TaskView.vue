@@ -16,10 +16,10 @@ export default {
 </script>
 
 <style scoped>
-main {
+/* main {
   display: flex;
   margin-top: 20px;
   justify-content: space-between;
   align-items: flex-start;
-}
+} */
 </style>

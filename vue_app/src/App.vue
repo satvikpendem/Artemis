@@ -16,19 +16,19 @@ export default {
 </script>
 
 <style>
-#app {
-  /* Colors */
+/* #app {
+  Colors
 
-  /* Main */
+  Main
   --background-color: #fff;
   --main-color: #fff;
   --accent-color: #5200ff;
 
-  /* Text */
+  Text
   --text-color: #282828;
   --text-color-opposite: #fff;
 
-  /* Body */
+  Body
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -37,5 +37,5 @@ export default {
   font-family: "Inter UI", sans-serif;
   font-weight: 700;
   color: var(--text-color);
-}
+} */
 </style>
