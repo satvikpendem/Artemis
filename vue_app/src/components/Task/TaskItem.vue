@@ -2,10 +2,24 @@
   <div id="task-item">
     <ul v-for="item in items" :key="item.id">
       <li>
+        <input
+          type="checkbox"
+          name="check"
+          id="checkbox"
+          @click="selectItem"
+          v-model="itemSelected"
+        >
         <p v-if="item[durationField]">{{ item[durationField] + ": " + item[titleField] }}</p>
         <p v-else>{{ item[titleField] }}</p>
-        <task-item :items="item[childrenField]"></task-item>
       </li>
+      <task-item
+        v-if="item[childrenField]"
+        :items="item[childrenField]"
+        :children-field="'children'"
+        :title-field="'title'"
+        :duration-field="'duration'"
+        :selected="itemSelected"
+      ></task-item>
     </ul>
   </div>
 </template>
@@ -43,14 +57,36 @@ export default {
       type: Array,
       required: false,
       default: null
+    },
+    selected: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
-  computed: {}
+  data() {
+    return {
+      itemSelected: false
+    };
+  },
+  methods: {
+    selectItem() {
+      console.log("Before: " + this.itemSelected);
+      this.itemSelected = !this.itemSelected;
+      console.log("After: " + this.itemSelected);
+    },
+    setItemSelected(newVal) {
+      this.itemSelected = newVal ? newVal : false;
+    }
+  },
+  created() {
+    this.setItemSelected(this.$props.selected);
+  }
 };
 </script>
 
 <style scoped>
-/* #task-item {
+#task-item {
   padding-right: 5px;
   width: 100%;
 }
@@ -58,6 +94,8 @@ export default {
 li {
   width: 100%;
   list-style: none;
-  list-style-position: inside;
-} */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 </style>
