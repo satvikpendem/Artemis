@@ -97,5 +97,12 @@ li {
   display: flex;
   flex-direction: row;
   align-items: center;
+  background: #854dff;
+  border-radius: 5px;
+  margin: 0.75rem;
+  /* height: 60%; */
+  min-width: 30px;
+  color: white;
+  /* width: auto; */
 }
 </style>

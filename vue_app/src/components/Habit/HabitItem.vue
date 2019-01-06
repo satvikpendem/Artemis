@@ -22,7 +22,8 @@ export default {
   name: "HabitItem",
   props: {
     title: { type: String, default: "Habit" },
-    max_value: { type: Number }
+    max_value: { type: Number },
+    min_value: { type: Number, default: 0 }
   },
   data() {
     return {
@@ -65,7 +66,6 @@ export default {
 .task {
   display: flex;
   width: 50%;
-  /* align-items: space-around; */
   align-items: center;
   justify-content: space-between;
   margin: 1rem;
