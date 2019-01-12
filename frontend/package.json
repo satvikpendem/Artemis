@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "artemis-frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "moment": "^2.23.0",
     "vue": "^2.5.17"
   },
   "devDependencies": {

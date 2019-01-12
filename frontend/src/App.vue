@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <task-view/>
+    <task-list/>
   </div>
 </template>
 
 <script>
-import TaskView from "@/views/TaskView.vue";
+// import TaskView from "@/views/TaskView.vue";
+import TaskList from "@/components/Timer/TaskList.vue";
 
 export default {
   name: "app",
   components: {
-    TaskView
+    TaskList
   }
 };
 </script>
