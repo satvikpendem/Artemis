@@ -13,7 +13,7 @@ Start time blocking your day so you don't miss a single minute.
 
 &nbsp;
 
-<img width="800px" src="https://getartemis.app/assets/vid/promo-1080.gif"></img>
+![](https://getartemis.app/assets/vid/promo-1080.gif)
 
 ---
 
@@ -23,8 +23,9 @@ Start time blocking your day so you don't miss a single minute.
 
 If you'd like to use Artemis locally, simply clone and spin up a Vue server:
 
-```javascript
+```shell
 git clone https://github.com/satvikpendem/Artemis
+cd Artemis
 vue serve
 ```
 
