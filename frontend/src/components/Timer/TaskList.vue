@@ -1,6 +1,10 @@
 <template>
   <div class="task-list">
-    <span>Total time: {{ totalTime }}</span>
+    <span>Total time: {{ totalTimeString }}</span>
+    <br>
+    <span>Remaining time: {{ totalTime }}</span>
+    <br>
+    <button @click="startTimer">Start</button>
     <div v-for="(task) in tasks" v-bind:key="task.index">
       <Task :title="task.title" :duration="task.duration"/>
     </div>
@@ -22,14 +26,13 @@ export default {
     return {
       tasks: [],
       newTaskTitle: "",
-      newTaskDuration: ""
+      newTaskDuration: "",
+      timer: null, // interval timer
+      totalTime: null
     };
   },
   computed: {
-    durationMomentToString(_durationMoment) {
-      return `${_durationMoment.hours()}:${_durationMoment.minutes()}`;
-    },
-    totalTime() {
+    totalTimeString() {
       // if (this.tasks.length == 0) return "0 minutes";
       // function to add durations together
       const durationAdder = (accumulator, element) => accumulator.add(element);
@@ -40,25 +43,28 @@ export default {
         .map(task => task.duration)
         .reduce(durationAdder, this.$moment.duration(0));
 
-      let hours = rawTime.hours();
-      let minutes = rawTime.minutes();
+      this.totalTime = this.durationMomentToString(rawTime);
 
-      if (hours === 0 && minutes === 0) return "0 minutes";
-
-      let stringArray = [];
-
-      let hourString = "";
-      let andString = "";
-      let minuteString = "";
-
-      if (hours && minutes) andString = " and ";
-      if (hours) hourString = `${hours} hours`;
-      if (minutes) minuteString = `${minutes} minutes`;
-
-      return hourString + andString + minuteString;
+      return this.durationMomentToString(rawTime);
     }
   },
   methods: {
+    durationMomentToString(_durationMoment) {
+      console.log(_durationMoment);
+      let hourString = _durationMoment
+        .hours()
+        .toString()
+        .padStart(2, "0");
+      let minuteString = _durationMoment
+        .minutes()
+        .toString()
+        .padStart(2, "0");
+      let secondString = _durationMoment
+        .seconds()
+        .toString()
+        .padStart(2, "0");
+      return `${hourString}:${minuteString}:${secondString}`;
+    },
     addTask() {
       if (this.newTaskTitle) {
         // parse and validate the duration before adding to list
@@ -131,6 +137,13 @@ export default {
       }
       // no matches were found
       return false;
+    },
+    startTimer() {
+      this.timer = setInterval(() => this.decrementTime, 100);
+    },
+    decrementTime() {
+      this.totalTime = this.totalTime.subtract(1, "s");
+      console.log(totalTime);
     }
   }
 };
