@@ -2,11 +2,28 @@
   <div class="task-list">
     <span>Total time: {{ totalTimeString }}</span>
     <br>
-    <!-- <span>Remaining time: {{ totalTime }}</span> -->
-    <br>
     <button v-if="this.tasks" @click="startTimer">Start</button>
+    <br>
+    <span>To-Do</span>
     <div v-for="(task) in tasks" v-bind:key="task.index">
-      <Task :title.sync="task.title" :duration.sync="task.duration" :running.sync="task.running"/>
+      <Task
+        :title.sync="task.title"
+        :duration.sync="task.duration"
+        :running.sync="task.running"
+        :completed.sync="task.completed"
+        @completeTask="moveTaskToCompleted"
+      />
+    </div>
+    <br>
+    <span>Completed</span>
+    <div v-for="(task) in completedTasks" v-bind:key="task.index">
+      <Task
+        :title.sync="task.title"
+        :duration.sync="task.duration"
+        :running.sync="task.running"
+        :completed.sync="task.completed"
+        @completeTask="moveTaskToCompleted"
+      />
     </div>
     <section class="task-add">
       <input type="text" placeholder="Duration" v-model="newTaskDuration" @keypress.enter="addTask">
@@ -25,9 +42,9 @@ export default {
   data() {
     return {
       tasks: [],
+      completedTasks: [],
       newTaskTitle: "",
       newTaskDuration: ""
-      // timer: null // interval timer
     };
   },
   computed: {
@@ -56,7 +73,8 @@ export default {
           this.tasks.push({
             title: this.newTaskTitle,
             duration: parsedDuration,
-            running: false
+            running: false,
+            completed: false
           });
           this.newTaskTitle = "";
           this.newTaskDuration = "";
@@ -69,6 +87,14 @@ export default {
           this.newTaskDuration = "";
         }
       }
+    },
+    moveTaskToCompleted() {
+      // move top task from tasks array to completedTasks array
+      // console.log(this.tasks);
+      // console.log(this.tasks.shift());
+      // console.log(this.tasks);
+      // console.log(this.completedTasks);
+      this.completedTasks.push(this.tasks.shift());
     },
     startTimer() {
       // check if at least one task exists
