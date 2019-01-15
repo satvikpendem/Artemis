@@ -4,9 +4,9 @@
     <br>
     <!-- <span>Remaining time: {{ totalTime }}</span> -->
     <br>
-    <button @click="startTimer">Start</button>
+    <button v-if="this.tasks" @click="startTimer">Start</button>
     <div v-for="(task) in tasks" v-bind:key="task.index">
-      <Task :title.sync="task.title" :duration.sync="task.duration"/>
+      <Task :title.sync="task.title" :duration.sync="task.duration" :running.sync="task.running"/>
     </div>
     <section class="task-add">
       <input type="text" placeholder="Duration" v-model="newTaskDuration" @keypress.enter="addTask">
@@ -26,9 +26,8 @@ export default {
     return {
       tasks: [],
       newTaskTitle: "",
-      newTaskDuration: "",
-      timer: null // interval timer
-      // totalTime: null
+      newTaskDuration: ""
+      // timer: null // interval timer
     };
   },
   computed: {
@@ -43,8 +42,6 @@ export default {
         .map(task => task.duration)
         .reduce(durationAdder, this.$moment.duration(0));
 
-      // this.totalTime = this.durationMomentToString(rawTime);
-
       return this.$duration.durationMomentToString(rawTime);
     }
   },
@@ -58,7 +55,8 @@ export default {
         if (parsedDuration) {
           this.tasks.push({
             title: this.newTaskTitle,
-            duration: parsedDuration
+            duration: parsedDuration,
+            running: false
           });
           this.newTaskTitle = "";
           this.newTaskDuration = "";
@@ -73,11 +71,11 @@ export default {
       }
     },
     startTimer() {
-      this.timer = setInterval(() => this.decrementTime(), 100);
-    },
-    decrementTime() {
-      // this.totalTime = this.totalTime.subtract(1, "s");
-      // console.log(totalTime);
+      // check if at least one task exists
+      if (this.tasks) {
+        this.tasks[0].running = true;
+      } else alert("Please enter a task");
+      // this.timer = setInterval(() => this.decrementTime(), 100);
     }
   }
 };
