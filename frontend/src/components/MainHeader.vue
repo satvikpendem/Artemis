@@ -2,7 +2,7 @@
   <header class="main-header">
     <nav>
       <a href="/">
-        <img id="logo" src="@/../public/assets/img/logo_outline.svg" alt="logo_outline">
+        <img id="logo" src="@/../public/assets/img/logo/logo_outline.svg" alt="logo_outline">
       </a>
     </nav>
   </header>
