@@ -13,7 +13,7 @@ Start time blocking your day so you don't miss a single minute.
 
 &nbsp;
 
-![Artemis Promo GIF](assets/promo-1080.gif)
+![Artemis Promo GIF](assets/vid/promo-1080.gif)
 
 ---
 
