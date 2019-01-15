@@ -27,7 +27,7 @@ If you'd like to use Artemis locally, simply clone and spin up a Vue server:
 
 ```shell
 git clone https://github.com/satvikpendem/Artemis
-cd Artemis
+cd Artemis/frontend
 vue serve
 ```
 
