@@ -1,5 +1,11 @@
 <template>
-  <div class="task">{{ duration }} - {{ title }}</div>
+  <div class="task">
+    <span>{{ duration }} - {{ title }}</span>
+    <span>
+      <button @click="incrementTime">+</button>
+      <button @click="decrementTime">-</button>
+    </span>
+  </div>
 </template>
 
 <script>
@@ -7,7 +13,20 @@ export default {
   name: "Task",
   props: ["title", "duration"],
   data() {
-    return {};
+    return {
+      // title: this.propTitle,
+      // duration: this.propDuration
+    };
+  },
+  methods: {
+    incrementTime() {
+      // this.duration += 1;
+      this.$emit("update:duration", this.duration + 60000);
+    },
+    decrementTime() {
+      // this.duration -= 1;
+      this.$emit("update:duration", this.duration - 60000);
+    }
   }
 };
 </script>
