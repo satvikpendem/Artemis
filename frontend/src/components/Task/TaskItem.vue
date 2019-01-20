@@ -1,10 +1,7 @@
 <template>
   <div class="task-item">
-    <span>{{ this.$duration.durationMomentToString(duration) }} - {{ title }}</span>
-    <span v-if="!this.completed">
-      <button @click="incrementTime(1, 'm')">+</button>
-      <button @click="decrementTime(1, 'm')">-</button>
-    </span>
+    <span v-if="!this.completed">{{ this.$duration.durationMomentToString(duration) }} - {{ title }}</span>
+    <span v-else>{{ title }}</span>
   </div>
 </template>
 
@@ -15,36 +12,40 @@ export default {
   data() {
     return {
       timer: null,
-      originalTime: this.duration, // keep track of allocated time as duration counts down
+      originalTime: null, // keep track of allocated time as duration counts down
       zeroDuration: this.$moment.duration(0)
     };
+  },
+  mounted() {
+    this.originalTime = this.duration;
   },
   watch: {
     running() {
       if (this.running) this.startTimer();
+      else this.pauseTimer();
     }
   },
   methods: {
     incrementTime(amount, denomination) {
-      if (!(typeof denomination == "string")) {
+      if (typeof denomination != "string")
         throw "incrementTime time denomination must be a string";
-      }
-      this.originalTime = this.duration.add(amount, denomination);
-      this.$emit("update:duration", this.duration.add(amount, denomination));
+
+      let newDuration = this.duration.add(amount, denomination);
+      this.originalTime = newDuration;
+      this.$emit("update:duration", newDuration);
     },
     decrementTime(amount, denomination) {
-      if (!(typeof denomination == "string"))
+      if (typeof denomination != "string")
         throw "decrementTime time denomination must be a string";
 
-      let zeroDuration = this.$moment.duration(0);
       /*
       Check if duration is zero (timer has been reached),
       <= instead of == because the user could subtractTime when less than a minute
       */
       if (
-        this.duration.hours() <= zeroDuration.hours() &&
-        this.duration.minutes() <= zeroDuration.minutes() &&
-        this.duration.seconds() <= zeroDuration.seconds()
+        this.duration.hours() <= this.zeroDuration.hours() &&
+        this.duration.minutes() <= this.zeroDuration.minutes() &&
+        this.duration.seconds() <= this.zeroDuration.seconds()
       ) {
         this.$emit("update:completed", true);
         this.$emit("completeTask");
@@ -57,8 +58,11 @@ export default {
     deleteTask() {},
     startTimer() {
       // 1000 ms is one minute
-      // this.timer = setInterval(() => this.decrementTime(1, "s"), 1000);
       this.timer = setInterval(() => this.decrementTime(1, "s"), 10);
+    },
+    pauseTimer() {
+      clearInterval(this.timer);
+      this.timer = null;
     }
   }
 };

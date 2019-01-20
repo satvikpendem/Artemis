@@ -1,34 +1,60 @@
 <template>
   <div class="task-list">
-    <span>Total time: {{ totalTimeString }}</span>
-    <br>
-    <button v-if="this.tasks" @click="startTimer">Start</button>
-    <br>
-    <span>To-Do</span>
-    <div v-for="(task) in tasks" v-bind:key="task.index">
-      <TaskItem
-        :title.sync="task.title"
-        :duration.sync="task.duration"
-        :running.sync="task.running"
-        :completed.sync="task.completed"
-        @completeTask="moveTaskToCompleted"
-      />
+    <div class="flex-grid">
+      <div class="col">
+        <span>To-Do</span>
+        <div v-for="(task) in tasks" v-bind:key="task.index">
+          <TaskItem
+            :title.sync="task.title"
+            :duration.sync="task.duration"
+            :running.sync="task.running"
+            :completed.sync="task.completed"
+            @completeTask="moveTaskToCompleted"
+          />
+        </div>
+        <section class="task-add">
+          <input
+            type="text"
+            placeholder="Duration"
+            v-model="newTaskDuration"
+            @keypress.enter="addTask"
+          >
+          <input type="text" placeholder="Title" v-model="newTaskTitle" @keypress.enter="addTask">
+          <button class="add-task-button" @click="addTask">Add</button>
+        </section>
+      </div>
+      <div class="col">
+        <section class="current-task" v-if="isTasks">
+          <span>{{ this.tasks[0].duration }}</span>
+          <br>
+          <span>{{ this.tasks[0].title }}</span>
+        </section>
+
+        <span>Total time: {{ totalTimeString }}</span>
+        
+        <button v-if="this.tasks.length > 0 && !this.isTimerStarted" @click="controlTimerPlay">Start</button>
+        <button v-if="this.tasks.length > 0 && this.isTimerStarted" @click="controlTimerPlay">Pause</button>
+
+        <div class="add-time-buttons">
+          <button @click="incrementTime(1 ,'m')">+1</button>
+          <button @click="incrementTime(5 ,'m')">+5</button>
+          <button @click="incrementTime(10 ,'m')">+10</button>
+        </div>
+
+        <button @click="moveTaskToCompleted">Complete</button>
+      </div>
+      <div class="col">
+        <span>Completed</span>
+        <div v-for="(task) in completedTasks" v-bind:key="task.index">
+          <TaskItem
+            :title.sync="task.title"
+            :duration.sync="task.duration"
+            :running.sync="task.running"
+            :completed.sync="task.completed"
+          />
+        </div>
+      </div>
     </div>
-    <br>
-    <span>Completed</span>
-    <div v-for="(task) in completedTasks" v-bind:key="task.index">
-      <TaskItem
-        :title.sync="task.title"
-        :duration.sync="task.duration"
-        :running.sync="task.running"
-        :completed.sync="task.completed"
-      />
-    </div>
-    <section class="task-add">
-      <input type="text" placeholder="Duration" v-model="newTaskDuration" @keypress.enter="addTask">
-      <input type="text" placeholder="Title" v-model="newTaskTitle" @keypress.enter="addTask">
-      <button class="add-task-button" @click="addTask">Add</button>
-    </section>
   </div>
 </template>
 
@@ -42,12 +68,13 @@ export default {
       tasks: [],
       completedTasks: [],
       newTaskTitle: "",
-      newTaskDuration: ""
+      newTaskDuration: "",
+      isTimerStarted: false,
+      currentTask: null
     };
   },
   computed: {
     totalTimeString() {
-      // if (this.tasks.length == 0) return "0 minutes";
       // function to add durations together
       const durationAdder = (accumulator, element) => accumulator.add(element);
       /* Extract duration from each TaskItem
@@ -58,6 +85,9 @@ export default {
         .reduce(durationAdder, this.$moment.duration(0));
 
       return this.$duration.durationMomentToString(rawTime);
+    },
+    isTasks() {
+      return this.tasks.length > 0;
     }
   },
   methods: {
@@ -88,18 +118,58 @@ export default {
     },
     moveTaskToCompleted() {
       // move top task from tasks array to completedTasks array
-      this.completedTasks.push(this.tasks.shift());
+      let completedTask = this.tasks.shift();
+      completedTask.duration = this.$moment.duration(0);
+      this.completedTasks.push(completedTask);
+      this.startTimer();
     },
     startTimer() {
       // check if at least one task exists
-      if (this.tasks) {
+      if (this.tasks.length > 0) {
         this.tasks[0].running = true;
-      } else alert("Please enter a task");
-      // this.timer = setInterval(() => this.decrementTime(), 100);
+        this.isTimerStarted = true;
+      } // else alert("Please enter a task");
+    },
+    pauseTimer() {
+      if (this.tasks.length > 0) {
+        this.tasks[0].running = false;
+        this.isTimerStarted = false;
+      } // else alert("Please enter a task");
+    },
+    controlTimerPlay() {
+      if (!this.isTimerStarted) {
+        return this.startTimer();
+      } else return this.pauseTimer();
+    },
+    incrementTime(amount, denomination) {
+      if (!(typeof denomination == "string")) {
+        throw "incrementTime time denomination must be a string";
+      }
+      if (this.tasks.length > 0)
+        // this.originalTime = this.duration.add(amount, denomination);
+        this.$emit(
+          "update:duration",
+          this.tasks[0].duration.add(amount, denomination)
+        );
     }
+    // pomodorify(task, workDuration, breakDuration) {
+    //   if (task.duration <= workDuration) {
+    //     alert(
+    //       "This task is shorter in duration than your Pomodoro work duration"
+    //     );
+    //   } else {
+    //   }
+    // }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+.flex-grid {
+  display: flex;
+}
+.col {
+  flex: 1;
+}
+</style>
