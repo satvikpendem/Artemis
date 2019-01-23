@@ -16,17 +16,17 @@
         </div>
         <section class="task-add">
           <input
-            id="duration-input"
-            type="text"
-            placeholder="Duration"
-            v-model="newTaskDuration"
-            @keypress.enter="addTask"
-          >
-          <input
             id="title-input"
             type="text"
             placeholder="Title"
             v-model="newTaskTitle"
+            @keypress.enter="addTask"
+          >
+          <input
+            id="duration-input"
+            type="text"
+            placeholder="Duration"
+            v-model="newTaskDuration"
             @keypress.enter="addTask"
           >
           <button class="add-task-button" @click="addTask">Add</button>
@@ -216,9 +216,6 @@ export default {
 
 .to-do-col {
   margin: 4rem 0 0 4rem;
-}
-
-.task-gen-col {
 }
 
 ::-webkit-scrollbar {

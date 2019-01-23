@@ -61,7 +61,7 @@ export default {
     deleteTask() {},
     startTimer() {
       // 1000 ms is one minute
-      this.timer = setInterval(() => this.decrementTime(1, "s"), 1000);
+      this.timer = setInterval(() => this.decrementTime(1, "s"), 10);
     },
     pauseTimer() {
       clearInterval(this.timer);
