@@ -1,7 +1,10 @@
 <template>
   <div class="task-item">
-    <span v-if="!this.completed">{{ this.$duration.durationMomentToString(duration) }} - {{ title }}</span>
-    <span v-else>{{ title }}</span>
+    <span v-if="!this.completed">
+      <span id="duration">{{ this.$duration.durationMomentToString(duration) }}</span>
+      <!-- <span>&nbsp;-&nbsp;</span> -->
+    </span>
+    <span id="title">{{ title }}</span>
   </div>
 </template>
 
@@ -58,7 +61,7 @@ export default {
     deleteTask() {},
     startTimer() {
       // 1000 ms is one minute
-      this.timer = setInterval(() => this.decrementTime(1, "s"), 10);
+      this.timer = setInterval(() => this.decrementTime(1, "s"), 1000);
     },
     pauseTimer() {
       clearInterval(this.timer);
@@ -70,4 +73,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#duration {
+  color: white;
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+#title {
+  padding-left: 10px;
+}
+
+.task-item {
+  margin: 0;
+  padding: 1rem 0;
+  display: flex;
+  align-items: stretch;
+  overflow-x: scroll;
+}
 </style>

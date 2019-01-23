@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import TaskView from "@/views/TaskView.vue";
+import TaskView from "@/views/TaskView";
 // import TaskList from "@/components/Task/TaskList.vue";
 
 export default {
@@ -28,5 +28,6 @@ export default {
   /* Text */
   --text-color: #282828;
   --text-color-opposite: #fff;
+  --text-color-disabled: #808080;
 }
 </style>

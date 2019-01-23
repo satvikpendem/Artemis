@@ -1,52 +1,72 @@
 <template>
   <div class="task-list">
     <div class="flex-grid">
-      <div class="col">
-        <span>To-Do</span>
-        <div v-for="(task) in tasks" v-bind:key="task.index">
-          <TaskItem
-            :title.sync="task.title"
-            :duration.sync="task.duration"
-            :running.sync="task.running"
-            :completed.sync="task.completed"
-            @completeTask="moveTaskToCompleted"
-          />
+      <div class="col to-do-col">
+        <span class="to-do-label">To-Do</span>
+        <div class="task-gen-list" v-for="(task) in tasks" v-bind:key="task.index">
+          <template class="task-item">
+            <task-item
+              :title.sync="task.title"
+              :duration.sync="task.duration"
+              :running.sync="task.running"
+              :completed.sync="task.completed"
+              @completeTask="moveTaskToCompleted"
+            />
+          </template>
         </div>
         <section class="task-add">
           <input
+            id="duration-input"
             type="text"
             placeholder="Duration"
             v-model="newTaskDuration"
             @keypress.enter="addTask"
           >
-          <input type="text" placeholder="Title" v-model="newTaskTitle" @keypress.enter="addTask">
+          <input
+            id="title-input"
+            type="text"
+            placeholder="Title"
+            v-model="newTaskTitle"
+            @keypress.enter="addTask"
+          >
           <button class="add-task-button" @click="addTask">Add</button>
         </section>
       </div>
-      <div class="col">
+      <div class="col current-task-col">
         <section class="current-task" v-if="isTasks">
-          <span>{{ this.tasks[0].duration }}</span>
-          <br>
-          <span>{{ this.tasks[0].title }}</span>
+          <span class="current-task-title">{{ this.tasks[0].title }}</span>
+          <span
+            class="current-task-duration"
+          >{{ this.$duration.durationMomentToString(this.tasks[0].duration) }}</span>
+        </section>
+        <section class="current-task" v-else>
+          <span class="current-task-duration">00:00:00</span>
         </section>
 
-        <span>Total time: {{ totalTimeString }}</span>
-        
-        <button v-if="this.tasks.length > 0 && !this.isTimerStarted" @click="controlTimerPlay">Start</button>
-        <button v-if="this.tasks.length > 0 && this.isTimerStarted" @click="controlTimerPlay">Pause</button>
-
-        <div class="add-time-buttons">
-          <button @click="incrementTime(1 ,'m')">+1</button>
-          <button @click="incrementTime(5 ,'m')">+5</button>
-          <button @click="incrementTime(10 ,'m')">+10</button>
+        <div class="total-time-content">
+          <p id="totalTimeString">{{ totalTimeString }}</p>
+          <p id="totalTimeLabel">Total Time</p>
         </div>
 
-        <button @click="moveTaskToCompleted">Complete</button>
+        <button v-if="this.tasks.length > 0 && !this.isTimerStarted" @click="controlTimerPlay">
+          <img src="@/../public/assets/img/controls/play.svg" alt="play_button">
+        </button>
+        <button v-if="this.tasks.length > 0 && this.isTimerStarted" @click="controlTimerPlay">
+          <img src="@/../public/assets/img/controls/pause.svg" alt="pause_button">
+        </button>
+
+        <div class="add-time-buttons">
+          <button class="time-increment-button" @click="incrementTime(1 ,'m')">+1</button>
+          <button class="time-increment-button" @click="incrementTime(5 ,'m')">+5</button>
+          <button class="time-increment-button" @click="incrementTime(10 ,'m')">+10</button>
+        </div>
+
+        <button class="complete-button" @click="moveTaskToCompleted">Complete</button>
       </div>
-      <div class="col">
-        <span>Completed</span>
-        <div v-for="(task) in completedTasks" v-bind:key="task.index">
-          <TaskItem
+      <div class="col completed-col">
+        <span class="completed-label">Completed</span>
+        <div class="task-gen-list" v-for="(task) in completedTasks" v-bind:key="task.index">
+          <task-item
             :title.sync="task.title"
             :duration.sync="task.duration"
             :running.sync="task.running"
@@ -118,8 +138,11 @@ export default {
     },
     moveTaskToCompleted() {
       // move top task from tasks array to completedTasks array
+
+      // TODO: Ideally the To-Do and Completed Lists should be filtered on if task.completed is true or not
       let completedTask = this.tasks.shift();
       completedTask.duration = this.$moment.duration(0);
+      completedTask.completed = true;
       this.completedTasks.push(completedTask);
       this.startTimer();
     },
@@ -171,5 +194,148 @@ export default {
 }
 .col {
   flex: 1;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.add-time-buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 75%;
+  margin: 2rem;
+  font-style: italic;
+  font-size: 2rem;
+}
+
+.to-do-col,
+.completed-col {
+  width: 30%;
+}
+
+.to-do-col {
+  margin: 4rem 0 0 4rem;
+}
+
+.task-gen-col {
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.task-item {
+  margin: 1rem 0;
+}
+
+.task-add {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: space-between;
+  padding: 1rem 0;
+}
+
+input {
+  outline: none;
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  box-shadow: none;
+  border-bottom: 5px solid transparent;
+
+  padding: 2rem, 0;
+  margin-bottom: 5px;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  transition: 100ms;
+  transition-timing-function: ease-in-out;
+}
+
+input:focus {
+  border-bottom: 5px solid var(--accent-color);
+}
+
+.add-task-button {
+  color: white;
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
+
+.current-task-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4rem;
+  min-width: 40%;
+}
+
+.current-task {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.current-task-title {
+  font-size: 2vw;
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.current-task-duration {
+  font-size: 8vw;
+}
+
+.current-task-title,
+.current-task-duration {
+  overflow-x: scroll;
+}
+
+.completed-col {
+  text-align: right;
+  margin: 4rem 4rem 0 0;
+}
+
+.to-do-label,
+.completed-label {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.total-time-content {
+  color: var(--text-color-disabled);
+  margin-bottom: 3rem;
+}
+
+.total-time-content #totalTimeString {
+  font-size: 50px;
+  margin-bottom: 0;
+}
+
+.total-time-content #totalTimeLabel {
+  font-size: 20px;
+  text-align: center;
+}
+
+/* Remove all button styling */
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.complete-button {
+  border: 2px solid var(--accent-color);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
 }
 </style>
