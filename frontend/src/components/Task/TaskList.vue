@@ -335,4 +335,22 @@ button {
   border-radius: 5px;
   padding: 0.5rem 1rem;
 }
+
+@media (max-width: 900px) {
+  .flex-grid {
+    flex-direction: column;
+  }
+
+  .to-do-col {
+    order: 2;
+  }
+
+  .current-task-col {
+    order: 1;
+  }
+
+  .completed-col {
+    order: 3;
+  }
+}
 </style>
