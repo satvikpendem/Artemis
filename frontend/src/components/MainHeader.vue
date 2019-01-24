@@ -1,9 +1,10 @@
 <template>
   <header class="main-header">
     <nav>
-      <a href="/">
-        <img id="logo" src="@/../public/assets/img/logo/logo_outline.svg" alt="logo_outline">
-      </a>
+      <!-- a tag will refresh the page on click, so don't add it yet -->
+      <!-- <a href="/"> -->
+      <img id="logo" src="@/../public/assets/img/logo/logo_outline.svg" alt="logo_outline">
+      <!-- </a> -->
     </nav>
   </header>
 </template>

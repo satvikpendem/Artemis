@@ -2,7 +2,6 @@
   <div class="task-item">
     <span v-if="!this.completed">
       <span id="duration">{{ this.$duration.durationMomentToString(duration) }}</span>
-      <!-- <span>&nbsp;-&nbsp;</span> -->
     </span>
     <span id="title">{{ title }}</span>
   </div>
@@ -61,10 +60,13 @@ export default {
     deleteTask() {},
     startTimer() {
       // 1000 ms is one minute
-      this.timer = setInterval(() => this.decrementTime(1, "s"), 1000);
+      this.timer = this.$workerTimers.setInterval(
+        () => this.decrementTime(1, "s"),
+        1000
+      );
     },
     pauseTimer() {
-      clearInterval(this.timer);
+      this.$workerTimers.clearInterval(this.timer);
       this.timer = null;
     }
   }
