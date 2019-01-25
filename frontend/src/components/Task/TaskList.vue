@@ -17,6 +17,10 @@
             />
           </template>
         </div>
+        <div
+          class="no-task-placeholder"
+          v-if="this.tasks.length <= 0"
+        >No tasks here yet, add them below</div>
         <section class="task-add">
           <input
             id="title-input"
@@ -28,7 +32,7 @@
           <input
             id="duration-input"
             type="text"
-            placeholder="Duration"
+            placeholder="Duration (8:00, 15m, 4h30)"
             v-model="newTaskDuration"
             @keypress.enter="addTask"
           >
@@ -58,13 +62,15 @@
           <img src="@/../public/assets/img/controls/pause.svg" alt="pause_button">
         </button>
 
-        <div class="add-time-buttons">
-          <button class="time-increment-button" @click="incrementTime(1 ,'m')">+1</button>
-          <button class="time-increment-button" @click="incrementTime(5 ,'m')">+5</button>
-          <button class="time-increment-button" @click="incrementTime(10 ,'m')">+10</button>
-        </div>
+        <template v-if="this.tasks.length > 0">
+          <div class="add-time-buttons">
+            <button class="time-increment-button" @click="incrementTime(1 ,'m')">+1</button>
+            <button class="time-increment-button" @click="incrementTime(5 ,'m')">+5</button>
+            <button class="time-increment-button" @click="incrementTime(10 ,'m')">+10</button>
+          </div>
 
-        <button class="complete-button" @click="moveTaskToCompleted">Complete</button>
+          <button class="complete-button" @click="moveTaskToCompleted">Complete</button>
+        </template>
       </div>
       <div class="col completed-col">
         <span class="completed-label">Completed</span>
@@ -262,6 +268,11 @@ input {
 
 input:focus {
   border-bottom: 5px solid var(--accent-color);
+}
+
+.no-task-placeholder {
+  padding: 1rem 0;
+  color: var(--text-color-disabled);
 }
 
 .add-task-button {
