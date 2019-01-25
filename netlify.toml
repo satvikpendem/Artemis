@@ -1,4 +1,4 @@
-[context.dev]
+[context.app]
   base = "frontend/"
   command = "npm run build"
   publish = "frontend/dist/"
