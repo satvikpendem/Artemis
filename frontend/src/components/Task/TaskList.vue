@@ -17,6 +17,10 @@
             />
           </template>
         </div>
+        <div
+          class="no-task-placeholder"
+          v-if="this.tasks.length <= 0"
+        >No tasks here yet, add them below</div>
         <section class="task-add">
           <input
             id="title-input"
@@ -28,7 +32,7 @@
           <input
             id="duration-input"
             type="text"
-            placeholder="Duration"
+            placeholder="Duration (8:00, 15m, 4h30)"
             v-model="newTaskDuration"
             @keypress.enter="addTask"
           >
@@ -58,13 +62,15 @@
           <img src="@/../public/assets/img/controls/pause.svg" alt="pause_button">
         </button>
 
-        <div class="add-time-buttons">
-          <button class="time-increment-button" @click="incrementTime(1 ,'m')">+1</button>
-          <button class="time-increment-button" @click="incrementTime(5 ,'m')">+5</button>
-          <button class="time-increment-button" @click="incrementTime(10 ,'m')">+10</button>
-        </div>
+        <template v-if="this.tasks.length > 0">
+          <div class="add-time-buttons">
+            <button class="time-increment-button" @click="incrementTime(1 ,'m')">+1</button>
+            <button class="time-increment-button" @click="incrementTime(5 ,'m')">+5</button>
+            <button class="time-increment-button" @click="incrementTime(10 ,'m')">+10</button>
+          </div>
 
-        <button class="complete-button" @click="moveTaskToCompleted">Complete</button>
+          <button class="complete-button" @click="moveTaskToCompleted">Complete</button>
+        </template>
       </div>
       <div class="col completed-col">
         <span class="completed-label">Completed</span>
@@ -248,10 +254,10 @@ input {
   background-image: none;
   background-color: transparent;
   box-shadow: none;
-  border-bottom: 5px solid transparent;
+  border-bottom: 2.5px solid var(--text-color-disabled);
 
   padding: 2rem, 0;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 
   font-size: 1rem;
   font-weight: 700;
@@ -262,6 +268,11 @@ input {
 
 input:focus {
   border-bottom: 5px solid var(--accent-color);
+}
+
+.no-task-placeholder {
+  padding: 1rem 0;
+  color: var(--text-color-disabled);
 }
 
 .add-task-button {
@@ -309,7 +320,7 @@ input:focus {
 .to-do-label,
 .completed-label {
   margin-bottom: 2rem;
-  font-size: 2rem;
+  font-size: 2vw;
 }
 
 .total-time-content {
@@ -318,12 +329,12 @@ input:focus {
 }
 
 .total-time-content #totalTimeString {
-  font-size: 50px;
+  font-size: 3vw;
   margin-bottom: 0;
 }
 
 .total-time-content #totalTimeLabel {
-  font-size: 20px;
+  font-size: 1.5vw;
   text-align: center;
 }
 
