@@ -254,10 +254,10 @@ input {
   background-image: none;
   background-color: transparent;
   box-shadow: none;
-  border-bottom: 5px solid transparent;
+  border-bottom: 2.5px solid var(--text-color-disabled);
 
   padding: 2rem, 0;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 
   font-size: 1rem;
   font-weight: 700;
@@ -320,7 +320,7 @@ input:focus {
 .to-do-label,
 .completed-label {
   margin-bottom: 2rem;
-  font-size: 2rem;
+  font-size: 2vw;
 }
 
 .total-time-content {
@@ -329,12 +329,12 @@ input:focus {
 }
 
 .total-time-content #totalTimeString {
-  font-size: 50px;
+  font-size: 3vw;
   margin-bottom: 0;
 }
 
 .total-time-content #totalTimeLabel {
-  font-size: 20px;
+  font-size: 1.5vw;
   text-align: center;
 }
 
