@@ -39,7 +39,6 @@ export default {
     decrementTime(amount, denomination) {
       if (typeof denomination != "string")
         throw "decrementTime time denomination must be a string";
-
       /*
       Check if duration is zero (timer has been reached),
       <= instead of == because the user could subtractTime when less than a minute
