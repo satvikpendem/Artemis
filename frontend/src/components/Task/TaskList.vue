@@ -1,5 +1,8 @@
 <template>
   <div class="task-list">
+    <div class="mobile">
+      <h1>Artemis isn't mobile responsive yet, try it on desktop please 🙂</h1>
+    </div>
     <div class="flex-grid">
       <div class="col to-do-col">
         <span class="to-do-label">To-Do</span>
@@ -192,6 +195,11 @@ export default {
 .flex-grid {
   display: flex;
 }
+
+.mobile {
+  display: none;
+}
+
 .col {
   flex: 1;
   margin: 1rem;
@@ -337,7 +345,7 @@ button {
 }
 
 @media (max-width: 900px) {
-  .flex-grid {
+  /* .flex-grid {
     flex-direction: column;
   }
 
@@ -351,6 +359,15 @@ button {
 
   .completed-col {
     order: 3;
+  } */
+
+  .flex-grid {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+    padding: 2rem 4rem;
   }
 }
 </style>
