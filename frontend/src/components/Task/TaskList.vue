@@ -126,7 +126,11 @@ export default {
         let parsedDuration = this.$duration.stringToDurationMoment(
           this.newTaskDuration
         );
-        if (parsedDuration) {
+        if (
+          parsedDuration.hours() > this.$moment.duration(0).hours() ||
+          parsedDuration.minutes() > this.$moment.duration(0).minutes() ||
+          parsedDuration.seconds() > this.$moment.duration(0).seconds()
+        ) {
           this.tasks.push({
             title: this.newTaskTitle,
             duration: parsedDuration,

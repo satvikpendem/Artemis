@@ -1,7 +1,7 @@
 import moment from "moment";
 
 export default {
-  install(Vue, options) {
+  install(Vue) {
     Vue.prototype.$duration = {};
     Vue.prototype.$duration.durationMomentToString = _durationMoment => {
       let hourString = _durationMoment
