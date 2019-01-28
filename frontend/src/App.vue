@@ -29,5 +29,8 @@ export default {
   --text-color: #282828;
   --text-color-opposite: #fff;
   --text-color-disabled: #808080;
+
+  height: 100vh;
+  overflow: hidden;
 }
 </style>
