@@ -28,6 +28,7 @@ If you'd like to use Artemis locally, simply clone and spin up a Vue server:
 ```shell
 git clone https://github.com/satvikpendem/Artemis
 cd Artemis/frontend
+npm install
 vue serve
 ```
 
@@ -45,4 +46,6 @@ If you'd like to contribute, please see the [Contributing Guide](CONTRIBUTING.md
 
 [AGPL](LICENSE)
 
-If you want to host Artemis on your own servers (perhaps at your workplace), we offer a commercial license. Alternatively, you can use our hosted service at https://getartemis.app.
+Our hosted service is available at https://getartemis.app.
+
+Alternatively, if you want to host Artemis on your own servers (perhaps at your workplace), we offer a commercial license.
