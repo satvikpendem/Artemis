@@ -10,6 +10,7 @@
   "dependencies": {
     "moment": "^2.23.0",
     "vue": "^2.5.17",
+    "vuex": "^3.0.1",
     "worker-timers": "^5.0.9"
   },
   "devDependencies": {

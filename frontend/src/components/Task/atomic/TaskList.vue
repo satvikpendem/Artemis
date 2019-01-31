@@ -18,9 +18,9 @@ export default {
   name: "task-list",
   props: ["tasks"],
   components: { TaskItem },
-  // data() {
-  //   return {};
-  // },
+  data() {
+    return {};
+  },
   mounted() {
     console.log(this.$props.tasks);
   }
