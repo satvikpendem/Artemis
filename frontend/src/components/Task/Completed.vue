@@ -1,5 +1,7 @@
 <template>
-  <div class="completed">Completed</div>
+  <div class="completed">
+    <span id="completed-label">Completed</span>
+  </div>
 </template>
 
 <script>
@@ -10,8 +12,11 @@ export default {
 
 <style>
 .completed {
-  width: 30%;
   text-align: center;
   background: blue;
+}
+#completed-label {
+  margin-bottom: 2rem;
+  font-size: calc(1rem + 1.5vw);
 }
 </style>

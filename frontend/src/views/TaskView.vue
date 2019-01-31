@@ -1,19 +1,16 @@
 <template>
   <div id="task-view">
     <main-header/>
-    <!-- <task-list/> -->
     <main id="task-container">
-      <to-do/>
-      <current/>
-      <completed/>
+      <to-do id="to-do"/>
+      <current id="current"/>
+      <completed id="completed"/>
     </main>
   </div>
 </template>
 
 <script>
 import MainHeader from "@/components/MainHeader.vue";
-
-// import TaskList from "@/components/Task/TaskList.vue";
 
 import ToDo from "@/components/Task/ToDo.vue";
 import Current from "@/components/Task/Current.vue";
@@ -23,7 +20,6 @@ export default {
   name: "task-view",
   components: {
     MainHeader,
-    // TaskList,
     ToDo,
     Current,
     Completed
@@ -34,7 +30,37 @@ export default {
 <style scoped>
 #task-container {
   display: flex;
-  justify-content: space-evenly;
-  height: 90vh;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+#to-do {
+  flex: 3;
+}
+
+#current {
+  flex: 4;
+}
+
+#completed {
+  flex: 3;
+}
+
+@media (max-width: 900px) {
+  #task-container {
+    flex-direction: column;
+  }
+
+  #to-do {
+    order: 2;
+  }
+
+  #current {
+    order: 1;
+  }
+
+  #completed {
+    order: 3;
+  }
 }
 </style> 

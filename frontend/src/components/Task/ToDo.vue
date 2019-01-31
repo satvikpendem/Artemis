@@ -23,12 +23,11 @@ export default {
 
 <style scoped>
 .to-do {
-  width: 30%;
   text-align: center;
   background: red;
 }
 #to-do-label {
   margin-bottom: 2rem;
-  font-size: 2vw;
+  font-size: calc(1rem + 1.5vw);
 }
 </style>

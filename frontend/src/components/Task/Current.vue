@@ -1,5 +1,7 @@
 <template>
-  <div class="current">Current</div>
+  <div class="current">
+    <span id="current-label">Current</span>
+  </div>
 </template>
 
 <script>
@@ -10,8 +12,11 @@ export default {
 
 <style>
 .current {
-  width: 40%;
   text-align: center;
   background: green;
+}
+#current-label {
+  margin-bottom: 2rem;
+  font-size: calc(1rem + 1.5vw);
 }
 </style>
