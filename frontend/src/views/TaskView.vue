@@ -2,7 +2,7 @@
   <div id="task-view">
     <main-header/>
     <main id="task-container">
-      <to-do id="to-do"/>
+      <to-do :tasks="tasks" id="to-do"/>
       <current id="current"/>
       <completed id="completed"/>
     </main>
@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import MainHeader from "@/components/MainHeader.vue";
+import MainHeader from "@/components/_global/MainHeader.vue";
 
-import ToDo from "@/components/Task/ToDo.vue";
-import Current from "@/components/Task/Current.vue";
-import Completed from "@/components/Task/Completed.vue";
+import ToDo from "@/components/Task/layout/ToDo.vue";
+import Current from "@/components/Task/layout/Current.vue";
+import Completed from "@/components/Task/layout/Completed.vue";
 
 export default {
   name: "task-view",
@@ -23,6 +23,16 @@ export default {
     ToDo,
     Current,
     Completed
+  },
+  data() {
+    return {
+      tasks: [
+        {
+          title: "test",
+          duration: 10
+        }
+      ]
+    };
   }
 };
 </script>
@@ -34,16 +44,13 @@ export default {
   align-items: stretch;
 }
 
-#to-do {
+#to-do,
+#completed {
   flex: 3;
 }
 
 #current {
   flex: 4;
-}
-
-#completed {
-  flex: 3;
 }
 
 @media (max-width: 900px) {

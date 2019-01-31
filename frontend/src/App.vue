@@ -31,6 +31,5 @@ export default {
   --text-color-disabled: #808080;
 
   height: 100vh;
-  /* overflow: hidden; */
 }
 </style>

@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import TaskItem from "./TaskItem";
+import TaskItem from "./atomic/TaskItem";
 export default {
   name: "TaskList",
   components: { TaskItem },
