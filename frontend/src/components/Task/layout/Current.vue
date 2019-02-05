@@ -19,4 +19,5 @@ export default {
   margin-bottom: 2rem;
   font-size: calc(1rem + 1.5vw);
 }
+/* font-variant-numeric: tabular-nums */
 </style>

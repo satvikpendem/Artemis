@@ -1,20 +1,21 @@
 <template>
   <div class="to-do">
     <span id="to-do-label">To-Do</span>
-    <task-list :tasks="tasks"/>
-    <!-- <add-task-input></add-task-input> -->
-    <!-- <task-button></task-button> -->
+    <task-list/>
+    <add-task-form/>
   </div>
 </template>
 
 <script>
 import TaskList from "@/components/Task/atomic/TaskList";
+import AddTaskForm from "@/components/Task/atomic/AddTaskForm";
 
 export default {
   name: "to-do",
   props: ["tasks"],
   components: {
-    TaskList
+    TaskList,
+    AddTaskForm
   }
 };
 </script>

@@ -10,9 +10,9 @@ Vue.use(duration);
 
 // Synchronize JS interval timers
 import * as workerTimers from "worker-timers";
-
-import store from './store'
 Object.defineProperty(Vue.prototype, "$workerTimers", { value: workerTimers });
+
+import store from "./store";
 
 Vue.config.productionTip = false;
 

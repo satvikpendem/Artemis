@@ -1,6 +1,6 @@
 <template>
-  <div class="task-list">TaskList
-    <task-item
+  <div class="task-list">
+    <!-- <task-item
       v-for="(task, index) in tasks"
       :key="index"
       :title.sync="task.title"
@@ -8,21 +8,21 @@
       :running.sync="task.running"
       :completed.sync="task.completed"
       @completeTask="moveTaskToCompleted"
-    />
+    />-->
+    <div v-for="task in tasks" :key="task.id">{{ task.title }}</div>
   </div>
 </template>
 
 <script>
-import TaskItem from "@/components/Task/atomic/TaskItem";
+// import TaskItem from "@/components/Task/atomic/TaskItem";
+
 export default {
   name: "task-list",
-  props: ["tasks"],
-  components: { TaskItem },
-  data() {
-    return {};
-  },
-  mounted() {
-    console.log(this.$props.tasks);
+  // components: { TaskItem },
+  computed: {
+    tasks() {
+      return this.$store.state.tasks.todo;
+    }
   }
 };
 </script>

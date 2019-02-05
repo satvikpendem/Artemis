@@ -2,7 +2,7 @@
   <div id="task-view">
     <main-header/>
     <main id="task-container">
-      <to-do :tasks="tasks" id="to-do"/>
+      <to-do id="to-do"/>
       <current id="current"/>
       <completed id="completed"/>
     </main>
@@ -23,16 +23,6 @@ export default {
     ToDo,
     Current,
     Completed
-  },
-  data() {
-    return {
-      tasks: [
-        {
-          title: "test",
-          duration: 10
-        }
-      ]
-    };
   }
 };
 </script>
