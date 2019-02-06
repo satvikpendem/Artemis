@@ -1,13 +1,12 @@
 <template>
-  <div id="add-task-form">
+  <div id="task-list-item-add">
     <!-- For adding tasks, use <form @submit.prevent="handleSubmit"> -->
-    <!-- <task-button></task-button>     -->
     <form @submit.prevent="addTask">
       <input id="title-input" type="text" placeholder="Title" v-model="newTaskTitle">
       <input
         id="duration-input"
         type="text"
-        placeholder="Duration (8:00, 15m, 4h30)"
+        placeholder="Duration (ex. 8:00, 15m, 4h30)"
         v-model="newTaskDuration"
       >
       <button type="submit">Submit</button>
@@ -19,7 +18,7 @@
 // import TaskButton from "@/components/Task/atomic/TaskButton";
 
 export default {
-  name: "add-task-form",
+  name: "TaskListItemAdd",
   data() {
     return {
       newTaskTitle: "",

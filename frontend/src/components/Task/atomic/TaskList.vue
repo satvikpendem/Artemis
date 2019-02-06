@@ -9,21 +9,24 @@
       :completed.sync="task.completed"
       @completeTask="moveTaskToCompleted"
     />-->
-    <div v-for="task in tasks" :key="task.id">{{ task.title }}</div>
+    <template v-for="task in tasks">
+      <TaskListItem :key="task.id" :task="task"/>
+    </template>
   </div>
 </template>
 
 <script>
-// import TaskItem from "@/components/Task/atomic/TaskItem";
+import TaskListItem from "@/components/Task/atomic/TaskListItem";
 
 export default {
-  name: "task-list",
-  // components: { TaskItem },
+  name: "TaskList",
+  components: { TaskListItem },
   computed: {
     tasks() {
       return this.$store.state.tasks.todo;
     }
-  }
+  },
+  methods: {}
 };
 </script>
 

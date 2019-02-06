@@ -1,35 +1,37 @@
 import Vue from "vue";
-import Vuex from "vuex";
 
+import Vuex from "vuex";
 Vue.use(Vuex);
+
+import nanoid from "nanoid";
 
 export default new Vuex.Store({
   state: {
     tasks: {
-      todo: [
-        { title: "hello", duration: 1 },
-        { title: "hello", duration: 1 },
-        { title: "hello", duration: 1 },
-        { title: "hello", duration: 1 },
-        { title: "hello", duration: 1 },
-        { title: "hello", duration: 1 }
-      ],
-      completedTasks: []
+      todo: {}
+      // completedTasks: []
     }
   },
   getters: {},
   mutations: {
-    addTask(state, task) {
-      state.tasks.todo.push(task);
+    addTask(state, { id, task }) {
+      Vue.set(state.tasks.todo, id, task);
+      console.log(state.tasks.todo);
     },
-    removeTask(state, index) {},
+    deleteTask(state, id) {
+      Vue.delete(state.tasks.todo, id);
+    },
     completeTask(state, index) {}
   },
   actions: {
     addTask(context, task) {
-      context.commit("addTask", task);
+      let id = nanoid();
+      task.id = id;
+      context.commit("addTask", { id, task });
     },
-    removeTask(context, taskId) {},
+    deleteTask(context, taskId) {
+      context.commit("deleteTask", taskId);
+    },
     completeTask(context, taskId) {},
     validateTask() {},
     validateDuration() {},
