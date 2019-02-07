@@ -1,8 +1,10 @@
 <template>
-  <div class="to-do">
+  <div id="to-do">
+    <!-- <section id="task-main"> -->
     <span id="to-do-label">To-Do</span>
     <TaskList/>
     <TaskListItemAdd/>
+    <!-- </section> -->
   </div>
 </template>
 
@@ -21,12 +23,16 @@ export default {
 </script>
 
 <style scoped>
-.to-do {
-  text-align: center;
-  background: red;
+#to-do {
+  /* background: red; */
+  /* margin: 1rem 2rem; */
+  display: flex;
+  flex-direction: column;
 }
 #to-do-label {
   margin-bottom: 2rem;
   font-size: calc(1rem + 1.5vw);
+}
+#task-main {
 }
 </style>

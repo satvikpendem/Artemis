@@ -31,12 +31,14 @@ export default {
   methods: {
     addTask() {
       // TODO: Error handling, validate input
+      // try {
       this.$store.dispatch("addTask", {
         title: this.newTaskTitle,
         duration: this.newTaskDuration
       });
       this.newTaskTitle = "";
       this.newTaskDuration = "";
+      // } catch (error) {}
     }
   }
 };
@@ -57,7 +59,7 @@ input {
   background-image: none;
   background-color: transparent;
   box-shadow: none;
-  border-bottom: 2.5px solid var(--text-color-disabled);
+  border-bottom: 5px solid var(--text-color-disabled);
 
   padding: 2rem, 0;
   margin-bottom: 10px;

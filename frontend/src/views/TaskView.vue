@@ -2,9 +2,9 @@
   <div id="task-view">
     <main-header/>
     <main id="task-container">
-      <to-do id="to-do"/>
-      <current id="current"/>
-      <completed id="completed"/>
+      <to-do class="col to-do"/>
+      <current class="col current"/>
+      <completed class="col completed"/>
     </main>
   </div>
 </template>
@@ -28,18 +28,30 @@ export default {
 </script>
 
 <style scoped>
+#task-view {
+  background-color: var(--background-color-light);
+}
+
 #task-container {
   display: flex;
   justify-content: space-around;
   align-items: stretch;
+  /* flex-direction: row; */
 }
 
-#to-do,
-#completed {
+.col {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.to-do,
+.completed {
   flex: 3;
 }
 
-#current {
+.current {
   flex: 4;
 }
 
@@ -48,15 +60,15 @@ export default {
     flex-direction: column;
   }
 
-  #to-do {
+  .to-do {
     order: 2;
   }
 
-  #current {
+  .current {
     order: 1;
   }
 
-  #completed {
+  .completed {
     order: 3;
   }
 }

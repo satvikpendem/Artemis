@@ -21,7 +21,8 @@ export default {
   /* Colors */
 
   /* Main */
-  --background-color: #fff;
+  --background-color-light: #fff;
+  --background-color-dark: #282828;
   --main-color: #fff;
   --accent-color: #5200ff;
 

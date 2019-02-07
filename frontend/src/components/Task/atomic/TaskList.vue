@@ -1,5 +1,5 @@
 <template>
-  <div class="task-list">
+  <div id="task-list">
     <!-- <task-item
       v-for="(task, index) in tasks"
       :key="index"
@@ -23,7 +23,7 @@ export default {
   components: { TaskListItem },
   computed: {
     tasks() {
-      return this.$store.state.tasks.todo;
+      return this.$store.getters.tasks;
     }
   },
   methods: {}
@@ -32,4 +32,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#task-list {
+}
 </style>
