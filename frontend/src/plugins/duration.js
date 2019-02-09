@@ -8,23 +8,16 @@ export default {
       type
     ) => {
       if (type == "clock") {
-        let hourString = _durationMoment
-          .hours()
-          .toString()
-          .padStart(2, "0");
-        let minuteString = _durationMoment
-          .minutes()
-          .toString()
-          .padStart(2, "0");
-        let secondString = _durationMoment
-          .seconds()
-          .toString()
-          .padStart(2, "0");
+        let durationJSON = this.$duration.durationMomentToJSON(_durationMoment);
+        let hourString = durationJSON.hours.padStart(2, "0");
+        let minuteString = durationJSON.minutes.padStart(2, "0");
+        let secondString = durationJSON.seconds.padStart(2, "0");
         return `${hourString}:${minuteString}:${secondString}`;
       } else if (type == "separate") {
+        return durationMomentToJSON(_durationMoment);
       }
     };
-    Vue.prototype.$duration.durationMomentToStringJSON = _durationMoment => {
+    let durationMomentToJSON = _durationMoment => {
       let data = _durationMoment._data;
       Object.keys(data).forEach(key => (data[key] = String(data[key])));
       return data;

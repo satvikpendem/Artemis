@@ -32,9 +32,18 @@ export default {
     addTask() {
       // TODO: Error handling, validate input
       // try {
+      let parsedDuration = this.$duration.stringToDurationMoment(
+        this.newTaskDuration
+      );
+      let ps = this.$duration.durationMomentToString(
+        parsedDuration,
+        "separate"
+      );
+      console.log(ps);
+      // console.log(parsedDuration);
       this.$store.dispatch("addTask", {
         title: this.newTaskTitle,
-        duration: this.newTaskDuration
+        duration: parsedDuration
       });
       this.newTaskTitle = "";
       this.newTaskDuration = "";
