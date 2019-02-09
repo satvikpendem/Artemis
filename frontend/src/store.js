@@ -66,10 +66,19 @@ export default new Vuex.Store({
   },
   actions: {
     async addTask(context, task) {
-      if (await context.dispatch("validateTask", task)) {
+      let parsedDuration = _app.$duration.stringToDurationMoment(duration);
+      let parsedTask = {
+        title: task.title,
+        duration: parsedDuration
+      };
+      console.log(parsedTask);
+      if (
+        parsedDuration &&
+        (await context.dispatch("validateTask", parsedTask))
+      ) {
         task.id = nanoid();
         task.complete = false;
-        context.commit("addTask", task);
+        context.commit("addTask", parsedTask);
         // context.dispatch("setCurrentTask");
       } else throw new Error("Task not validated");
     },
@@ -87,15 +96,16 @@ export default new Vuex.Store({
     },
     validateDuration(_, { duration }) {
       //TODO
-      let parsedDuration = _app.$duration.stringToDurationMoment(duration);
-      let zeroDuration = _app.$duration.zero();
-      if (
-        parsedDuration.hours() > zeroDuration.hours() ||
-        parsedDuration.minutes() > zeroDuration.minutes() ||
-        parsedDuration.seconds() > zeroDuration.seconds()
-      )
-        return true;
-      else return false;
+      if (duration) {
+        let zeroDuration = _app.$duration.zero();
+        if (
+          duration.hours() > zeroDuration.hours() ||
+          duration.minutes() > zeroDuration.minutes() ||
+          duration.seconds() > zeroDuration.seconds()
+        )
+          return true;
+        else return false;
+      } else return false;
     },
     validateTitle(_, { title }) {
       //TODO

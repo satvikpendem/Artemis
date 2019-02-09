@@ -39,7 +39,6 @@ export default {
         this.newTaskTitle = "";
         this.newTaskDuration = "";
       } catch (error) {
-        console.log(error);
         console.log(
           "Please enter a valid duration in HH:MM (10:15, 4:30, or :45) or XhYm (6h30, or 30m) format. Thanks!"
         );
@@ -56,7 +55,7 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   align-content: space-between;
-  padding: 1rem 0;
+  padding: 3rem 0;
 }
 
 input {
@@ -79,5 +78,9 @@ input {
 
 input:focus {
   border-bottom: 5px solid var(--accent-color);
+}
+
+#task-add-button {
+  margin-top: 2rem;
 }
 </style>

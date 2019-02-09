@@ -2,8 +2,8 @@
   <div id="task-list-item">
     <span id="duration">{{ task.duration }}</span>
     <span id="title">{{ task.title }}</span>
-    <AtomicButton @click.native="deleteTask">-</AtomicButton>
-    <AtomicButton @click.native="completeTask">&#x2713;</AtomicButton>
+    <AtomicButton class="taskButton" @click.native="deleteTask">-</AtomicButton>
+    <AtomicButton class="taskButton" @click.native="completeTask">&#x2713;</AtomicButton>
   </div>
 </template>
 
@@ -32,6 +32,10 @@ export default {
 </script>
 
 <style scoped>
+#task-list-item {
+  margin-bottom: 1rem;
+}
+
 #duration {
   color: white;
   background-color: var(--accent-color);
@@ -41,6 +45,12 @@ export default {
 
 #title {
   padding-left: 10px;
+}
+
+.taskButton {
+  margin-left: 1rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 /* #task-list-item {

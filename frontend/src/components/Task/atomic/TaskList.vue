@@ -1,6 +1,6 @@
 <template>
   <div id="task-list">
-    <template v-for="task in tasks">
+    <template v-for="task in taskList">
       <TaskListItem :key="task.id" :task="task"/>
     </template>
   </div>
@@ -13,7 +13,7 @@ export default {
   name: "TaskList",
   components: { TaskListItem },
   computed: {
-    tasks() {
+    taskList() {
       return this.$store.getters.taskList;
     }
   },
