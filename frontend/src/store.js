@@ -3,7 +3,20 @@ import Vue from "vue";
 import Vuex from "vuex";
 Vue.use(Vuex);
 
+// Time plugins
+// import moment from "moment";
+// Object.defineProperty(Vue.prototype, "$moment", { value: moment });
+
+import duration from "./plugins/duration.js";
+Vue.use(duration);
+
+// Synchronize JS interval timers
+import * as workerTimers from "worker-timers";
+Object.defineProperty(Vue.prototype, "$workerTimers", { value: workerTimers });
+
 import nanoid from "nanoid";
+
+let _app = new Vue();
 
 export default new Vuex.Store({
   state: {
@@ -56,8 +69,7 @@ export default new Vuex.Store({
       if (await context.dispatch("validateTask", task)) {
         task.id = nanoid();
         task.complete = false;
-        console.log(task);
-        context.commit("addTask", { id, task });
+        context.commit("addTask", task);
         // context.dispatch("setCurrentTask");
       } else throw new Error("Task not validated");
     },
@@ -69,19 +81,14 @@ export default new Vuex.Store({
       context.commit("completeTask", 0);
     },
     async validateTask(context, task) {
-      console.log("Validation entered...");
       let titleValidated = await context.dispatch("validateTitle", task);
-      console.log(titleValidated);
       let durationValidated = await context.dispatch("validateDuration", task);
-      console.log(durationValidated);
       return titleValidated && durationValidated;
     },
     validateDuration(_, { duration }) {
       //TODO
-      let parsedDuration = this.$duration.stringToDurationMoment(duration);
-      let zeroDuration = this.$duration.zero();
-      console.log(parsedDuration);
-      console.log(zeroDuration);
+      let parsedDuration = _app.$duration.stringToDurationMoment(duration);
+      let zeroDuration = _app.$duration.zero();
       if (
         parsedDuration.hours() > zeroDuration.hours() ||
         parsedDuration.minutes() > zeroDuration.minutes() ||
@@ -92,12 +99,11 @@ export default new Vuex.Store({
     },
     validateTitle(_, { title }) {
       //TODO
-      console.log(title.length > 0);
       return title.length > 0;
     },
     incrementTaskTime() {},
     startTimer(context) {
-      context.state.timer = this.$workerTimers.setInterval(
+      context.state.timer = _app.$workerTimers.setInterval(
         () => context.commit("decrementTime", { timeValue: 1, timeType: "s" }),
         1000
       );

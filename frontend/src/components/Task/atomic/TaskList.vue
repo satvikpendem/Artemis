@@ -23,7 +23,7 @@ export default {
   components: { TaskListItem },
   computed: {
     tasks() {
-      return this.$store.getters.tasks;
+      return this.$store.getters.taskList;
     }
   },
   methods: {}

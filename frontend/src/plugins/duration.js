@@ -3,13 +3,13 @@ import moment from "moment";
 export default {
   install(Vue) {
     Vue.prototype.$duration = {};
-    Vue.prototype.$duration.zero = () => this.$moment.duration(0);
+    Vue.prototype.$duration.zero = () => moment.duration(0);
     Vue.prototype.$duration.durationMomentToString = (
       _durationMoment,
       type
     ) => {
       if (type == "clock") {
-        let durationJSON = this.$duration.durationMomentToJSON(_durationMoment);
+        let durationJSON = durationMomentToJSON(_durationMoment);
         let hourString = durationJSON.hours.padStart(2, "0");
         let minuteString = durationJSON.minutes.padStart(2, "0");
         let secondString = durationJSON.seconds.padStart(2, "0");
