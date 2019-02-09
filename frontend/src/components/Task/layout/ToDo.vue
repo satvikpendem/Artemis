@@ -24,15 +24,11 @@ export default {
 
 <style scoped>
 #to-do {
-  /* background: red; */
-  /* margin: 1rem 2rem; */
   display: flex;
   flex-direction: column;
 }
 #to-do-label {
   margin-bottom: 2rem;
-  font-size: calc(1rem + 1.5vw);
-}
-#task-main {
+  font-size: calc(2rem + 1vw);
 }
 </style>

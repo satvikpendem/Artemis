@@ -3,6 +3,7 @@ import moment from "moment";
 export default {
   install(Vue) {
     Vue.prototype.$duration = {};
+    Vue.prototype.$duration.zero = () => this.$moment.duration(0);
     Vue.prototype.$duration.durationMomentToString = (
       _durationMoment,
       type

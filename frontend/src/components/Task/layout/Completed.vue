@@ -17,6 +17,6 @@ export default {
 }
 #completed-label {
   margin-bottom: 2rem;
-  font-size: calc(1rem + 1.5vw);
+  font-size: calc(2rem + 1vw);
 }
 </style>

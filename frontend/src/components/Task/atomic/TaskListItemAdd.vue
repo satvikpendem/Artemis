@@ -31,23 +31,21 @@ export default {
   methods: {
     addTask() {
       // TODO: Error handling, validate input
-      // try {
-      let parsedDuration = this.$duration.stringToDurationMoment(
-        this.newTaskDuration
-      );
-      let ps = this.$duration.durationMomentToString(
-        parsedDuration,
-        "separate"
-      );
-      console.log(ps);
-      // console.log(parsedDuration);
-      this.$store.dispatch("addTask", {
-        title: this.newTaskTitle,
-        duration: parsedDuration
-      });
-      this.newTaskTitle = "";
-      this.newTaskDuration = "";
-      // } catch (error) {}
+      try {
+        this.$store.dispatch("addTask", {
+          title: this.newTaskTitle,
+          duration: this.newTaskDuration
+        });
+        this.newTaskTitle = "";
+        this.newTaskDuration = "";
+      } catch (error) {
+        // alert(
+        console.log(
+          "Please enter a valid duration in HH:MM (10:15, 4:30, or :45) or XhYm (6h30, or 30m) format. Thanks!"
+        );
+        // );
+        this.newTaskDuration = "";
+      }
     }
   }
 };
