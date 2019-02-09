@@ -2,11 +2,14 @@
   <div id="task-list-item">
     <span id="duration">{{ task.duration }}</span>
     <span id="title">{{ task.title }}</span>
-    <button @click="deleteTask(task.id)">-</button>
+    <AtomicButton @click.native="deleteTask">-</AtomicButton>
+    <AtomicButton @click.native="completeTask">&#x2713;</AtomicButton>
   </div>
 </template>
 
 <script>
+import AtomicButton from "@/components/_global/_atomic/AtomicButton.vue";
+
 export default {
   name: "TaskListItem",
   props: {
@@ -14,9 +17,15 @@ export default {
       type: Object
     }
   },
+  components: {
+    AtomicButton
+  },
   methods: {
     deleteTask() {
       this.$store.dispatch("deleteTask", this.task.id);
+    },
+    completeTask() {
+      this.$store.dispatch("completeTask", this.task.id);
     }
   }
 };

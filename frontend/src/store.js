@@ -12,6 +12,14 @@ export default new Vuex.Store({
   getters: {
     tasks: state => {
       return state.tasks;
+    },
+    completedTasks: state => {
+      return Object.entries(state.tasks).reduce((acc, [key, value]) => {
+        if (key && value && value.complete == true) {
+          acc[key] = value;
+        }
+        return acc;
+      }, {});
     }
   },
   mutations: {
@@ -21,7 +29,9 @@ export default new Vuex.Store({
     deleteTask(state, id) {
       Vue.delete(state.tasks, id);
     },
-    completeTask(state, index) {}
+    completeTask(state, id) {
+      Vue.set(state.tasks[id], "complete", true);
+    }
   },
   actions: {
     async addTask(context, task) {
@@ -35,7 +45,11 @@ export default new Vuex.Store({
     deleteTask(context, taskId) {
       context.commit("deleteTask", taskId);
     },
-    completeTask(context, taskId) {},
+    completeTask(context, taskId) {
+      console.log(context.state);
+      context.commit("completeTask", taskId);
+      console.log(context.state);
+    },
     async validateTask(context, task) {
       let titleValidated = await context.dispatch("validateTitle", task);
       let durationValidated = await context.dispatch("validateDuration", task);
