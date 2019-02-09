@@ -29,21 +29,20 @@ export default {
     AtomicButton
   },
   methods: {
-    addTask() {
+    async addTask() {
       // TODO: Error handling, validate input
       try {
-        this.$store.dispatch("addTask", {
+        await this.$store.dispatch("addTask", {
           title: this.newTaskTitle,
           duration: this.newTaskDuration
         });
         this.newTaskTitle = "";
         this.newTaskDuration = "";
       } catch (error) {
-        // alert(
+        console.log(error);
         console.log(
           "Please enter a valid duration in HH:MM (10:15, 4:30, or :45) or XhYm (6h30, or 30m) format. Thanks!"
         );
-        // );
         this.newTaskDuration = "";
       }
     }

@@ -1,14 +1,5 @@
 <template>
   <div id="task-list">
-    <!-- <task-item
-      v-for="(task, index) in tasks"
-      :key="index"
-      :title.sync="task.title"
-      :duration.sync="task.duration"
-      :running.sync="task.running"
-      :completed.sync="task.completed"
-      @completeTask="moveTaskToCompleted"
-    />-->
     <template v-for="task in tasks">
       <TaskListItem :key="task.id" :task="task"/>
     </template>

@@ -43,11 +43,11 @@ export default {
   padding-left: 10px;
 }
 
-.task-item {
+/* #task-list-item {
   margin: 0;
   padding: 1rem 0;
   display: flex;
   align-items: stretch;
   overflow-x: scroll;
-}
+} */
 </style>

@@ -48,14 +48,14 @@ export default new Vuex.Store({
     },
     deleteTask(state, index) {
       // Vue.delete(state.taskList, id);
-      if (state.tasks.length > 0) state.taskList.splice(index, 1);
+      if (state.taskList.length > 0) state.taskList.splice(index, 1);
     },
     completeTask(state, index) {
       // Vue.set(state.taskList[id], "complete", true);
-      if (state.tasks.length > 0) state.taskList[index].complete = true;
+      if (state.taskList.length > 0) state.taskList[index].complete = true;
     },
     setCurrentTask(state) {
-      if (state.tasks.length <= 0) {
+      if (state.taskList.length <= 0) {
         state.currentTask = state.taskList[0];
       } else state.currentTask = null;
     },
@@ -73,11 +73,11 @@ export default new Vuex.Store({
         // context.dispatch("setCurrentTask");
       } else throw new Error("Task not validated");
     },
-    deleteTask(context, taskId) {
-      let index = context.dispatch("getIndexById");
+    async deleteTask(context, taskId) {
+      let index = await context.dispatch("getIndexById", taskId);
       context.commit("deleteTask", index);
     },
-    completeTask(context, taskId) {
+    completeTask(context) {
       context.commit("completeTask", 0);
     },
     async validateTask(context, task) {
@@ -112,8 +112,10 @@ export default new Vuex.Store({
     setCurrentTask(context) {
       return context.commit("setCurrentTask");
     },
-    getIndexById(context, id) {
-      let index = context.state.taskList.findIndex(element => element.id == id);
+    async getIndexById(context, id) {
+      let index = await context.state.taskList.findIndex(
+        element => element.id == id
+      );
       if (index > -1) return index;
       else throw new Error("Index not found");
     }
