@@ -72,7 +72,7 @@ input {
   font-size: 1rem;
   font-weight: 700;
 
-  width: 50%;
+  width: 250px;
 
   transition: 100ms;
   transition-timing-function: ease-in-out;
