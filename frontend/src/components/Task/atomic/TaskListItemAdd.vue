@@ -39,7 +39,7 @@ export default {
         this.newTaskTitle = "";
         this.newTaskDuration = "";
       } catch (error) {
-        console.log(
+        alert(
           "Please enter a valid duration in HH:MM (10:15, 4:30, or :45) or XhYm (6h30, or 30m) format. Thanks!"
         );
         this.newTaskDuration = "";

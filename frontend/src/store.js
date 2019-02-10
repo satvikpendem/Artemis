@@ -33,12 +33,12 @@ export default new Vuex.Store({
     },
     completedTaskList: state => {
       return state.taskList.filter(task => task.complete == true);
-      // return Object.entries(state.taskList).reduce((acc, [key, value]) => {
-      //   if (key && value && value.complete == true) {
-      //     acc[key] = value;
-      //   }
-      //   return acc;
-      // }, {});
+    },
+    readableTaskList: state => {
+      return state.taskList.map(task => ({
+        ...task,
+        duration: _app.$duration.durationMomentToString(task.duration, "clock")
+      }));
     }
   },
   mutations: {
@@ -66,12 +66,11 @@ export default new Vuex.Store({
   },
   actions: {
     async addTask(context, task) {
-      let parsedDuration = _app.$duration.stringToDurationMoment(duration);
+      let parsedDuration = _app.$duration.stringToDurationMoment(task.duration);
       let parsedTask = {
         title: task.title,
         duration: parsedDuration
       };
-      console.log(parsedTask);
       if (
         parsedDuration &&
         (await context.dispatch("validateTask", parsedTask))
