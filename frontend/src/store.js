@@ -39,6 +39,17 @@ export default new Vuex.Store({
         ...task,
         duration: _app.$duration.durationMomentToString(task.duration, "clock")
       }));
+    },
+    readableCurrentTask: state => {
+      if (state.currentTask) {
+        return {
+          ...state.currentTask,
+          duration: _app.$duration.durationMomentToString(
+            state.currentTask.duration,
+            "clock"
+          )
+        };
+      } else return false;
     }
   },
   mutations: {
@@ -52,11 +63,11 @@ export default new Vuex.Store({
       if (state.taskList.length > 0) state.taskList[index].complete = true;
     },
     setCurrentTask(state) {
-      if (state.taskList.length <= 0) {
+      if (state.taskList.length > 0) {
         state.currentTask = state.taskList[0];
       } else state.currentTask = null;
     },
-    incrementTaskTime() {},
+    incrementTaskTime(state, index) {},
     decrementTaskTime(state, { timeType, timeValue }) {
       console.log({ timeType, timeValue });
     }
@@ -74,16 +85,18 @@ export default new Vuex.Store({
       ) {
         task.id = nanoid();
         task.complete = false;
-        context.commit("addTask", parsedTask);
-        // context.dispatch("setCurrentTask");
+        await context.commit("addTask", parsedTask);
+        context.dispatch("setCurrentTask");
       } else throw new Error("Task not validated");
     },
     async deleteTask(context, taskId) {
       let index = await context.dispatch("getIndexById", taskId);
-      context.commit("deleteTask", index);
+      await context.commit("deleteTask", index);
+      context.dispatch("setCurrentTask");
     },
-    completeTask(context) {
-      context.commit("completeTask", 0);
+    async completeTask(context) {
+      await context.commit("completeTask", 0);
+      context.dispatch("setCurrentTask");
     },
     async validateTask(context, task) {
       let titleValidated = await context.dispatch("validateTitle", task);
@@ -91,9 +104,9 @@ export default new Vuex.Store({
       return titleValidated && durationValidated;
     },
     validateDuration(_, { duration }) {
-      //TODO
       if (duration) {
         let zeroDuration = _app.$duration.zero();
+        // FIXME: Edge case with >24 hour tasks
         if (
           duration.hours() > zeroDuration.hours() ||
           duration.minutes() > zeroDuration.minutes() ||
@@ -104,7 +117,6 @@ export default new Vuex.Store({
       } else return false;
     },
     validateTitle(_, { title }) {
-      //TODO
       return title.length > 0;
     },
     incrementTaskTime() {},

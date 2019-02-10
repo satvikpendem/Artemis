@@ -30,7 +30,6 @@ export default {
   },
   methods: {
     async addTask() {
-      // TODO: Error handling, validate input
       try {
         await this.$store.dispatch("addTask", {
           title: this.newTaskTitle,

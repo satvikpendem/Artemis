@@ -152,7 +152,6 @@ export default {
     moveTaskToCompleted() {
       // move top task from tasks array to completedTasks array
 
-      // TODO: Ideally the To-Do and Completed Lists should be filtered on if task.completed is true or not
       let completedTask = this.tasks.shift();
       completedTask.duration = this.$moment.duration(0);
       completedTask.completed = true;

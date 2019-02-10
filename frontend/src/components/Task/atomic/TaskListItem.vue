@@ -48,11 +48,20 @@ export default {
 
 #title {
   padding-left: 10px;
+  max-height: 5rem;
+  display: inline-block;
+  overflow: auto;
 }
 
 .task {
   display: flex;
+  max-width: 100%;
   align-items: center;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
 
 #task-button {

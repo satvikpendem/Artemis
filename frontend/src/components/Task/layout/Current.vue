@@ -1,6 +1,12 @@
 <template>
   <div id="current">
-    <div></div>
+    <section class="current-task" v-if="readableCurrentTask">
+      <span class="current-task-title">{{ readableCurrentTask.title }}</span>
+      <span class="current-task-duration">{{ readableCurrentTask.duration }}</span>
+    </section>
+    <section class="current-task" v-else>
+      <span class="current-task-duration">00:00:00</span>
+    </section>
     <!-- <div class="col current-task-col">
       <section class="current-task" v-if="isTasks">
         <span class="current-task-title">{{ this.tasks[0].title }}</span>
@@ -41,8 +47,8 @@
 export default {
   name: "current",
   computed: {
-    currentTask() {
-      return this.$store.getters.currentTask;
+    readableCurrentTask() {
+      return this.$store.getters.readableCurrentTask;
     },
     taskListLength() {
       return this.$store.getters.taskListLength;
@@ -52,13 +58,36 @@ export default {
 </script>
 
 <style>
-.current {
-  text-align: center;
-  background: green;
+#current {
+  margin-top: 4rem;
+  padding: 0;
 }
-#current-label {
+/* #current-label {
   margin-bottom: 2rem;
   font-size: calc(1rem + 1.5vw);
+} */
+
+.current-task {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
-/* font-variant-numeric: tabular-nums */
+
+.current-task-title {
+  font-size: 2vw;
+  margin: 1rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  height: 5vw;
+  overflow: auto;
+}
+
+.current-task-duration {
+  font-size: 8vw;
+}
+
+.current-task-title,
+.current-task-duration {
+  /* overflow-x: scroll; */
+}
 </style>
