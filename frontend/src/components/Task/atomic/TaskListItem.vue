@@ -1,9 +1,10 @@
 <template>
   <div id="task-list-item">
-    <span id="duration">{{ task.duration }}</span>
-    <span id="title">{{ task.title }}</span>
-    <AtomicButton class="taskButton" @click.native="deleteTask">-</AtomicButton>
-    <AtomicButton class="taskButton" @click.native="completeTask">&#x2713;</AtomicButton>
+    <div class="task">
+      <span id="duration">{{ task.duration }}</span>
+      <span id="title">{{ task.title }}</span>
+    </div>
+    <AtomicButton id="task-button" @click.native="deleteTask">&#x2718;</AtomicButton>
   </div>
 </template>
 
@@ -34,6 +35,7 @@ export default {
 <style scoped>
 #task-list-item {
   margin-bottom: 1rem;
+  display: flex;
 }
 
 #duration {
@@ -41,23 +43,28 @@ export default {
   background-color: var(--accent-color);
   border-radius: 5px;
   padding: 0.5rem;
+  font-variant-numeric: tabular-nums;
 }
 
 #title {
   padding-left: 10px;
 }
 
-.taskButton {
+.task {
+  display: flex;
+  align-items: center;
+}
+
+#task-button {
+  opacity: 0;
   margin-left: 1rem;
   background-color: var(--background-color);
   color: var(--text-color);
+  transition: 0.25s;
 }
 
-/* #task-list-item {
-  margin: 0;
-  padding: 1rem 0;
-  display: flex;
-  align-items: stretch;
-  overflow-x: scroll;
-} */
+#task-list-item:hover #task-button {
+  opacity: 1;
+  transition: 0.25s;
+}
 </style>

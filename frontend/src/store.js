@@ -43,15 +43,12 @@ export default new Vuex.Store({
   },
   mutations: {
     addTask(state, task) {
-      // Vue.set(state.taskList, id, task);
       state.taskList.push(task);
     },
     deleteTask(state, index) {
-      // Vue.delete(state.taskList, id);
       if (state.taskList.length > 0) state.taskList.splice(index, 1);
     },
     completeTask(state, index) {
-      // Vue.set(state.taskList[id], "complete", true);
       if (state.taskList.length > 0) state.taskList[index].complete = true;
     },
     setCurrentTask(state) {
