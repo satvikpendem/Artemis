@@ -22,7 +22,8 @@ export default new Vuex.Store({
   state: {
     taskList: [],
     currentTask: null,
-    timer: null
+    timer: null,
+    timerRunning: false
   },
   getters: {
     taskList: state => {
@@ -31,8 +32,20 @@ export default new Vuex.Store({
     taskListLength: state => {
       return state.taskList.length;
     },
+    todoTaskList: state => {
+      return state.taskList.filter(task => task.complete == false);
+    },
     completedTaskList: state => {
       return state.taskList.filter(task => task.complete == true);
+    },
+    completedCurrentTask: state => {
+      /* If the timer runs to zero (every time value is 0)
+      then the task has been completed and can be moved to the completed array */
+      if (state.currentTask)
+        return Object.values(state.currentTask.duration._data).every(
+          value => value == 0
+        );
+      else return false;
     },
     readableTaskList: state => {
       return state.taskList.map(task => ({
@@ -63,7 +76,8 @@ export default new Vuex.Store({
         .reduce(durationAdder, zeroDuration);
 
       return _app.$duration.durationMomentToString(rawTime, "clock");
-    }
+    },
+    timerRunning: state => state.timerRunning
   },
   mutations: {
     addTask(state, task) {
@@ -80,9 +94,12 @@ export default new Vuex.Store({
         state.currentTask = state.taskList[0];
       } else state.currentTask = null;
     },
+    setTimerRunning(state, value) {
+      state.timerRunning = value;
+    },
     incrementTaskTime(state, index) {},
     decrementTaskTime(state, { timeType, timeValue }) {
-      console.log({ timeType, timeValue });
+      state.currentTask.duration.subtract(timeValue, timeType);
     }
   },
   actions: {
@@ -132,16 +149,26 @@ export default new Vuex.Store({
     validateTitle(_, { title }) {
       return title.length > 0;
     },
-    incrementTaskTime() {},
-    startTimer(context) {
-      context.state.timer = _app.$workerTimers.setInterval(
-        () => context.commit("decrementTime", { timeValue: 1, timeType: "s" }),
-        1000
-      );
+    incrementTaskTime(context, { timeValue, timeType }) {
+      context.commit("incrementTaskTime", { timeValue, timeType });
     },
-    pauseTimer(context) {},
+    decrementTaskTime(context, { timeValue, timeType }) {
+      if (context.currentTask)
+        context.commit("decrementTaskTime", { timeValue, timeType });
+    },
+    startTimer(context) {
+      context.commit("setTimerRunning", true);
+      context.state.timer = _app.$workerTimers.setInterval(() => {
+        context.dispatch("decrementTaskTime", { timeValue: 1, timeType: "s" });
+      }, 1000);
+    },
+    pauseTimer(context) {
+      context.commit("setTimerRunning", false);
+      _app.$workerTimers.clearInterval(context.state.timer);
+      context.state.timer = null;
+    },
     setCurrentTask(context) {
-      return context.commit("setCurrentTask");
+      context.commit("setCurrentTask");
     },
     async getIndexById(context, id) {
       let index = await context.state.taskList.findIndex(

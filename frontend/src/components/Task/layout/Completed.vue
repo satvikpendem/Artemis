@@ -13,7 +13,6 @@ export default {
 <style>
 #completed {
   text-align: right;
-  /* background: blue; */
   margin: 4rem 4rem 0 0;
   padding: 0;
 }

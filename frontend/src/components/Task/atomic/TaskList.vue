@@ -14,7 +14,6 @@ export default {
   components: { TaskListItem },
   computed: {
     taskList() {
-      // return this.$store.getters.taskList;
       return this.$store.getters.readableTaskList;
     }
   },

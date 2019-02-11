@@ -11,12 +11,14 @@
       <p id="readableTotalTime">{{ readableTotalTime }}</p>
       <p id="totalTimeLabel">Total Time</p>
     </section>
-    <button v-if="taskListLength > 0" @click="controlTimerPlay">
-      <img src="@/../public/assets/img/controls/play.svg" alt="play_button">
-    </button>
-    <button v-if="taskListLength > 0" @click="controlTimerPlay">
-      <img src="@/../public/assets/img/controls/pause.svg" alt="pause_button">
-    </button>
+    <section v-if="taskListLength > 0">
+      <button v-if="!timerRunning" @click="controlTimerPlay">
+        <img src="@/../public/assets/img/controls/play.svg" alt="play_button">
+      </button>
+      <button v-else @click="controlTimerPlay">
+        <img src="@/../public/assets/img/controls/pause.svg" alt="pause_button">
+      </button>
+    </section>
     <!-- <div class="col current-task-col">
       <section class="current-task" v-if="isTasks">
         <span class="current-task-title">{{ this.tasks[0].title }}</span>
@@ -65,6 +67,15 @@ export default {
     },
     readableTotalTime() {
       return this.$store.getters.readableTotalTime;
+    },
+    timerRunning() {
+      return this.$store.getters.timerRunning;
+    }
+  },
+  methods: {
+    controlTimerPlay() {
+      if (!this.timerRunning) this.$store.dispatch("startTimer");
+      else this.$store.dispatch("pauseTimer");
     }
   }
 };
