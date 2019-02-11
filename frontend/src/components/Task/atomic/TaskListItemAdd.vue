@@ -9,7 +9,7 @@
         placeholder="Duration (ex. 8:00, 15m, 4h30)"
         v-model="newTaskDuration"
       >
-      <AtomicButton id="task-add-button" type="submit">Submit</AtomicButton>
+      <AtomicButton id="task-add-button" type="submit">Add</AtomicButton>
     </form>
   </div>
 </template>

@@ -1,10 +1,8 @@
 <template>
   <div id="to-do">
-    <!-- <section id="task-main"> -->
     <span id="to-do-label">To-Do</span>
     <TaskList/>
     <TaskListItemAdd/>
-    <!-- </section> -->
   </div>
 </template>
 
@@ -26,9 +24,11 @@ export default {
 #to-do {
   display: flex;
   flex-direction: column;
+  margin: 4rem 0 0 4rem;
+  padding: 0;
 }
 #to-do-label {
   margin-bottom: 2rem;
-  font-size: calc(2rem + 1vw);
+  font-size: calc(1rem + 1vw);
 }
 </style>

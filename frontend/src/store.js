@@ -50,6 +50,19 @@ export default new Vuex.Store({
           )
         };
       } else return false;
+    },
+    readableTotalTime: state => {
+      // function to add durations together
+      const durationAdder = (accumulator, element) => accumulator.add(element);
+      /* Extract duration from each TaskItem
+      and use durationAdder function to add them together.
+      Classic map-reduce use case */
+      let zeroDuration = _app.$moment.duration(0);
+      let rawTime = state.taskList
+        .map(task => task.duration)
+        .reduce(durationAdder, zeroDuration);
+
+      return _app.$duration.durationMomentToString(rawTime, "clock");
     }
   },
   mutations: {

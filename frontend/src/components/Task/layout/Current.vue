@@ -7,6 +7,16 @@
     <section class="current-task" v-else>
       <span class="current-task-duration">00:00:00</span>
     </section>
+    <section class="total-time-content">
+      <p id="readableTotalTime">{{ readableTotalTime }}</p>
+      <p id="totalTimeLabel">Total Time</p>
+    </section>
+    <button v-if="taskListLength > 0" @click="controlTimerPlay">
+      <img src="@/../public/assets/img/controls/play.svg" alt="play_button">
+    </button>
+    <button v-if="taskListLength > 0" @click="controlTimerPlay">
+      <img src="@/../public/assets/img/controls/pause.svg" alt="pause_button">
+    </button>
     <!-- <div class="col current-task-col">
       <section class="current-task" v-if="isTasks">
         <span class="current-task-title">{{ this.tasks[0].title }}</span>
@@ -52,6 +62,9 @@ export default {
     },
     taskListLength() {
       return this.$store.getters.taskListLength;
+    },
+    readableTotalTime() {
+      return this.$store.getters.readableTotalTime;
     }
   }
 };
@@ -61,11 +74,10 @@ export default {
 #current {
   margin-top: 4rem;
   padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
-/* #current-label {
-  margin-bottom: 2rem;
-  font-size: calc(1rem + 1.5vw);
-} */
 
 .current-task {
   display: flex;
@@ -74,20 +86,49 @@ export default {
 }
 
 .current-task-title {
-  font-size: 2vw;
+  /* font-size: 2vw; */
+  font-size: calc(1rem + 1vw);
   margin: 1rem;
   font-weight: 700;
   color: var(--accent-color);
-  height: 5vw;
+  height: calc(5rem + 1vw);
   overflow: auto;
 }
 
 .current-task-duration {
-  font-size: 8vw;
+  /* TODO: Adjust font sizing for responsive */
+  font-size: calc(4rem + 2vw);
+  font-variant-numeric: tabular-nums;
 }
 
 .current-task-title,
 .current-task-duration {
   /* overflow-x: scroll; */
+}
+
+.total-time-content {
+  color: var(--text-color-disabled);
+  margin-bottom: 3rem;
+}
+
+.total-time-content #readableTotalTime {
+  font-size: calc(1rem + 2vw);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0;
+}
+
+.total-time-content #totalTimeLabel {
+  font-size: calc(0.5rem + 1vw);
+  text-align: center;
+}
+
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 </style>
