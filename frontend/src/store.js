@@ -44,9 +44,7 @@ export default new Vuex.Store({
         );
       else return false;
     },
-    readableTaskList: (state, getters) => {
-      getters.readable(state.taskList);
-    },
+    readableTaskList: (state, getters) => getters.readable(state.taskList),
     // {
     //   return state.taskList.map(task => ({
     //     ...task,
@@ -54,14 +52,11 @@ export default new Vuex.Store({
     //   }));
     // },
     // readableTodoTaskList: state => {},
-    readable: _ => list => {
-      // console.log(state);
-      console.log(list);
+    readable: _ => list =>
       list.map(item => ({
         ...item,
         duration: _app.$duration.durationMomentToString(item.duration, "clock")
-      }));
-    },
+      })),
     readableCurrentTask: state => {
       if (state.currentTask) {
         return {
