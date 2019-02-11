@@ -98,7 +98,7 @@ export default new Vuex.Store({
       state.timerRunning = value;
     },
     incrementTaskTime(state, index) {},
-    decrementTaskTime(state, { timeType, timeValue }) {
+    decrementTaskTime(state, { timeValue, timeType }) {
       state.currentTask.duration.subtract(timeValue, timeType);
     }
   },
@@ -153,8 +153,9 @@ export default new Vuex.Store({
       context.commit("incrementTaskTime", { timeValue, timeType });
     },
     decrementTaskTime(context, { timeValue, timeType }) {
-      if (context.currentTask)
+      if (context.state.currentTask) {
         context.commit("decrementTaskTime", { timeValue, timeType });
+      }
     },
     startTimer(context) {
       context.commit("setTimerRunning", true);
