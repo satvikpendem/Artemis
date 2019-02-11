@@ -3,10 +3,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 Vue.use(Vuex);
 
-// Time plugins
-// import moment from "moment";
-// Object.defineProperty(Vue.prototype, "$moment", { value: moment });
-
+// Time plugin
 import duration from "./plugins/duration.js";
 Vue.use(duration);
 
@@ -47,10 +44,22 @@ export default new Vuex.Store({
         );
       else return false;
     },
-    readableTaskList: state => {
-      return state.taskList.map(task => ({
-        ...task,
-        duration: _app.$duration.durationMomentToString(task.duration, "clock")
+    readableTaskList: (state, getters) => {
+      getters.readable(state.taskList);
+    },
+    // {
+    //   return state.taskList.map(task => ({
+    //     ...task,
+    //     duration: _app.$duration.durationMomentToString(task.duration, "clock")
+    //   }));
+    // },
+    // readableTodoTaskList: state => {},
+    readable: _ => list => {
+      // console.log(state);
+      console.log(list);
+      list.map(item => ({
+        ...item,
+        duration: _app.$duration.durationMomentToString(item.duration, "clock")
       }));
     },
     readableCurrentTask: state => {
