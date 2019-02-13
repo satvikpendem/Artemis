@@ -1,21 +1,24 @@
 <template>
   <div id="task-list">
-    <template v-for="task in taskList">
+    <template v-for="task in readableTaskList">
       <TaskListItem :key="task.id" :task="task"/>
     </template>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 import TaskListItem from "@/components/Task/atomic/TaskListItem";
 
 export default {
   name: "TaskList",
   components: { TaskListItem },
   computed: {
-    taskList() {
-      return this.$store.getters.readableTaskList;
-    }
+    ...mapState(["readableTaskList"])
+    // taskList() {
+    //   return this.$store.getters.readableTaskList;
+    // }
   },
   methods: {}
 };

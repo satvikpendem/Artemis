@@ -11,7 +11,7 @@
       <p id="readableTotalTime">{{ readableTotalTime }}</p>
       <p id="totalTimeLabel">Total Time</p>
     </section>
-    <section v-if="taskListLength > 0">
+    <section v-if="readableCurrentTask">
       <button v-if="!timerRunning" @click="controlTimerPlay">
         <img src="@/../public/assets/img/controls/play.svg" alt="play_button">
       </button>
@@ -19,6 +19,15 @@
         <img src="@/../public/assets/img/controls/pause.svg" alt="pause_button">
       </button>
     </section>
+    <!-- <section v-if="readableCurrentTask">
+      <div class="add-time-buttons">
+        <button class="time-increment-button" @click="incrementTime(1 ,'m')">+1</button>
+        <button class="time-increment-button" @click="incrementTime(5 ,'m')">+5</button>
+        <button class="time-increment-button" @click="incrementTime(10 ,'m')">+10</button>
+      </div>
+
+      <button class="complete-button" @click="moveTaskToCompleted">Complete</button>
+    </section>-->
     <!-- <div class="col current-task-col">
       <section class="current-task" v-if="isTasks">
         <span class="current-task-title">{{ this.tasks[0].title }}</span>
@@ -56,27 +65,24 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from "vuex";
+
 export default {
   name: "current",
   computed: {
-    readableCurrentTask() {
-      return this.$store.getters.readableCurrentTask;
-    },
-    taskListLength() {
-      return this.$store.getters.taskListLength;
-    },
-    readableTotalTime() {
-      return this.$store.getters.readableTotalTime;
-    },
-    timerRunning() {
-      return this.$store.getters.timerRunning;
-    }
+    ...mapGetters([
+      "readableCurrentTask",
+      "taskListLength",
+      "readableTotalTime"
+    ]),
+    ...mapState(["timerRunning"])
   },
   methods: {
     controlTimerPlay() {
       if (!this.timerRunning) this.$store.dispatch("startTimer");
       else this.$store.dispatch("pauseTimer");
-    }
+    },
+    incrementTime(timeValue, timeType) {}
   }
 };
 </script>

@@ -23,18 +23,33 @@ export default new Vuex.Store({
     timerRunning: false
   },
   getters: {
-    taskList: state => {
-      return state.taskList;
+    // taskList: state => {
+    //   return state.taskList;
+    // },
+    taskFilter: state => option => {
+      switch (option) {
+        case "all":
+          return state.taskList;
+
+        case "todo":
+          return state.taskList.filter(task => task.complete == false);
+
+        case "complete":
+          return state.taskList.filter(task => task.complete == true);
+
+        default:
+          throw new Error(
+            `Unknown option ${option} in taskFilter of "all", "todo", "complete"`
+          );
+      }
     },
-    taskListLength: state => {
-      return state.taskList.length;
-    },
-    todoTaskList: state => {
-      return state.taskList.filter(task => task.complete == false);
-    },
-    completedTaskList: state => {
-      return state.taskList.filter(task => task.complete == true);
-    },
+    taskLength: (state, getters) => option => getters.taskFilter(option).length,
+
+    taskListLength: state => state.taskList.length,
+    todoTaskList: state =>
+      state.taskList.filter(task => task.complete == false),
+    completedTaskList: state =>
+      state.taskList.filter(task => task.complete == true),
     completedCurrentTask: state => {
       /* If the timer runs to zero (every time value is 0)
       then the task has been completed and can be moved to the completed array */
@@ -45,12 +60,6 @@ export default new Vuex.Store({
       else return false;
     },
     readableTaskList: (state, getters) => getters.readable(state.taskList),
-    // {
-    //   return state.taskList.map(task => ({
-    //     ...task,
-    //     duration: _app.$duration.durationMomentToString(task.duration, "clock")
-    //   }));
-    // },
     // readableTodoTaskList: state => {},
     readable: _ => list =>
       list.map(item => ({
@@ -84,20 +93,15 @@ export default new Vuex.Store({
     timerRunning: state => state.timerRunning
   },
   mutations: {
-    addTask(state, task) {
-      state.taskList.push(task);
-    },
-    deleteTask(state, index) {
-      if (state.taskList.length > 0) state.taskList.splice(index, 1);
-    },
-    completeTask(state, index) {
-      if (state.taskList.length > 0) state.taskList[index].complete = true;
-    },
-    setCurrentTask(state) {
-      if (state.taskList.length > 0) {
-        state.currentTask = state.taskList[0];
-      } else state.currentTask = null;
-    },
+    addTask: (state, task) => state.taskList.push(task),
+    deleteTask: (state, index) =>
+      state.taskList.length > 0 ? state.taskList.splice(index, 1) : null,
+    completeTask: (state, index) =>
+      (state.taskList[index].complete =
+        state.taskList.length > 0 ? true : false),
+    setCurrentTask: state =>
+      (state.currentTask =
+        state.taskList.length > 0 ? state.taskList[0] : null),
     setTimerRunning(state, value) {
       state.timerRunning = value;
     },
