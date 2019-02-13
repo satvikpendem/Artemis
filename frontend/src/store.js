@@ -30,21 +30,17 @@ export default new Vuex.Store({
       switch (option) {
         case "all":
           return state.taskList;
-
         case "todo":
           return state.taskList.filter(task => task.complete == false);
-
         case "complete":
           return state.taskList.filter(task => task.complete == true);
-
         default:
           throw new Error(
             `Unknown option ${option} in taskFilter of "all", "todo", "complete"`
           );
       }
     },
-    taskLength: (state, getters) => option => getters.taskFilter(option).length,
-
+    taskLength: (_, getters) => option => getters.taskFilter(option).length,
     taskListLength: state => state.taskList.length,
     todoTaskList: state =>
       state.taskList.filter(task => task.complete == false),

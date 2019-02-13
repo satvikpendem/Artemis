@@ -13,21 +13,28 @@
     </section>
     <section v-if="readableCurrentTask">
       <button v-if="!timerRunning" @click="controlTimerPlay">
-        <img src="@/../public/assets/img/controls/play.svg" alt="play_button">
+        <img
+          class="timer-state-button"
+          src="@/../public/assets/img/controls/play.svg"
+          alt="play_button"
+        >
       </button>
       <button v-else @click="controlTimerPlay">
-        <img src="@/../public/assets/img/controls/pause.svg" alt="pause_button">
+        <img
+          class="timer-state-button"
+          src="@/../public/assets/img/controls/pause.svg"
+          alt="pause_button"
+        >
       </button>
     </section>
-    <!-- <section v-if="readableCurrentTask">
-      <div class="add-time-buttons">
+    <section id="time-buttons" v-if="readableCurrentTask">
+      <div id="add-time-buttons">
         <button class="time-increment-button" @click="incrementTime(1 ,'m')">+1</button>
         <button class="time-increment-button" @click="incrementTime(5 ,'m')">+5</button>
         <button class="time-increment-button" @click="incrementTime(10 ,'m')">+10</button>
       </div>
-
-      <button class="complete-button" @click="moveTaskToCompleted">Complete</button>
-    </section>-->
+      <button id="complete-button" @click="moveTaskToCompleted">Complete</button>
+    </section>
     <!-- <div class="col current-task-col">
       <section class="current-task" v-if="isTasks">
         <span class="current-task-title">{{ this.tasks[0].title }}</span>
@@ -118,11 +125,6 @@ export default {
   font-variant-numeric: tabular-nums;
 }
 
-.current-task-title,
-.current-task-duration {
-  /* overflow-x: scroll; */
-}
-
 .total-time-content {
   color: var(--text-color-disabled);
   margin-bottom: 3rem;
@@ -147,5 +149,54 @@ button {
   font: inherit;
   cursor: pointer;
   outline: inherit;
+}
+
+.timer-state-button {
+  width: 3rem;
+  transition: 0.25s;
+}
+
+.timer-state-button:hover {
+  width: 3.5rem;
+  transition: 0.25s;
+}
+
+#time-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#add-time-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 35vw;
+  padding: 2rem 0;
+}
+
+.time-increment-button {
+  font-style: italic;
+  font-size: 2rem;
+  transition: 0.25s;
+}
+
+.time-increment-button:hover {
+  font-style: italic;
+  font-size: 3rem;
+  transition: 0.25s;
+}
+
+#complete-button {
+  border: 2px solid var(--accent-color);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  transition: 0.25s;
+}
+
+#complete-button:hover {
+  background-color: var(--accent-color);
+  color: var(--text-color-opposite);
+  transition: 0.25s;
 }
 </style>
