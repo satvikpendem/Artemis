@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 
 import TaskListItem from "@/components/Task/atomic/TaskListItem";
 
@@ -15,7 +15,7 @@ export default {
   name: "TaskList",
   components: { TaskListItem },
   computed: {
-    ...mapState(["readableTaskList"])
+    ...mapGetters(["readableTaskList"])
     // taskList() {
     //   return this.$store.getters.readableTaskList;
     // }

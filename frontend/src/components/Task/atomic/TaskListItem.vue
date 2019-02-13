@@ -24,9 +24,6 @@ export default {
   methods: {
     deleteTask() {
       this.$store.dispatch("deleteTask", this.task.id);
-    },
-    completeTask() {
-      this.$store.dispatch("completeTask", this.task.id);
     }
   }
 };

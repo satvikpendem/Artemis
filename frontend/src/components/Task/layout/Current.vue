@@ -33,7 +33,7 @@
         <button class="time-increment-button" @click="incrementTime(5 ,'m')">+5</button>
         <button class="time-increment-button" @click="incrementTime(10 ,'m')">+10</button>
       </div>
-      <button id="complete-button" @click="moveTaskToCompleted">Complete</button>
+      <button id="complete-button" @click="completeTask">Complete</button>
     </section>
     <!-- <div class="col current-task-col">
       <section class="current-task" v-if="isTasks">
@@ -89,6 +89,9 @@ export default {
       if (!this.timerRunning) this.$store.dispatch("startTimer");
       else this.$store.dispatch("pauseTimer");
     },
+    completeTask() {
+      this.$store.dispatch("completeTask");
+    },
     incrementTime(timeValue, timeType) {}
   }
 };
@@ -101,6 +104,11 @@ export default {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
 
 .current-task {
@@ -153,12 +161,6 @@ button {
 
 .timer-state-button {
   width: 3rem;
-  transition: 0.25s;
-}
-
-.timer-state-button:hover {
-  width: 3.5rem;
-  transition: 0.25s;
 }
 
 #time-buttons {
@@ -171,18 +173,19 @@ button {
   display: flex;
   justify-content: space-between;
   width: 35vw;
-  padding: 2rem 0;
 }
 
 .time-increment-button {
   font-style: italic;
   font-size: 2rem;
+  padding: 3rem 0;
   transition: 0.25s;
 }
 
 .time-increment-button:hover {
   font-style: italic;
   font-size: 3rem;
+  padding: 1rem 0;
   transition: 0.25s;
 }
 
