@@ -92,7 +92,9 @@ export default {
     completeTask() {
       this.$store.dispatch("completeTask");
     },
-    incrementTime(timeValue, timeType) {}
+    incrementTime(timeValue, timeType) {
+      this.$store.dispatch("incrementTaskTime", { timeValue, timeType });
+    }
   }
 };
 </script>
@@ -118,7 +120,6 @@ export default {
 }
 
 .current-task-title {
-  /* font-size: 2vw; */
   font-size: calc(1rem + 1vw);
   margin: 1rem;
   font-weight: 700;
@@ -160,7 +161,7 @@ button {
 }
 
 .timer-state-button {
-  width: 3rem;
+  height: 3rem;
 }
 
 #time-buttons {

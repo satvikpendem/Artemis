@@ -32,16 +32,40 @@ export default new Vuex.Store({
           return state.taskList;
         case "todo":
           return state.taskList.filter(task => task.complete == false);
+        case "current":
+          return state.currentTask;
         case "complete":
           return state.taskList.filter(task => task.complete == true);
         default:
           throw new Error(
-            `Unknown option ${option} in taskFilter of "all", "todo", "complete"`
+            `Unknown option ${option} in taskFilter of "all", "todo", "current", complete"`
           );
       }
     },
     taskLength: (_, getters) => option => getters.taskFilter(option).length,
-    taskListLength: state => state.taskList.length,
+    // Generate readable versions of task properties
+    readable: _ => (
+      list,
+      option,
+      readableOption = "clock",
+      filterFunction = null
+    ) => {
+      switch (option) {
+        case "all":
+          return list.map(item => ({
+            ...item,
+            duration: _app.$duration.durationMomentToString(
+              item.duration,
+              readableOption
+            )
+          }));
+        case "one":
+          break;
+        default:
+          break;
+      }
+    },
+    // taskListLength: (state, getters) => state.taskList.length,
     todoTaskList: state =>
       state.taskList.filter(task => task.complete == false),
     completedTaskList: state =>
@@ -55,13 +79,9 @@ export default new Vuex.Store({
         );
       else return false;
     },
-    readableTaskList: (state, getters) => getters.readable(state.taskList),
+    readableTaskList: (state, getters) =>
+      getters.readable(state.taskList, "all"),
     // readableTodoTaskList: state => {},
-    readable: _ => list =>
-      list.map(item => ({
-        ...item,
-        duration: _app.$duration.durationMomentToString(item.duration, "clock")
-      })),
     readableCurrentTask: state => {
       if (state.currentTask) {
         return {
@@ -101,7 +121,9 @@ export default new Vuex.Store({
     setTimerRunning(state, value) {
       state.timerRunning = value;
     },
-    incrementTaskTime(state, index) {},
+    incrementTaskTime(state, { timeValue, timeType }) {
+      state.currentTask.duration.add(timeValue, timeType);
+    },
     decrementTaskTime(state, { timeValue, timeType }) {
       state.currentTask.duration.subtract(timeValue, timeType);
     }
