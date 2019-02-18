@@ -46,7 +46,6 @@ export default {
 
 .reverse {
   flex-direction: row-reverse;
-  /* background-color: red; */
 }
 
 #duration {
