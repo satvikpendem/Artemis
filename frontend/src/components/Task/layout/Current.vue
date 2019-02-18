@@ -65,9 +65,7 @@ export default {
     }
   },
   watch: {
-    completedCurrentTask(newVal, oldVal) {
-      // console.log("Old: ", oldVal);
-      // console.log("New: ", newVal);
+    completedCurrentTask(newVal) {
       if (newVal) this.$store.dispatch("completeTask");
     }
   }
