@@ -62,22 +62,17 @@ export default new Vuex.Store({
           break;
       }
     },
-    // taskListLength: (state, getters) => state.taskList.length,
-    todoTaskList: state =>
-      state.taskList.filter(task => task.complete == false),
-    completedTaskList: state =>
-      state.taskList.filter(task => task.complete == true),
     completedCurrentTask: state => {
       /* If the timer runs to zero (every time value is 0)
       then the task has been completed and can be moved to the completed array */
       if (state.currentTask)
         return Object.values(state.currentTask.duration._data).every(
-          value => value == 0
+          value => parseInt(value) <= 0
         );
       else return false;
     },
-    readableTaskList: (state, getters) =>
-      getters.readable(state.taskList, "all"),
+    // readableTaskList: (state, getters) =>
+    //   getters.readable(state.taskList, "all"),
     readableCurrentTask: state => {
       if (state.currentTask) {
         return {
@@ -111,9 +106,12 @@ export default new Vuex.Store({
     completeTask: (state, index) =>
       (state.taskList[index].complete =
         state.taskList.length > 0 ? true : false),
-    setCurrentTask: state =>
+    setCurrentTask: (state, index) =>
       (state.currentTask =
-        state.taskList.length > 0 ? state.taskList[0] : null),
+        state.taskList.length > 0 ? state.taskList[index] : null),
+    setTimer(state, value) {
+      state.timer = value;
+    },
     setTimerRunning(state, value) {
       state.timerRunning = value;
     },
@@ -135,8 +133,6 @@ export default new Vuex.Store({
         parsedDuration &&
         (await context.dispatch("validateTask", parsedTask))
       ) {
-        // Vue.set(task, "id", nanoid());
-        // Vue.set(task, "complete", false);
         parsedTask.id = nanoid();
         parsedTask.complete = false;
         await context.commit("addTask", parsedTask);
@@ -149,7 +145,9 @@ export default new Vuex.Store({
       context.dispatch("setCurrentTask");
     },
     async completeTask(context) {
-      await context.commit("completeTask", 0);
+      let taskId = context.getters.taskFilter("todo")[0].id;
+      let index = await context.dispatch("getIndexById", taskId);
+      await context.commit("completeTask", index);
       context.dispatch("setCurrentTask");
     },
     async validateTask(context, task) {
@@ -159,15 +157,7 @@ export default new Vuex.Store({
     },
     validateDuration(_, { duration }) {
       if (duration) {
-        let zeroDuration = _app.$duration.zero();
-        // FIXME: Edge case with >24 hour tasks
-        if (
-          duration.hours() > zeroDuration.hours() ||
-          duration.minutes() > zeroDuration.minutes() ||
-          duration.seconds() > zeroDuration.seconds()
-        )
-          return true;
-        else return false;
+        return Object.values(duration._data).some(value => parseInt(value) > 0);
       } else return false;
     },
     validateTitle(_, { title }) {
@@ -182,6 +172,10 @@ export default new Vuex.Store({
       }
     },
     startTimer(context) {
+      /*
+       * It is bad practice to modify context.state directly without mutators in
+       * Vuex but there might not be an easy way to handle workers
+       */
       context.commit("setTimerRunning", true);
       context.state.timer = _app.$workerTimers.setInterval(() => {
         context.dispatch("decrementTaskTime", { timeValue: 1, timeType: "s" });
@@ -192,8 +186,16 @@ export default new Vuex.Store({
       _app.$workerTimers.clearInterval(context.state.timer);
       context.state.timer = null;
     },
-    setCurrentTask(context) {
-      context.commit("setCurrentTask");
+    async setCurrentTask(context) {
+      let index;
+      if (context.getters.taskFilter("todo").length != 0) {
+        let taskId = context.getters.taskFilter("todo")[0].id;
+        index = await context.dispatch("getIndexById", taskId);
+      } else {
+        index = -1;
+        context.dispatch("pauseTimer");
+      }
+      context.commit("setCurrentTask", index);
     },
     async getIndexById(context, id) {
       let index = await context.state.taskList.findIndex(
