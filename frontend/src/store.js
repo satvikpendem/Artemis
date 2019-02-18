@@ -71,8 +71,6 @@ export default new Vuex.Store({
         );
       else return false;
     },
-    // readableTaskList: (state, getters) =>
-    //   getters.readable(state.taskList, "all"),
     readableCurrentTask: state => {
       if (state.currentTask) {
         return {
@@ -84,14 +82,15 @@ export default new Vuex.Store({
         };
       } else return false;
     },
-    readableTotalTime: state => {
+    readableTotalTime: (_, getters) => {
       // function to add durations together
       const durationAdder = (accumulator, element) => accumulator.add(element);
       /* Extract duration from each TaskItem
       and use durationAdder function to add them together.
       Classic map-reduce use case */
       let zeroDuration = _app.$moment.duration(0);
-      let rawTime = state.taskList
+      let rawTime = getters
+        .taskFilter("todo")
         .map(task => task.duration)
         .reduce(durationAdder, zeroDuration);
 

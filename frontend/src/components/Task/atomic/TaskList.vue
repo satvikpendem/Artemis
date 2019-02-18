@@ -1,7 +1,7 @@
 <template>
   <div id="task-list">
     <template v-for="task in sourceList">
-      <TaskListItem :key="task.id" :task="task" v-bind:class="classes"/>
+      <TaskListItem :key="task.id" :task="task" :reverse="reverse"/>
     </template>
   </div>
 </template>
@@ -13,9 +13,7 @@ export default {
   name: "TaskList",
   props: {
     sourceList: { type: Array },
-    classes: {
-      type: String
-    }
+    reverse: { type: Boolean, default: false }
   },
   components: { TaskListItem }
 };

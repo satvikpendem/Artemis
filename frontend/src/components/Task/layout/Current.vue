@@ -104,7 +104,6 @@ export default {
 }
 
 .current-task-duration {
-  /* TODO: Adjust font sizing for responsive */
   font-size: calc(4rem + 2vw);
   font-variant-numeric: tabular-nums;
 }
@@ -177,5 +176,31 @@ button {
   background-color: var(--accent-color);
   color: var(--text-color-opposite);
   transition: 0.25s;
+}
+
+@media (max-width: 900px) {
+  #current {
+    margin-top: 1rem;
+  }
+
+  .current-task-title {
+    height: 7rem;
+  }
+
+  .current-task-duration {
+    font-size: 18vw;
+  }
+
+  .total-time-content #readableTotalTime {
+    font-size: 10vw;
+  }
+
+  .total-time-content #totalTimeLabel {
+    font-size: 5vw;
+  }
+
+  #add-time-buttons {
+    width: 80vw;
+  }
 }
 </style>

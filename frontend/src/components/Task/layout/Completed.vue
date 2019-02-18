@@ -1,7 +1,7 @@
 <template>
   <div id="completed">
     <span id="completed-label">Completed</span>
-    <TaskList id="task-list" :sourceList="complete" :classes="'reverse'"/>
+    <TaskList id="task-list" :sourceList="complete" :reverse="true"/>
   </div>
 </template>
 

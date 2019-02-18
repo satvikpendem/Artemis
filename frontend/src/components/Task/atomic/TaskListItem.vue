@@ -1,6 +1,6 @@
 <template>
-  <div id="task-list-item">
-    <div class="task">
+  <div id="task-list-item" :class="classObject">
+    <div class="task" :class="classObject">
       <span id="duration">{{ task.duration }}</span>
       <span id="title">{{ task.title }}</span>
     </div>
@@ -16,10 +16,18 @@ export default {
   props: {
     task: {
       type: Object
-    }
+    },
+    reverse: { type: Boolean, default: false }
   },
   components: {
     AtomicButton
+  },
+  computed: {
+    classObject() {
+      return {
+        reverse: this.reverse
+      };
+    }
   },
   methods: {
     deleteTask() {
@@ -38,6 +46,7 @@ export default {
 
 .reverse {
   flex-direction: row-reverse;
+  /* background-color: red; */
 }
 
 #duration {
@@ -49,7 +58,7 @@ export default {
 }
 
 #title {
-  padding-left: 10px;
+  padding: 10px;
   max-height: 5rem;
   display: inline-block;
   overflow: auto;
