@@ -1,26 +1,23 @@
 <template>
   <div id="task-list">
-    <template v-for="task in readableTaskList">
-      <TaskListItem :key="task.id" :task="task"/>
+    <template v-for="task in sourceList">
+      <TaskListItem :key="task.id" :task="task" v-bind:class="classes"/>
     </template>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
 import TaskListItem from "@/components/Task/atomic/TaskListItem";
 
 export default {
   name: "TaskList",
-  components: { TaskListItem },
-  computed: {
-    ...mapGetters(["readableTaskList"])
-    // taskList() {
-    //   return this.$store.getters.readableTaskList;
-    // }
+  props: {
+    sourceList: { type: Array },
+    classes: {
+      type: String
+    }
   },
-  methods: {}
+  components: { TaskListItem }
 };
 </script>
 

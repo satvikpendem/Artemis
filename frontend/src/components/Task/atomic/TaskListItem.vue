@@ -33,6 +33,11 @@ export default {
 #task-list-item {
   margin-bottom: 1rem;
   display: flex;
+  text-align: left;
+}
+
+.reverse {
+  flex-direction: row-reverse;
 }
 
 #duration {

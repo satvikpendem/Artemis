@@ -23,9 +23,6 @@ export default new Vuex.Store({
     timerRunning: false
   },
   getters: {
-    // taskList: state => {
-    //   return state.taskList;
-    // },
     taskFilter: state => option => {
       switch (option) {
         case "all":
@@ -81,7 +78,6 @@ export default new Vuex.Store({
     },
     readableTaskList: (state, getters) =>
       getters.readable(state.taskList, "all"),
-    // readableTodoTaskList: state => {},
     readableCurrentTask: state => {
       if (state.currentTask) {
         return {
@@ -139,8 +135,10 @@ export default new Vuex.Store({
         parsedDuration &&
         (await context.dispatch("validateTask", parsedTask))
       ) {
-        task.id = nanoid();
-        task.complete = false;
+        // Vue.set(task, "id", nanoid());
+        // Vue.set(task, "complete", false);
+        parsedTask.id = nanoid();
+        parsedTask.complete = false;
         await context.commit("addTask", parsedTask);
         context.dispatch("setCurrentTask");
       } else throw new Error("Task not validated");

@@ -1,7 +1,7 @@
 <template>
   <div id="to-do">
     <span id="to-do-label">To-Do</span>
-    <TaskList/>
+    <TaskList :sourceList="todo"/>
     <TaskListItemAdd/>
   </div>
 </template>
@@ -12,10 +12,17 @@ import TaskListItemAdd from "@/components/Task/atomic/TaskListItemAdd";
 
 export default {
   name: "to-do",
-  props: ["tasks"],
   components: {
     TaskList,
     TaskListItemAdd
+  },
+  computed: {
+    todo() {
+      return this.$store.getters.readable(
+        this.$store.getters.taskFilter("todo"),
+        "all"
+      );
+    }
   }
 };
 </script>
