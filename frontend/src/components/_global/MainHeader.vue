@@ -2,9 +2,7 @@
   <header class="main-header">
     <nav>
       <!-- a tag will refresh the page on click, so don't add it yet -->
-      <!-- <a href="/"> -->
       <img id="logo" src="@/../public/assets/img/logo/logo_outline.svg" alt="logo_outline">
-      <!-- </a> -->
     </nav>
   </header>
 </template>
@@ -18,7 +16,7 @@ export default {
 <style scoped>
 .main-header {
   height: 3rem;
-  background-color: var(--background-color);
+  background-color: var(--background-color-light);
   display: flex;
   align-items: center;
   justify-content: center;

@@ -3,20 +3,25 @@ import moment from "moment";
 export default {
   install(Vue) {
     Vue.prototype.$duration = {};
-    Vue.prototype.$duration.durationMomentToString = _durationMoment => {
-      let hourString = _durationMoment
-        .hours()
-        .toString()
-        .padStart(2, "0");
-      let minuteString = _durationMoment
-        .minutes()
-        .toString()
-        .padStart(2, "0");
-      let secondString = _durationMoment
-        .seconds()
-        .toString()
-        .padStart(2, "0");
-      return `${hourString}:${minuteString}:${secondString}`;
+    Vue.prototype.$duration.zero = () => moment.duration(0);
+    Vue.prototype.$duration.durationMomentToString = (
+      _durationMoment,
+      type
+    ) => {
+      if (type == "clock") {
+        let durationJSON = durationMomentToJSON(_durationMoment);
+        let hourString = durationJSON.hours.padStart(2, "0");
+        let minuteString = durationJSON.minutes.padStart(2, "0");
+        let secondString = durationJSON.seconds.padStart(2, "0");
+        return `${hourString}:${minuteString}:${secondString}`;
+      } else if (type == "separate") {
+        return durationMomentToJSON(_durationMoment);
+      }
+    };
+    let durationMomentToJSON = _durationMoment => {
+      let data = _durationMoment._data;
+      Object.keys(data).forEach(key => (data[key] = String(data[key])));
+      return data;
     };
     Vue.prototype.$duration.stringToDurationMoment = _durationString => {
       // remove whitespace
@@ -52,7 +57,6 @@ export default {
           */
           if (match.length == 3) {
             // hours (and potentially minutes)
-            // console.log(match[1]);
             durationMoment = moment.duration({
               hours: match[1],
               // check if minutes exists
@@ -60,8 +64,6 @@ export default {
             });
           } else {
             // only minutes
-            // console.log(match[0]);
-            // console.log(match[1]);
             durationMoment = moment.duration({
               minutes: match[1]
             });

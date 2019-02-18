@@ -5,21 +5,26 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "size": "npm run build && size-limit"
   },
   "dependencies": {
-    "moment": "^2.23.0",
-    "vue": "^2.5.17",
+    "@vue/cli": "^3.4.0",
+    "moment": "^2.24.0",
+    "nanoid": "^2.0.1",
+    "vue": "^2.6.1",
+    "vuex": "^3.0.1",
     "worker-timers": "^5.0.9"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.2.0",
     "@vue/cli-plugin-eslint": "^3.2.0",
-    "@vue/cli-service": "^3.2.0",
+    "@vue/cli-service": "^3.4.0",
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.0.0-0",
-    "vue-template-compiler": "^2.5.17"
+    "eslint": "^5.13.0",
+    "eslint-plugin-vue": "^5.1.0",
+    "size-limit": "^0.21.1",
+    "vue-template-compiler": "^2.6.1"
   },
   "eslintConfig": {
     "root": true,
@@ -40,6 +45,11 @@
       "autoprefixer": {}
     }
   },
+  "size-limit": [
+    {
+      "path": "dist/*"
+    }
+  ],
   "browserslist": [
     "> 1%",
     "last 2 versions",

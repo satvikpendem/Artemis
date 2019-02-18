@@ -86,6 +86,8 @@ docs/_book
 
 test/
 
+dist/
+
 ### Elixir ###
 /_build
 /cover

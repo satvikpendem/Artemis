@@ -21,7 +21,8 @@ export default {
   /* Colors */
 
   /* Main */
-  --background-color: #fff;
+  --background-color-light: #fff;
+  --background-color-dark: #282828;
   --main-color: #fff;
   --accent-color: #5200ff;
 
@@ -29,5 +30,8 @@ export default {
   --text-color: #282828;
   --text-color-opposite: #fff;
   --text-color-disabled: #808080;
+
+  height: 100vh;
+  /* overflow: hidden; */
 }
 </style>
