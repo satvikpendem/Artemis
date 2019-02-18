@@ -29,7 +29,7 @@ If you'd like to use Artemis locally, simply clone and spin up a Vue server:
 git clone https://github.com/satvikpendem/Artemis
 cd Artemis/frontend
 npm install
-vue serve
+npm run serve
 ```
 
 The app will be live on `localhost:8080`, which you can navigate to with your browser. The app is fully client side at this time, with the backend integration with Elixir coming soon. These instructions will change at that time.
