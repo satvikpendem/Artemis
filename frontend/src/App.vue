@@ -6,7 +6,6 @@
 
 <script>
 import TaskView from "@/views/TaskView";
-// import TaskList from "@/components/Task/TaskList.vue";
 
 export default {
   name: "app",

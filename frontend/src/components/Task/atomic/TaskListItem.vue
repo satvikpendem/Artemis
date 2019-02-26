@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import AtomicButton from "@/components/_global/_atomic/AtomicButton.vue";
+import AtomicButton from "@/components/_global/atomic/AtomicButton.vue";
 
 export default {
   name: "TaskListItem",
