@@ -1,12 +1,19 @@
 <template>
   <div id="task-list">
-    <template v-for="task in sourceList">
+    <draggable v-model="sourceList">
+      <template v-for="task in sourceList">
+        <TaskListItem :key="task.id" :task="task" :reverse="reverse"/>
+      </template>
+    </draggable>
+
+    <!-- <template v-for="task in sourceList">
       <TaskListItem :key="task.id" :task="task" :reverse="reverse"/>
-    </template>
+    </template>-->
   </div>
 </template>
 
 <script>
+import draggable from "vuedraggable";
 import TaskListItem from "@/components/Task/atomic/TaskListItem";
 
 export default {
@@ -15,9 +22,25 @@ export default {
     sourceList: { type: Array },
     reverse: { type: Boolean, default: false }
   },
-  components: { TaskListItem }
+  components: { TaskListItem, draggable },
+  computed: {
+    computedList: {
+      get() {
+        return this.$store.getters.taskFilter(sourceList);
+      },
+      set(value) {
+        this.$store.dispatch("updateList", value);
+      }
+    }
+  }
 };
 </script>
 
 <style scoped>
+.draggable {
+  width: 300px;
+  background-color: red;
+  padding: 20px;
+  user-select: none;
+}
 </style>

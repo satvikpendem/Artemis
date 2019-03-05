@@ -9,7 +9,7 @@
     </section>
     <section class="total-time-content">
       <p id="readableTotalTime">{{ readableTotalTime }}</p>
-      <p id="totalTimeLabel">Total Time</p>
+      <p id="totalTimeLabel">Time Remaining</p>
     </section>
     <section v-if="readableCurrentTask">
       <button v-if="!timerRunning" @click="controlTimerPlay">
