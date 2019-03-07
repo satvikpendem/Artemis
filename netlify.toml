@@ -2,3 +2,8 @@
   base = "frontend/"
   command = "npm run build"
   publish = "frontend/dist/"
+
+[context.next]
+  base = "frontend/"
+  command = "npm run build"
+  publish = "frontend/dist/"
