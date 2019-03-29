@@ -1,4 +1,4 @@
-[context.app]
+[context.goals]
   base = "frontend/"
   command = "npm run build"
   publish = "frontend/dist/"
