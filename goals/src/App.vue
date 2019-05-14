@@ -1,0 +1,22 @@
+<template>
+  <div id="app">
+    <GoalList/>
+  </div>
+</template>
+
+<script>
+import GoalList from '@/components/GoalList.vue'
+
+export default {
+  name: 'app',
+  components: {
+    GoalList
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: "Inter", sans-serif; 
+}
+</style>
