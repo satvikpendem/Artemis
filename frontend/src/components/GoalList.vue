@@ -1,8 +1,12 @@
 <template>
   <div class="goal-list">
-    <template v-for="goal in zip(goals)">
-      <GoalItem v-bind:key="goal.id" :goal="goal"/>
+    <template>
+      <GoalItem id="current-timespan" :goal="zip(goals)[0]"/>
     </template>
+    <div id="later-timespans">
+      <GoalItem v-bind:key="goal.id" v-for="goal in zip(goals).slice(1)" :goal="goal"/>
+      <!-- class="goal-list-class" -->
+    </div>
   </div>
 </template>
 
@@ -14,15 +18,15 @@ export default {
   data() {
     return {
       goals: {
-        today: "a",
-        week: "b",
-        month: "c",
-        quarter: "d"
+        today: "",
+        week: "",
+        month: "",
+        quarter: ""
       }
     };
   },
   components: {
-    GoalItem,
+    GoalItem
   },
   methods: {
     zip(obj) {
@@ -49,11 +53,29 @@ export default {
 };
 </script>
 
-<style>
-.goal-list {
+<style scoped>
+#later-timespans {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding-top: 100px;
+  justify-content: space-around;
   align-items: center;
+}
+
+.test {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+</style>
+
+<style>
+.goal-list-class h1 {
+  font-size: 2rem;
+}
+
+.goal-list-class .goal-field,
+.goal-list-class input,
+.goal-list-class form {
+  font-size: 1rem;
 }
 </style>

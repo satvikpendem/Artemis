@@ -18,5 +18,7 @@ export default {
 <style>
 #app {
   font-family: "Inter", sans-serif; 
+  height: 100vh;
+  transition: 0.5s;
 }
 </style>

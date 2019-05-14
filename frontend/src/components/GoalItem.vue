@@ -2,11 +2,18 @@
   <div class="goal-item">
     <h1>{{ goal.description }}</h1>
     <form v-if="isEditing" @submit.prevent="setGoal" @keydown.escape="setGoal">
-      <input type="text" v-model="editField" @blur="setGoal" v-focus :placeholder="placeholder">
+      <input
+        type="text"
+        v-model="editField"
+        @blur="setGoal"
+        v-focus
+        :placeholder="placeholder"
+        class="goal-field"
+      >
     </form>
-    <div v-else class="goal-field" @click="isEditing = true">
-      <span v-if="editField" class="edit-field">{{ editField }}</span>
-      <span v-else class="placeholder-field">{{ placeholder }}</span>
+    <div v-else @click="isEditing = true">
+      <p v-if="editField" class="goal-field">{{ editField }}</p>
+      <p v-else class="placeholder-field">{{ placeholder }}</p>
     </div>
   </div>
 </template>
@@ -29,6 +36,9 @@ export default {
       }
     }
   },
+  mounted() {
+    this.getGoal(this.goal.timespan);
+  },
   methods: {
     fieldEdit() {
       if (this.editField) this.editField = "";
@@ -48,7 +58,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .goal-item {
   display: flex;
@@ -64,24 +73,19 @@ h1 {
 }
 
 input,
-form,
-.goal-field,
-.edit-field {
+p {
   font-family: inherit;
   font-weight: 400;
-  font-size: 40px;
-
-  width: 50vw;
-  max-height: 50vh;
+  font-size: 3rem;
 
   text-align: center;
   border: none;
   background-image: none;
   background-color: transparent;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none;
 
+  padding: 0;
+  margin: 0;
   outline: none;
 }
 
