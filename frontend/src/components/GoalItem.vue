@@ -5,10 +5,10 @@
       <input
         type="text"
         v-model="editField"
-        @blur="setGoal"
         v-focus
         :placeholder="placeholder"
         class="goal-field"
+        @blur="setGoal"
       >
     </form>
     <div v-else @click="isEditing = true">
@@ -77,6 +77,7 @@ p {
   font-family: inherit;
   font-weight: 400;
   font-size: 3rem;
+  width: 75vw;
 
   text-align: center;
   border: none;

@@ -1,11 +1,15 @@
 <template>
   <div class="goal-list">
-    <template>
+    <div class="today">
       <GoalItem id="current-timespan" :goal="zip(goals)[0]"/>
-    </template>
+    </div>
     <div id="later-timespans">
-      <GoalItem v-bind:key="goal.id" v-for="goal in zip(goals).slice(1)" :goal="goal"/>
-      <!-- class="goal-list-class" -->
+      <GoalItem
+        v-bind:key="goal.id"
+        v-for="goal in zip(goals).slice(1)"
+        :goal="goal"
+        class="goal-list-class"
+      />
     </div>
   </div>
 </template>
@@ -66,6 +70,10 @@ export default {
   height: 100px;
   background-color: red;
 }
+
+.today {
+  padding-top: 20vh;
+}
 </style>
 
 <style>
@@ -73,9 +81,10 @@ export default {
   font-size: 2rem;
 }
 
-.goal-list-class .goal-field,
+.goal-list-class p,
 .goal-list-class input,
 .goal-list-class form {
-  font-size: 1rem;
+  font-size: 2rem;
+  width: 25vw;
 }
 </style>
