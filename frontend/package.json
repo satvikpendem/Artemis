@@ -1,6 +1,6 @@
 {
-  "name": "goals",
-  "version": "0.1.0",
+  "name": "goals-by-artemis",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
