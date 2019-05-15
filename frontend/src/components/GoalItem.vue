@@ -12,7 +12,7 @@
       >
     </form>
     <div v-else @click="isEditing = true">
-      <p v-if="editField" class="goal-field">{{ editField }}</p>
+      <p v-if="editField">{{ editField }}</p>
       <p v-else class="placeholder-field">{{ placeholder }}</p>
     </div>
   </div>
@@ -74,27 +74,21 @@ h1 {
 
 input,
 p {
+  padding: 0;
+  margin: 0;
+  width: 75vw;
+
   font-family: inherit;
   font-weight: 400;
   font-size: 3rem;
-  width: 75vw;
 
   text-align: center;
   border: none;
-  background-image: none;
-  background-color: transparent;
   box-shadow: none;
-
-  padding: 0;
-  margin: 0;
   outline: none;
 }
 
 .placeholder-field {
   color: gray;
-}
-
-.dark {
-  color: white;
 }
 </style>

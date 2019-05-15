@@ -1,6 +1,6 @@
 <template>
   <label class="toggle-component">
-    <input type="checkbox" name="toggle" id="toggle" @click="toggleMode">
+    <input type="checkbox" name="toggle" id="toggle" @click="toggleMode" v-model="isToggled">
     <svg viewBox="0 0 218 132">
       <rect
         class="background"

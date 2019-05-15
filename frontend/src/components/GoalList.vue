@@ -27,7 +27,8 @@ export default {
         today: "",
         week: "",
         month: "",
-        quarter: ""
+        quarter: "",
+        year: ""
       },
       darkMode: false
     };
@@ -52,6 +53,7 @@ export default {
         case "week":
         case "month":
         case "quarter":
+        case "year":
           return "This " + val + ",";
         default:
           return "Description";
@@ -66,12 +68,12 @@ export default {
 
 <style scoped>
 .goal-list {
-  transition: var(--t-speed);
   height: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+  transition: var(--t-speed);
 }
 
 .dark {
@@ -81,14 +83,9 @@ export default {
 
 #later-timespans {
   display: flex;
-  /* padding-top: 100px; */
   width: 100vw;
   justify-content: space-around;
   align-items: center;
-}
-
-.today {
-  /* padding-top: 20vh; */
 }
 </style>
 
@@ -97,10 +94,14 @@ export default {
   font-size: 2rem;
 }
 
-.goal-list-class p,
 .goal-list-class input,
-.goal-list-class form {
+.goal-list-class p {
   font-size: 2rem;
   width: 25vw;
+}
+
+.dark input {
+  color: white;
+  background-color: black;
 }
 </style>
