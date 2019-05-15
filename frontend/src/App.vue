@@ -17,12 +17,11 @@ export default {
 
 <style>
 :root {
-  --t-speed: 0.25s;
+  --t-speed: 0.5s;
 }
 
 #app {
   font-family: "Inter", sans-serif; 
   height: 100vh;
-  transition: 0.5s;
 }
 </style>

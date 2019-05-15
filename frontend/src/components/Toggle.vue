@@ -262,7 +262,6 @@ export default {
 
 <style scoped>
 .toggle-component {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;

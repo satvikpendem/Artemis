@@ -1,5 +1,5 @@
 <template>
-  <div class="goal-list" :class="{ dark: darkMode }">
+  <div class="goal-list" :class="{ dark: darkMode, transition: shouldTransition }">
     <div class="today">
       <GoalItem id="current-timespan" :goal="zip(goals)[0]"/>
     </div>
@@ -30,19 +30,22 @@ export default {
         quarter: "",
         year: ""
       },
-      darkMode: false
+      darkMode: false,
+      shouldTransition: false,
     };
   },
   components: {
     GoalItem,
     Toggle
   },
-  beforeMount() {
-      /*
-        Get the color theme (dark/light) from Chrome Sync settings before rendering.
-        Otherwise, weird transition effects occur.
-      */
+  created() {
     this.getTheme();
+  },
+  beforeUpdate() {
+    this.shouldTransition = true;
+  },
+  beforeDestroy() {
+    this.shouldTransition = false;
   },
   methods: {
     zip(obj) {
@@ -85,6 +88,9 @@ export default {
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+}
+
+.transition {
   transition: var(--t-speed);
 }
 
