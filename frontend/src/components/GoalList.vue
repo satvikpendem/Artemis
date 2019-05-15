@@ -37,6 +37,13 @@ export default {
     GoalItem,
     Toggle
   },
+  beforeMount() {
+      /*
+        Get the color theme (dark/light) from Chrome Sync settings before rendering.
+        Otherwise, weird transition effects occur.
+      */
+    this.getTheme();
+  },
   methods: {
     zip(obj) {
       let describe = this.describe;
@@ -61,6 +68,11 @@ export default {
     },
     handleToggle(data) {
       this.darkMode = data;
+    },
+    getTheme() {
+      chrome.storage.sync.get("theme", obj => {
+        this.darkMode = obj["theme"] == "dark" ? true : false;
+      });
     }
   }
 };

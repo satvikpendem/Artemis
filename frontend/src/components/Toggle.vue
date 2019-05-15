@@ -253,9 +253,7 @@ export default {
     },
     getTheme() {
       chrome.storage.sync.get("theme", obj => {
-        let themeVal = obj["theme"];
-        this.isToggled = themeVal == "dark" ? true : false;
-        this.$emit("toggleMode", this.isToggled);
+        this.isToggled = obj["theme"] == "dark" ? true : false;
       });
     }
   }
