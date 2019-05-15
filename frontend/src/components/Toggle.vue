@@ -239,10 +239,24 @@ export default {
       isToggled: false
     };
   },
+  mounted() {
+    this.getTheme();
+  },
   methods: {
     toggleMode() {
       this.isToggled = !this.isToggled;
       this.$emit("toggleMode", this.isToggled);
+      chrome.storage.sync.set(
+        { theme: this.isToggled ? "dark" : "light" },
+        null
+      );
+    },
+    getTheme() {
+      chrome.storage.sync.get("theme", obj => {
+        let themeVal = obj["theme"];
+        this.isToggled = themeVal == "dark" ? true : false;
+        this.$emit("toggleMode", this.isToggled);
+      });
     }
   }
 };
