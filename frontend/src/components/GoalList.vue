@@ -1,5 +1,5 @@
 <template>
-  <div class="goal-list">
+  <div class="goal-list" :class="{ dark: darkMode }">
     <div class="today">
       <GoalItem id="current-timespan" :goal="zip(goals)[0]"/>
     </div>
@@ -11,11 +11,13 @@
         class="goal-list-class"
       />
     </div>
+    <Toggle @toggleMode="handleToggle"/>
   </div>
 </template>
 
 <script>
 import GoalItem from "@/components/GoalItem.vue";
+import Toggle from "@/components/Toggle.vue";
 
 export default {
   name: "GoalList",
@@ -26,11 +28,13 @@ export default {
         week: "",
         month: "",
         quarter: ""
-      }
+      },
+      darkMode: false
     };
   },
   components: {
-    GoalItem
+    GoalItem,
+    Toggle
   },
   methods: {
     zip(obj) {
@@ -52,27 +56,39 @@ export default {
         default:
           return "Description";
       }
+    },
+    handleToggle(data) {
+      this.darkMode = data;
     }
   }
 };
 </script>
 
 <style scoped>
+.goal-list {
+  transition: var(--t-speed);
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dark {
+  background-color: black;
+  color: white;
+}
+
 #later-timespans {
   display: flex;
-  padding-top: 100px;
+  /* padding-top: 100px; */
+  width: 100vw;
   justify-content: space-around;
   align-items: center;
 }
 
-.test {
-  width: 100px;
-  height: 100px;
-  background-color: red;
-}
-
 .today {
-  padding-top: 20vh;
+  /* padding-top: 20vh; */
 }
 </style>
 

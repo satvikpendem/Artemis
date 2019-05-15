@@ -16,6 +16,10 @@ export default {
 </script>
 
 <style>
+:root {
+  --t-speed: 0.5s;
+}
+
 #app {
   font-family: "Inter", sans-serif; 
   height: 100vh;

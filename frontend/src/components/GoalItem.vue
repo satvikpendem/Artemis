@@ -93,4 +93,8 @@ p {
 .placeholder-field {
   color: gray;
 }
+
+.dark {
+  color: white;
+}
 </style>
