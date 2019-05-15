@@ -17,7 +17,7 @@ export default {
 
 <style>
 :root {
-  --t-speed: 0.5s;
+  --t-speed: 0.25s;
 }
 
 #app {

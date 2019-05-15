@@ -85,7 +85,8 @@ export default {
   display: flex;
   width: 100vw;
   justify-content: space-around;
-  align-items: center;
+  /* align-items: center; */
+  align-items: baseline;
 }
 </style>
 
@@ -98,6 +99,7 @@ export default {
 .goal-list-class p {
   font-size: 2rem;
   width: 25vw;
+  /* overflow: auto; */
 }
 
 .dark input {

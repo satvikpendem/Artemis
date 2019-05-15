@@ -239,7 +239,7 @@ export default {
       isToggled: false
     };
   },
-  mounted() {
+  beforeMount() {
     this.getTheme();
   },
   methods: {
