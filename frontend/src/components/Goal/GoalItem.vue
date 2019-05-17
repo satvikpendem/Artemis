@@ -45,13 +45,15 @@ export default {
       else this.editField = "Edited"; // should not reach this case
     },
     getGoal(timespan) {
+      // eslint-disable-next-line no-console
       chrome.storage.sync.get(timespan, obj => {
         this.editField = obj[timespan];
       });
     },
     setGoal() {
       this.isEditing = false;
-      let timespan = this.goal.timespan;
+      let timespan = this.goal.timespan; 
+      // eslint-disable-next-line no-console
       chrome.storage.sync.set({ [timespan]: this.editField }, null);
     }
   }

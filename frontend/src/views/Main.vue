@@ -1,5 +1,5 @@
 <template>
-  <div id="main">
+  <div id="main" class="animate">
     <Header/>
     <GoalList/>
   </div>
@@ -18,5 +18,11 @@ export default {
 <style>
 #main {
   height: 100%;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.animate > * {
+  transition: var(--t-speed);
 }
 </style>

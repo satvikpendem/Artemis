@@ -1,5 +1,5 @@
 <template>
-  <label class="toggle-component">
+  <label class="toggle">
     <input type="checkbox" name="toggle" id="toggle" @click="toggleMode" v-model="isToggled">
     <svg viewBox="0 0 218 132">
       <rect
@@ -250,14 +250,16 @@ export default {
   methods: {
     toggleMode() {
       this.isToggled = !this.isToggled;
-      // this.$emit("toggleMode", this.isToggled);
-      this.$store.dispatch("SET_THEME", this.$util.darkBooleanToTheme(this.isToggled));
-      chrome.storage.sync.set(
-        { theme: this.THEME_VAL },
-        null
+      this.$store.dispatch(
+        "SET_THEME",
+        this.$util.darkBooleanToTheme(this.isToggled)
       );
+
+      // eslint-disable-next-line no-console
+      chrome.storage.sync.set({ theme: this.THEME_VAL }, null);
     },
     getTheme() {
+      // eslint-disable-next-line no-console
       chrome.storage.sync.get("theme", obj => {
         this.isToggled = this.$util.themeToDarkBoolean(obj["theme"]);
       });
@@ -267,12 +269,6 @@ export default {
 </script>
 
 <style scoped>
-.toggle-component {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 input {
   opacity: 0;
   width: 0;
