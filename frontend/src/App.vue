@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <GoalList/>
+    <Main/>
   </div>
 </template>
 
 <script>
-import GoalList from '@/components/GoalList.vue'
+import Main from '@/views/Main.vue'
 
 export default {
   name: 'app',
   components: {
-    GoalList
+    Main
   }
 }
 </script>

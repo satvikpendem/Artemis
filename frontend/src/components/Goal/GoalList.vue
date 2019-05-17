@@ -1,5 +1,6 @@
 <template>
-  <div class="goal-list" :class="{ dark: darkMode, transition: shouldTransition }">
+  <!-- <div class="goal-list" :class="{ dark: darkMode, transition: shouldTransition }"> -->
+  <div class="goal-list" :class="{ dark: IS_DARK_THEME }">
     <div class="today">
       <GoalItem id="current-timespan" :goal="zip(goals)[0]"/>
     </div>
@@ -11,13 +12,15 @@
         class="goal-list-class"
       />
     </div>
-    <Toggle @toggleMode="handleToggle"/>
+    <!-- <Toggle @toggleMode="handleToggle"/> -->
   </div>
 </template>
 
 <script>
-import GoalItem from "@/components/GoalItem.vue";
-import Toggle from "@/components/Toggle.vue";
+import GoalItem from "@/components/Goal/GoalItem.vue";
+import Toggle from "@/components/_Global/Toggle.vue";
+
+import { mapGetters } from 'vuex'
 
 export default {
   name: "GoalList",
@@ -30,23 +33,26 @@ export default {
         quarter: "",
         year: ""
       },
-      darkMode: false,
-      shouldTransition: false,
+      // darkMode: false,
+      // shouldTransition: false,
     };
   },
   components: {
     GoalItem,
-    Toggle
+    // Toggle
+  },
+  computed: {
+    ...mapGetters(["IS_DARK_THEME"])
   },
   created() {
     this.getTheme();
   },
-  beforeUpdate() {
-    this.shouldTransition = true;
-  },
-  beforeDestroy() {
-    this.shouldTransition = false;
-  },
+  // beforeUpdate() {
+  //   this.shouldTransition = true;
+  // },
+  // beforeDestroy() {
+  //   this.shouldTransition = false;
+  // },
   methods: {
     zip(obj) {
       let describe = this.describe;
@@ -69,30 +75,32 @@ export default {
           return "Description";
       }
     },
-    handleToggle(data) {
-      this.darkMode = data;
-    },
-    getTheme() {
-      chrome.storage.sync.get("theme", obj => {
-        this.darkMode = obj["theme"] == "dark" ? true : false;
-      });
-    }
+    // handleToggle(data) {
+    //   this.darkMode = data;
+    // },
+    // getTheme() {
+    //   chrome.storage.sync.get("theme", obj => {
+    //     this.darkMode = obj["theme"] == "dark" ? true : false;
+    //   });
+    // }
   }
 };
 </script>
 
 <style scoped>
 .goal-list {
-  height: 100%;
+  /* TODO: fix height CSS */
+  max-height: 100%;
   display: flex;
+  flex: 1;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-}
-
-.transition {
   transition: var(--t-speed);
 }
+
+/* .transition {
+} */
 
 .dark {
   background-color: black;
@@ -103,7 +111,6 @@ export default {
   display: flex;
   width: 100vw;
   justify-content: space-around;
-  /* align-items: center; */
   align-items: baseline;
 }
 </style>
@@ -117,7 +124,6 @@ export default {
 .goal-list-class p {
   font-size: 2rem;
   width: 25vw;
-  /* overflow: auto; */
 }
 
 .dark input {

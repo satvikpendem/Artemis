@@ -232,6 +232,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "Toggle",
   data() {
@@ -242,18 +244,22 @@ export default {
   beforeMount() {
     this.getTheme();
   },
+  computed: {
+    ...mapGetters(["IS_DARK_THEME", "THEME_VAL"])
+  },
   methods: {
     toggleMode() {
       this.isToggled = !this.isToggled;
-      this.$emit("toggleMode", this.isToggled);
+      // this.$emit("toggleMode", this.isToggled);
+      this.$store.dispatch("SET_THEME", this.$util.darkBooleanToTheme(this.isToggled));
       chrome.storage.sync.set(
-        { theme: this.isToggled ? "dark" : "light" },
+        { theme: this.THEME_VAL },
         null
       );
     },
     getTheme() {
       chrome.storage.sync.get("theme", obj => {
-        this.isToggled = obj["theme"] == "dark" ? true : false;
+        this.isToggled = this.$util.themeToDarkBoolean(obj["theme"]);
       });
     }
   }
