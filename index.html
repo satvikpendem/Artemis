@@ -1,122 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123068293-1"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-123068293-1"
+    ></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-        gtag('config', 'UA-123068293-1');
+      gtag("config", "UA-123068293-1");
     </script>
 
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-P8BV677');</script>
+    <script>
+      (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          "gtm.start": new Date().getTime(),
+          event: "gtm.js"
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-P8BV677");
+    </script>
     <!-- End Google Tag Manager -->
 
     <!-- Hotjar Tracking Code for getartemis.app -->
     <script>
-        (function (h, o, t, j, a, r) {
-            h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
-            h._hjSettings = { hjid: 1106337, hjsv: 6 };
-            a = o.getElementsByTagName('head')[0];
-            r = o.createElement('script'); r.async = 1;
-            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-            a.appendChild(r);
-        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+      (function(h, o, t, j, a, r) {
+        h.hj =
+          h.hj ||
+          function() {
+            (h.hj.q = h.hj.q || []).push(arguments);
+          };
+        h._hjSettings = { hjid: 1106337, hjsv: 6 };
+        a = o.getElementsByTagName("head")[0];
+        r = o.createElement("script");
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
     </script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/logo/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/logo/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/logo/favicon/favicon-16x16.png">
-    <link rel="manifest" href="./assets/img/logo/favicon/site.webmanifest">
-    <link rel="mask-icon" href="./assets/img/logo/favicon/safari-pinned-tab.svg" color="#000000">
-    <link rel="shortcut icon" href="./assets/img/logo/favicon/favicon.ico">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-config" content="./assets/img/logo/favicon/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/img/logo/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/img/logo/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/img/logo/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./assets/img/logo/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="./assets/img/logo/favicon/safari-pinned-tab.svg"
+      color="#000000"
+    />
+    <link rel="shortcut icon" href="./assets/img/logo/favicon/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-config"
+      content="./assets/img/logo/favicon/browserconfig.xml"
+    />
+    <meta name="theme-color" content="#ffffff" />
 
     <!-- Primary Meta Tags -->
     <title>Artemis | To-Do List + Calendar = 💖</title>
-    <meta name="title" content="Artemis | To-Do List + Calendar = 💖">
-    <meta name="description" content="Start time blocking your day so you don't miss a single minute.">
+    <meta name="title" content="Artemis | To-Do List + Calendar = 💖" />
+    <meta
+      name="description"
+      content="Start time blocking your day so you don't miss a single minute."
+    />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://getartemis.app/">
-    <meta property="og:title" content="Artemis | To-Do List + Calendar = 💖">
-    <meta property="og:description" content="Start time blocking your day so you don't miss a single minute.">
-    <meta property="og:image" content="./assets/img/screen/meta_cover.png">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://getartemis.app/" />
+    <meta property="og:title" content="Artemis | To-Do List + Calendar = 💖" />
+    <meta
+      property="og:description"
+      content="Start time blocking your day so you don't miss a single minute."
+    />
+    <meta property="og:image" content="./assets/img/screen/meta_cover.png" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://getartemis.app/">
-    <meta property="twitter:title" content="Artemis | To-Do List + Calendar = 💖">
-    <meta property="twitter:description" content="Artemis is a smart to-do list integrated with your favorite calendar. Start time blocking your day so you don't miss a single minute.">
-    <meta property="twitter:image" content="https://getartemis.app/assets/img/screen/meta_cover.png">
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://getartemis.app/" />
+    <meta
+      property="twitter:title"
+      content="Artemis | To-Do List + Calendar = 💖"
+    />
+    <meta
+      property="twitter:description"
+      content="Artemis is a smart to-do list integrated with your favorite calendar. Start time blocking your day so you don't miss a single minute."
+    />
+    <meta
+      property="twitter:image"
+      content="https://getartemis.app/assets/img/screen/meta_cover.png"
+    />
 
     <!-- Font -->
-    <link href="https://fonts.googleapis.com/css?family=Overpass" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Overpass"
+      rel="stylesheet"
+    />
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/style.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P8BV677" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-P8BV677"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <header>
-        <div id="logo">
-            <img id="logo-icon" src="./assets/img/logo/logo_icon.svg" alt="logo">
-            <span id="logo-wordmark">Artemis</span>
-        </div>
+      <div id="logo">
+        <img id="logo-icon" src="./assets/img/logo/logo_icon.svg" alt="logo" />
+        <span id="logo-wordmark">Artemis</span>
+      </div>
     </header>
     <main>
-        <div id="flex-container">
-
-            <div class="container">
-                <h1>Simple, effective time management.</h1>
-                <h2>Artemis is a smart to-do list integrated with your favorite calendar.<br>Start time blocking your
-                    day so you don't miss a single minute.</h2>
-                <form class="desktop" id="top-form" action="https://app.us19.list-manage.com/subscribe/post?u=4d1c7f31e5be33197309e6d00&amp;id=913960c091"
-                    method="post" name="mc-embedded-subscribe-form" target="_blank">
-                    <input type="email" name="EMAIL" class="email" id="email-input" placeholder="hello@there.com"
-                        pattern=".+\.[a-zA-Z]{2,63}" required>
-                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                        <input type="text" name="b_4d1c7f31e5be33197309e6d00_913960c091" tabindex="-1" value="">
-                    </div>
-                    <input type="submit" value="Sign Up" name="subscribe" id="submit-button">
-                </form>
-            </div>
-
-            <video id="promo-video" poster="./assets/img/screen/fallback.png" autoplay loop muted preload>
-                <source src="./assets/vid/promo-1080.mp4" type="video/mp4">
-                <source src="./assets/vid/promo-1080.webm" type="video/webm">
-                <img src="./assets/img/screen/fallback.png" alt="Fallback screenshot">
-            </video>
-
-        </div>
+      <div id="flex-container">
         <div class="container">
-            <ul>
-                <li>
-                    <h3>No more <strong class="negative">rearranging tasks</strong> in Google Calendar when life
-                        changes.</h3>
-                    <!-- <span class="explanation">
+          <h1>Simple, effective time management.</h1>
+          <h2>
+            Artemis is a smart to-do list integrated with your favorite
+            calendar.<br />Start time blocking your day so you don't miss a
+            single minute.
+          </h2>
+          <form
+            class="desktop"
+            id="top-form"
+            action="https://app.us19.list-manage.com/subscribe/post?u=4d1c7f31e5be33197309e6d00&amp;id=913960c091"
+            method="post"
+            name="mc-embedded-subscribe-form"
+            target="_blank"
+          >
+            <input
+              type="email"
+              name="EMAIL"
+              class="email"
+              id="email-input"
+              placeholder="hello@there.com"
+              pattern=".+\.[a-zA-Z]{2,63}"
+              required
+            />
+            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+              <input
+                type="text"
+                name="b_4d1c7f31e5be33197309e6d00_913960c091"
+                tabindex="-1"
+                value=""
+              />
+            </div>
+            <input
+              type="submit"
+              value="Sign Up"
+              name="subscribe"
+              id="submit-button"
+            />
+          </form>
+        </div>
+
+        <video
+          id="promo-video"
+          poster="./assets/img/screen/fallback.png"
+          autoplay
+          loop
+          muted
+          preload
+        >
+          <source src="./assets/vid/promo-1080.mp4" type="video/mp4" />
+          <source src="./assets/vid/promo-1080.webm" type="video/webm" />
+          <img
+            src="./assets/img/screen/fallback.png"
+            alt="Fallback screenshot"
+          />
+        </video>
+      </div>
+      <div class="container">
+        <ul>
+          <li>
+            <h3>
+              No more <strong class="negative">rearranging tasks</strong> in
+              Google Calendar when life changes.
+            </h3>
+            <!-- <span class="explanation">
                         Artemis will
                         <strong class="positive">automatically reflow and reschedule</strong>
                         events based on your preferences of when you want your tasks to be done.
@@ -124,95 +222,163 @@
                         time.
                         If you need to change this for a day, you can always manually override it.
                     </span> -->
-                </li>
-                <li>
-                    <h3>No more <strong class="negative">manually adding</strong> recurring events.</h3>
-                    <span class="explanation">
-
-                    </span>
-                </li>
-                <li>
-                    <h3>No more <strong class="negative">forgetting</strong> to add breaks.</h3>
-                    <span class="explanation">
-
-                    </span>
-                </li>
-            </ul>
-            <h2>Take control of your day with Artemis.</h2>
-            <form id="bottom-form" action="https://app.us19.list-manage.com/subscribe/post?u=4d1c7f31e5be33197309e6d00&amp;id=913960c091"
-                method="post" name="mc-embedded-subscribe-form" target="_blank">
-                <input type="email" name="EMAIL" class="email" id="email-input" placeholder="hello@there.com" pattern=".+\.[a-zA-Z]{2,63}"
-                    required>
-                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                    <input type="text" name="b_4d1c7f31e5be33197309e6d00_913960c091" tabindex="-1" value="">
-                </div>
-                <input type="submit" value="Sign Up" name="subscribe" id="submit-button">
-            </form>
-        </div>
+          </li>
+          <li>
+            <h3>
+              No more
+              <strong class="negative">manually adding</strong> recurring
+              events.
+            </h3>
+            <span class="explanation"> </span>
+          </li>
+          <li>
+            <h3>
+              No more <strong class="negative">forgetting</strong> to add
+              breaks.
+            </h3>
+            <span class="explanation"> </span>
+          </li>
+        </ul>
+        <h2>Take control of your day with Artemis.</h2>
+        <form
+          id="bottom-form"
+          action="https://app.us19.list-manage.com/subscribe/post?u=4d1c7f31e5be33197309e6d00&amp;id=913960c091"
+          method="post"
+          name="mc-embedded-subscribe-form"
+          target="_blank"
+        >
+          <input
+            type="email"
+            name="EMAIL"
+            class="email"
+            id="email-input"
+            placeholder="hello@there.com"
+            pattern=".+\.[a-zA-Z]{2,63}"
+            required
+          />
+          <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+          <div style="position: absolute; left: -5000px;" aria-hidden="true">
+            <input
+              type="text"
+              name="b_4d1c7f31e5be33197309e6d00_913960c091"
+              tabindex="-1"
+              value=""
+            />
+          </div>
+          <input
+            type="submit"
+            value="Sign Up"
+            name="subscribe"
+            id="submit-button"
+          />
+        </form>
+      </div>
     </main>
     <footer>
-        <div id="footer-container">
-            <span id="copyright">&copy; 2018 Aria Labs</span>
-            <div id="social">
-                <a href="https://twitter.com/satvikpendem" target="_blank" rel="noopener noreferrer"><img src="./assets/img/social/twitter.svg"
-                        alt="Twitter link"></a>
-                <a href="https://github.com/satvikpendem/Artemis" target="_blank" rel="noopener noreferrer"><img src="./assets/img/social/github.svg"
-                        alt="Github link"></a>
-                <a href="mailto:satvik.pendem@gmail.com" target="_blank" rel="noopener noreferrer"><img src="./assets/img/social/email.svg"
-                        alt="Email link"></a>
-            </div>
+      <div id="footer-container">
+        <span id="copyright"
+          >&copy; 2018
+          <a
+            href="https://arialabs.io"
+            id="aria-labs"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Aria Labs</a
+          ></span
+        >
+        <div id="social">
+          <a
+            href="https://twitter.com/satvikpendem"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><img src="./assets/img/social/twitter.svg" alt="Twitter link"
+          /></a>
+
+          <a
+            href="https://github.com/satvikpendem/Artemis"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><img src="./assets/img/social/github.svg" alt="Github link"
+          /></a>
+
+          <a
+            href="mailto:satvik.pendem@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><img src="./assets/img/social/email.svg" alt="Email link"
+          /></a>
         </div>
+      </div>
     </footer>
 
     <!-- Start of Async Drift Code -->
     <script>
-        "use strict";
+      "use strict";
 
-        ! function () {
-            var t = window.driftt = window.drift = window.driftt || [];
-            if (!t.init) {
-                if (t.invoked) return void (window.console && console.error && console.error(
-                    "Drift snippet included twice."));
-                t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping", "page",
-                    "hide", "off", "on"
-                ],
-                    t.factory = function (e) {
-                        return function () {
-                            var n = Array.prototype.slice.call(arguments);
-                            return n.unshift(e), t.push(n), t;
-                        };
-                    }, t.methods.forEach(function (e) {
-                        t[e] = t.factory(e);
-                    }), t.load = function (t) {
-                        var e = 3e5,
-                            n = Math.ceil(new Date() / e) * e,
-                            o = document.createElement("script");
-                        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src =
-                            "https://js.driftt.com/include/" + n + "/" + t + ".js";
-                        var i = document.getElementsByTagName("script")[0];
-                        i.parentNode.insertBefore(o, i);
-                    };
-            }
-        }();
-        drift.SNIPPET_VERSION = '0.3.1';
-        drift.load('hnpnvvnygdac');
+      !(function() {
+        var t = (window.driftt = window.drift = window.driftt || []);
+        if (!t.init) {
+          if (t.invoked)
+            return void (
+              window.console &&
+              console.error &&
+              console.error("Drift snippet included twice.")
+            );
+          (t.invoked = !0),
+            (t.methods = [
+              "identify",
+              "config",
+              "track",
+              "reset",
+              "debug",
+              "show",
+              "ping",
+              "page",
+              "hide",
+              "off",
+              "on"
+            ]),
+            (t.factory = function(e) {
+              return function() {
+                var n = Array.prototype.slice.call(arguments);
+                return n.unshift(e), t.push(n), t;
+              };
+            }),
+            t.methods.forEach(function(e) {
+              t[e] = t.factory(e);
+            }),
+            (t.load = function(t) {
+              var e = 3e5,
+                n = Math.ceil(new Date() / e) * e,
+                o = document.createElement("script");
+              (o.type = "text/javascript"),
+                (o.async = !0),
+                (o.crossorigin = "anonymous"),
+                (o.src =
+                  "https://js.driftt.com/include/" + n + "/" + t + ".js");
+              var i = document.getElementsByTagName("script")[0];
+              i.parentNode.insertBefore(o, i);
+            });
+        }
+      })();
+      drift.SNIPPET_VERSION = "0.3.1";
+      drift.load("hnpnvvnygdac");
     </script>
     <!-- End of Async Drift Code -->
 
     <script>
-        // To allow the promo video to play if not autoplaying
-        let playPromise = document.querySelector('video').play();
-        // In browsers that don’t yet support this functionality,
-        // playPromise won’t be defined.
-        if (playPromise !== undefined) {
-            playPromise.then(function () { }).catch(function (error) {
-                // Automatic playback failed.
-                document.querySelector('video').play();
-            });
-        }
-
+      // To allow the promo video to play if not autoplaying
+      let playPromise = document.querySelector("video").play();
+      // In browsers that don’t yet support this functionality,
+      // playPromise won’t be defined.
+      if (playPromise !== undefined) {
+        playPromise
+          .then(function() {})
+          .catch(function(error) {
+            // Automatic playback failed.
+            document.querySelector("video").play();
+          });
+      }
     </script>
-</body>
-
+  </body>
 </html>
