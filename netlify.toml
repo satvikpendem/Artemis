@@ -1,4 +1,4 @@
-[context.app]
+[context.timer]
   base = "frontend/"
   command = "npm run build"
   publish = "frontend/dist/"
