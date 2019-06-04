@@ -1,11 +1,10 @@
 <template>
-  <div class="event" draggable="true">
-    <!-- @mousemove.prevent="doScale" -->
-    <!-- <div class="scale" @mousedown.prevent="startScaling"></div> -->
+  <!-- <div class="event" draggable="true" @dragstart="startDrag"> -->
+  <div class="event" draggable="true" @dragstart="startDrag" @dragend="stopDrag">
     <div class="box" :style="styleObject">
       <div id="wh">{{ eventLength }} minutes</div>
     </div>
-    <div class="scale" @mousedown.prevent="startScaling"></div>
+    <div class="scale" @mousedown.prevent="startScale"></div>
   </div>
 </template>
 
@@ -18,13 +17,14 @@ export default {
       isScaling: false,
       isDragging: false,
       STEP: 2,
+      // TODO This is pixel step not time step in terms of "5 min minimum increases in time" for example
       MIN_LENGTH: 30,
       TEMP_LENGTH: 0
     };
   },
   props: ["event"],
   computed: {
-    styleObject: function() {
+    styleObject() {
       return {
         width: this.width + "px",
         height: this.height + "px"
@@ -32,22 +32,22 @@ export default {
     },
     height: {
       get: function() {
-        return this.event.length;
+        return this.event.length * this.STEP;
       },
       set: function(newVal) {
-        this.event.length = newVal;
+        this.event.length = newVal / this.STEP;
       }
     },
-    eventLength: function() {
+    eventLength() {
       return this.height / this.STEP;
     }
   },
   methods: {
-    startScaling() {
+    startScale() {
       this.isScaling = true;
       this.TEMP_LENGTH = this.height;
     },
-    stopScaling() {
+    stopScale() {
       this.isScaling = false;
       this.TEMP_LENGTH = 0;
     },
@@ -56,36 +56,30 @@ export default {
         this.TEMP_LENGTH += e.movementY;
         if (
           this.TEMP_LENGTH % this.STEP == 0 &&
-          this.TEMP_LENGTH >= this.MIN_LENGTH
+          this.TEMP_LENGTH / this.STEP >= this.MIN_LENGTH
         ) {
           this.height = this.TEMP_LENGTH;
         }
       }
+    },
+    startDrag() {
+      console.log("startDrag");
+      this.$emit("dragged", this.event);
+    },
+    stopDrag() {
+      console.log("stopDrag");
     }
-    // startDragging() {
-    //   this.isDragging = true;
-    // },
-    // stopDragging() {
-    //   this.isDragging = false;
-    // },
-    // doDrag(event) {
-    //   if (this.isDragging) {
-    //     console.log(event.clientY);
-    //     if (event.clientY % this.STEP == 0) {
-    //       this.h = event.clientY;
-    //     }
-    //   }
-    // }
   },
   mounted() {
+    this.id = Math.round(Math.random() * 100000);
     window.addEventListener("mousemove", this.doScale);
-    window.addEventListener("mouseup", this.stopScaling);
-    window.addEventListener("mouseup", this.stopDragging);
+    window.addEventListener("mouseup", this.stopScale);
+    window.addEventListener("mouseup", this.stopDrag);
   },
   destroyed() {
     window.removeEventListener("mousemove", this.doScale);
-    window.removeEventListener("mouseup", this.stopScaling);
-    window.removeEventListener("mouseup", this.stopDragging);
+    window.removeEventListener("mouseup", this.stopScale);
+    window.removeEventListener("mouseup", this.stopDrag);
   }
 };
 </script>
@@ -99,9 +93,6 @@ export default {
 }
 
 .box {
-  /* width: 100px; */
-  /* height: 100px; */
-  /* margin: 100px; */
   background-color: red;
 }
 
