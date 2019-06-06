@@ -40,8 +40,8 @@ export default new Vuex.Store({
       }
     },
     taskLength: (_, getters) => option => getters.taskFilter(option).length,
-    // Generate readable versions of task properties
     readable: () => (list, option, readableOption = "clock") => {
+      // Generate readable versions of task properties
       switch (option) {
         case "all":
           return list.map(item => ({
