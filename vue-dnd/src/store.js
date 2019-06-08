@@ -54,10 +54,6 @@ export default new Vuex.Store({
       context.commit("addEvent", event);
     },
     changeCategory(context, payload) {
-      // let fromCategory = context.state.eventList[payload.eventID].category;
-      // if (fromCategory == payload.category) {
-      // context.commit("swapEvents", payload);
-      // } else
       context.commit("changeCategory", payload);
     },
     swapEvents() {}

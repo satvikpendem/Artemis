@@ -1,5 +1,5 @@
 <template>
-  <div class="drag-list" @dragover.prevent @drop>
+  <div class="drag-list" @dragover.prevent @drop.prevent>
     <button @click="addEvent('test')">Add Task</button>
     <div class="list-items">
       <li
