@@ -2,12 +2,12 @@
   /* Colors */
 
   /* Main */
-  --background-color: #fafafa;
-  --main-color: #fff;
-  --accent-color: #5200ff;
+  --background-color: #ffffff;
+  --main-color: #ffffff;
+  --accent-color: #6600ff;
 
   /* Text */
-  --text-color: #282828;
+  --text-color: #000000;
   --text-color-opposite: #fff;
   --text-color-light: #cfd7df;
 
@@ -21,7 +21,8 @@
 }
 
 html {
-  font-family: "Overpass", sans-serif;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
   color: var(--text-color);
   width: 100%;
 }
@@ -70,6 +71,7 @@ header {
   max-width: 1030px;
   padding: 0 30px;
   width: 100%;
+  gap: 10px;
 }
 
 #logo-icon {
@@ -78,12 +80,8 @@ header {
 
 #logo-wordmark {
   text-transform: uppercase;
-  font-weight: 400;
-  font-size: 2rem;
-  padding-left: 10px;
-  height: 2.5rem;
-  vertical-align: bottom;
-  line-height: 150%;
+  font-weight: 800;
+  font-size: 1.5rem;
 }
 
 main {
