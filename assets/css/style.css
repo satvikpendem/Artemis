@@ -20,8 +20,13 @@
   --box-shadow-glow: 0 12px 50px -6px var(--accent-color);
 }
 
+@font-face {
+  font-family: Circular;
+  src: url("../fonts/circular-black.otf") format("opentype");
+}
+
 html {
-  font-family: "Manrope", sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--text-color);
   width: 100%;
 }
